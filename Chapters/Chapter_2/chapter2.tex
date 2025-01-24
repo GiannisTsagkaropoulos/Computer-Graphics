@@ -1,0 +1,635 @@
+\chapter{Μετασχηματισμοί στο Επίπεδο – Παραστάσεις με Πίνακες}
+		
+Στο κεφάλαιο αυτό θα ασχοληθούμε με τα δύο είδη μετασχηματισμών, δηλαδή τους βασικούς μετασχηματισμούς αξόνων συντεταγμένων και τους βασικούς γεωμετρικούς μετασχηματισμούς. Οι αντίστοιχοι μετασχηματισμοί των δύο παραπάνω κατηγοριών είναι:
+
+\begin{center}
+\begin{tabular}{m{0.45\textwidth}m{0.45\textwidth}}
+\toprule
+\textbf{Μετασχηματισμοί αξόνων} & \textbf{Γεωμετρικοί μετασχηματισμοί} \\
+\midrule
+1. Μεταφορά αρχής. & 1. Μεταφορά σχήματος. \\
+2. Αλλαγή κλίμακας αξόνων συντεταγμένων. & 2. Αλλαγή κλίμακας συντεταγμένων, σχετικά με την παράσταση ενός αντικειμένου (μεγέθυνση – σμίκρυνση). \\
+3. Στροφή των αξόνων συντεταγμένων. & 3. Στροφή σχήματος γύρω από την αρχή των αξόνων. \\
+4. Συμμετρία ως προς άξονα. & 4. Συμμετρία ως προς άξονα. \\
+5. Αντίστροφοι των 1 έως 4 μετασχηματισμοί. & 5. Αντίστροφοι των 1 έως 4 μετασχηματισμοί. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+Μέχρι τώρα θεωρούσαμε ότι η αρχή των αξόνων, οι άξονες καθώς και η κλίμακα επί των αξόνων, συμπίπτουν με την αρχή, τους άξονες και την κλίμακα της οθόνης. Το σύστημα συντεταγμένων της οθόνης καλείται και σύστημα του παρατηρητή. Γενικά δεν υπάρχει σύμπτωση του αρχικού (πραγματικού) συστήματος με το σύστημα του παρατηρητή. Τέλος, ο όρος \textquotedblleft βασικοί μετασχηματισμοί\textquotedblright\ προκύπτει από τη δυνατότητα κάθε άλλος μετασχηματισμός να μπορεί να αντιμετωπιστεί με συνδυασμό των αντίστοιχων βασικών μετασχηματισμών.
+
+\section{Βασικοί μετασχηματισμοί αξόνων συντεταγμένων}
+
+\subsection{Παράλληλη μεταφορά αρχής συντεταγμένων}
+
+Έστω \((t_x, t_y)\) οι συντεταγμένες της νέας αρχής σχετικά με την παλαιά. Στο νέο σύστημα οι συντεταγμένες αρχής του παλαιού είναι \((-t_x, -t_y)\). Άρα για το σημείο \(P(x, y)\) θα έχουμε σαν συντεταγμένες του στο σύστημα \(x'Oy'\) τις εξής:
+%
+\[
+(x' = x - t_x, \, y' = y - t_y).
+\]
+
+\begin{figure}[hbt]
+  \begin{center}
+	\includegraphics[scale=1]{Chapter2/figure1.pdf}
+  \end{center}
+  \caption{Παράλληλη μεταφορά αρχής συντεταγμένων}
+\end{figure}
+
+
+
+
+\begin{lstlisting}
+# Parrallel metafora	
+\end{lstlisting}
+
+
+
+
+
+\begin{tabular}{m{0.45\textwidth}m{0.45\textwidth}}
+	Συμβολισμός μετασχηματισμού: & $ \bar{T}_\mathbf{v} $\\
+	Επομένως έχουμε: & $(x', y') = \bar{T}_\mathbf{v}(x, y)$\\
+	όπου & $x' = x - t_x$ και $y' = y - t_y$
+\end{tabular}
+
+
+\section{Αλλαγή κλίμακας αξόνων συντεταγμένων}
+
+Θεωρώντας ότι το σύστημα συντεταγμένων δεν αλλάζει ούτε σε θέση ούτε σε διεύθυνση μπορούμε να αλλάξουμε τις μονάδες μέτρησης κατά μήκος των δύο αξόνων. Έστω $S_x$ και $S_y$ οι ``κλίμακες'' (παράγοντες) βάσει των οποίων προκύπτουν, οι νέες μονάδες μέτρησης.
+ 
+ 
+\begin{tabular}{m{0.45\textwidth}m{0.45\textwidth}}
+	Συμβολισμός μετασχηματισμού: & $ \bar{S}_{S_x, S_y}$\\
+	Επομένως έχουμε: & $(x', y') = \bar{S}_{S_x, S_y}(x, y)$\\
+	όπου & $x' = \frac{1}{S_x} x$ και $y' = \frac{1}{S_y} y$.
+\end{tabular}
+
+
+\begin{figure}[h!]
+\begin{center}
+	\begin{minipage}[b]{0.48\textwidth} % Top-left image
+	%    \centering
+	    \includegraphics[width=\textwidth]{Chapter2/figure2a.pdf}
+	%    \captionof{figure}{Top-Left Image}
+	\end{minipage}%
+	\hfill
+	\begin{minipage}[b]{0.48\textwidth} % Top-right image
+	%    \centering
+	    \includegraphics[width=\textwidth]{Chapter2/figure2b.pdf}
+	%    \captionof{figure}{Top-Right Image}
+	\end{minipage}
+\end{center}
+  \caption{Παράδειγμα αλλαγής κλίμακας αξόνων συντεταγμένων για $S_x = 2$ και $S_y = 2$.}
+\end{figure}
+
+
+\begin{lstlisting}
+# Allagi klimakas ajwnwn
+\end{lstlisting}
+
+
+
+\subsection{Στροφή των αξόνων συντεταγμένων}
+Έστω ότι το σύστημα $xOy$ στρέφει κατά γωνία $\theta$ γύρω από το $O$.
+
+\begin{figure}[hbt]
+  \begin{center}
+	\includegraphics[scale=1.2]{Chapter2/figure3.pdf}
+  \end{center}
+  \caption{Στροφή συστήματος αξόνων κατά γωνία $\theta$ γύρω από την αρχή των αξόνων $O$.}
+\end{figure}
+
+\begin{figure}[h!]
+  \begin{center}
+	\includegraphics[scale=0.9]{Chapter2/axis-rotation.pdf}
+  \end{center}
+  \caption{Στροφή συστήματος αξόνων κατά γωνία $\theta$ γύρω από την αρχή των αξόνων $O$.}
+\end{figure}
+
+
+\begin{lstlisting}
+# strofi systimatos ajwnwn
+\end{lstlisting}
+
+ % Adjust this number to increase line spacing
+\begin{tabular}{m{0.45\textwidth}m{0.45\textwidth}}
+	Συμβολισμός μετασχηματισμού: & $ \bar{R}_\theta $\\
+	Επομένως: & $(x', y') = \bar{R}_\theta (x, y)$\\
+\end{tabular}
+
+\textcolor{red}{ΝΑ μπουν τα B' κλπ στο σχήμα}
+Από το σχήμα έχουμε ότι 
+\[
+	OB' = y \sin\theta \quad \text{και} \quad B'X'' = x \cos\theta
+\]
+
+Άρα $x' = OX = OB' + B'X = x \cos\theta + y \sin\theta$.
+Άρα $y' = OY = A'O - A'Y = y \cos\theta - x \sin\theta$.
+
+\subsection{Συμμετρία ως προς άξονα}
+
+
+\begin{tabular}{m{0.45\textwidth}m{0.45\textwidth}}
+	Συμβολισμός μετασχηματισμού: & $ \bar{M}_x $\\
+	Επομένως: & $(x',y') = \bar{M}_x(x,y) \text{ όπου } x' = x, y' = -y$\\
+	& $(x',y') = \bar{M}_y(x,y) \text{ όπου } x' = -x, y' = y$
+\end{tabular}
+
+
+\begin{figure}[h!]
+\begin{center}
+\begin{minipage}[b]{0.48\textwidth} % Top-left image
+%    \centering
+    \includegraphics[width=\textwidth]{Chapter2/figure4a.pdf}
+%    \captionof{figure}{Top-Left Image}
+\end{minipage}%
+\hfill
+\begin{minipage}[b]{0.48\textwidth} % Top-right image
+%    \centering
+    \includegraphics[width=\textwidth]{Chapter2/figure4b.pdf}
+%    \captionof{figure}{Top-Right Image}
+\end{minipage}
+
+%\vspace{1em} % Add vertical space
+%
+%\noindent
+%\begin{minipage}[b]{0.48\textwidth} % Top-left image
+%%    \centering
+%    \includegraphics[width=\textwidth]{Chapter2/figure9c.pdf}
+%    \captionof{figure}{Top-Left Image}
+%\end{minipage}%
+%\hfill
+%\begin{minipage}[b]{0.48\textwidth} % Top-right image
+%%    \centering
+%    \includegraphics[width=\textwidth]{Chapter2/figure9d.pdf}
+%    \captionof{figure}{Top-Right Image}
+%\end{minipage}
+\end{center}
+  \caption{Παράδειγμα συμμετρίας ως προς άξονα}
+\end{figure}
+
+\subsection{ Αντίστροφοι μετασχηματισμοί αξόνων συντεταγμένων}
+
+
+\begin{tabular}{m{0.6\textwidth}m{0.45\textwidth}}
+	Μεταφορά (μεταφορά στην αντίθετη κατεύθυνση): & $ \bar{T}_v^{-1} = \bar{T}_{-v} $\\
+	Κλίμακα: & $\bar{S}_{S_x, S_y}^{-1} = \bar{S}_{\frac{1}{S_x}, \frac{1}{S_y}}$\\
+	Στροφή(στροφή στην αντίθετη κατεύθηνση):& $ \bar{R}_\theta^{-1} = \bar{R}_{-\theta} $\\
+	Συμμετρία: & $\bar{M_x}^{-1} = \bar{M_x} \quad \text{και} \quad \bar{M_y}^{-1} = \bar{M_y}$
+\end{tabular}
+
+
+
+
+\section{Βασικοί γεωμετρικοί μετασχηματισμοί.}
+
+Στους γεωμετρικούς μετασχηματισμούς πρόκειται ουσιαστικά για ``αλλαγή της θέσης" στην οποία βρίσκεται ένα επίπεδο σχήμα, θεωρώντας τους άξονες και γενικά το σύστημα συντεταγμένων σταθερό.
+
+\subsection{Μεταφορά σχήματος}
+
+\begin{figure}[h!]
+\begin{center}
+\begin{minipage}[b]{0.48\textwidth} % Top-left image
+%    \centering
+    \includegraphics[width=\textwidth]{Chapter2/figure5a.pdf}
+%    \captionof{figure}{Top-Left Image}
+\end{minipage}%
+\hfill
+\begin{minipage}[b]{0.48\textwidth} % Top-right image
+%    \centering
+    \includegraphics[width=\textwidth]{Chapter2/figure5b.pdf}
+%    \captionof{figure}{Top-Right Image}
+\end{minipage}
+
+\end{center}
+  \caption{Μεταγορά σχήματος}
+\end{figure}
+
+Συμβολισμός: $T_v : P' = T_v(P)$ όπου $x' = x + t_x$ και $y' = y + t_y$.
+
+\subsection{Αλλαγή κλίμακας (Μεγέθυνση - σμίκρυνση)}
+
+Ο μετασχηματισμός κλίμακας είναι εδώ μια διαδικασία ``μεγέθυνσης" ή ``σμίκρυνσης" των διαστάσεων ενός σχήματος. Κρατώντας σταθερή την αρχή και τους άξονες δίνουμε μία μεγέθυνση όλης της περιοχής του σχήματος κατά $S_x$ στη διεύθυνση του θετικού άξονα $x$ και αντίστοιχα κατά $S_y$ στη διεύθυνση του θετικού άξονα $y$. Φυσικά επειδή εδώ πρόκειται για μεγέθυνση ισχύει $S_x > 1$ και $S_y > 1$. Αντίθετα όταν πρόκειται για σμίκρυνση έχουμε $S_x < 1$ και $S_y < 1$. Τέλος υπάρχουν και συνδυασμοί των τεσσάρων περιπτώσεων.
+
+Συμβολισμός μετασχηματισμού: $S_{S_x, S_y} : P' = S_{S_x, S_y}(P)$ όπου $x' = S_x \cdot x$ και $y' = S_y \cdot y$.
+
+
+Παράδειγμα για $S_x = 2$ και $S_y = \frac{1}{2}$:
+
+\begin{figure}[h!]
+	\begin{center}
+		\begin{minipage}[b]{0.48\textwidth}
+		    \includegraphics[width=\textwidth]{Chapter2/figure6a.pdf}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[b]{0.48\textwidth} 
+		    \includegraphics[width=\textwidth]{Chapter2/figure6b.pdf}
+		\end{minipage}
+	\end{center}
+	\caption{Μεταφορά σχήματος}
+\end{figure}
+
+\begin{remark}
+	Σε αυτό το μετασχηματισμό \underline{το μόνο σημείο που δεν μετασχηματίζεται}\\ \underline{είναι η αρχή των αξόνων}.	
+\end{remark}
+
+
+\subsection{Στροφή σχήματος γύρω από την αρχή των αξόνων}
+
+
+\begin{figure}[h!]
+	\begin{center}
+	    \includegraphics[width=\textwidth]{Chapter2/figure7.pdf}
+	\end{center}
+	\caption{Στροφή σχήματος γύρω από την αρχή των αξόνων κατά γωνία $\theta$}
+\end{figure}
+
+
+
+ % Adjust this number to increase line spacing
+\begin{tabular}{m{0.4\textwidth}m{0.5\textwidth}}
+Συμβολισμός μετασχηματισμού: & $R_\theta$ και επομένως $P'=R_\theta(P)$ με :\\
+& $x = l \cosh \, \, l = \sqrt{x^2 + y^2}, \, y = l \sinh \,$\\
+Άρα τελικά :& $x' = l \cos(\theta + h) = l(\cosh \cos \theta - \sinh \sin \theta) = x \cos \theta - y \sin \theta$\\
+\end{tabular}
+
+Ομοίως προκύπτει ότι $y' = x \sin \theta + y \cos \theta$.
+
+
+\subsection{Συμμετρία ως προς άξονα}
+
+
+ % Adjust this number to increase line spacing
+\begin{tabular}{m{0.4\textwidth}m{0.5\textwidth}}
+Συμβολισμός μετασχηματισμού: & $M_x, M_y$\\
+& $P' = M_x(P)$ όπου $x' = x$ και $y' = -y$\\
+& $ P' = M_y(P)$  όπου $x' = -x $ και $ y' = y.$  \\
+\end{tabular}
+
+
+
+ Τη \underline{συμμετρία} μπορούμε εδώ να τη θεωρήσουμε \underline{σαν μετασχηματισμό κλίμακας} με \underline{$S_x = 1, S_y = -1$} για την περίπτωση  \underline{$M_x$  και  $S_x = -1, S_y = 1$ για την  $M_y.$}
+
+\begin{figure}[h!]
+	\begin{center}
+	    \includegraphics[width=\textwidth]{Chapter2/figure8.pdf}
+	\end{center}
+	\caption{Συμμετρία ως προς άξονα}
+\end{figure}
+
+\subsection{ Αντίστροφοι γεωμετρικοί μετασχηματισμοί}
+ % Adjust this number to increase line spacing
+\begin{tabular}{m{0.2\textwidth}m{0.5\textwidth}}
+Μεταφορά: & \( T_v^{-1} = T_{-v} \)\\
+Κλίμακα:& \( S_{S_x,S_y}^{-1} = S_{\frac{1}{S_x},\frac{1}{S_y}} \)\\
+Στροφή:& \( R^{-1} = R_{-\theta} \)  \\
+Συμμετρία:& \( M_x^{-1} = M_x \text{ και } M_y^{-1} = M_y \)
+\end{tabular}
+
+Είναι φανερό ότι οποιοσδήποτε μετασχηματισμός είτε αξόνων είτε γεωμετρικός μπορεί να πραγματοποιηθεί με επαναληπτική εφαρμογή των παραπάνω 10 συνολικά (και 10 αντιστρόφων) βασικών μετασχηματισμών. Γενικά μπορούμε να πούμε ότι αυτές οι απεικονίσεις είναι της μορφής:
+
+$(x,y) \to (f_1(x,y),f_2(x,y))$ όπου $f_1$ και $f_2$ είναι και οι δύο γραμμικές απεικονίσεις ως προς $x$ και $y$.
+
+
+ Τέτοιου είδους απεικονίσεις μπορούν να παρασταθούν απλά με πίνακες μετασχηματισμών.
+
+\section{Πίνακες μετασχηματισμών}
+
+ Εδώ τα σημεία παριστάνονται με διανύσματα για να μπορούμε να εφαρμόσουμε πράξεις πινάκων.
+
+\subsection{Πίνακες μετασχηματισμού αξόνων συντεταγμένων}
+
+ α) Μεταφορά αρχής:
+\[
+\bar{T}_v =\begin{bmatrix}
+-t_x \\-t_y
+\end{bmatrix}
+\text{ή}
+\begin{bmatrix}
+x' \\y'
+\end{bmatrix}
+=
+\begin{bmatrix}
+x \\y
+\end{bmatrix}
++
+\begin{bmatrix}
+-t_x \\-t_y
+\end{bmatrix}
+=
+\begin{bmatrix}
+x - t_x \\y - t_y
+\end{bmatrix}
+\]
+ β) Μετασχηματισμός κλίμακας:
+\[
+\bar{S}_{S_x,S_y} =
+\begin{bmatrix}
+\frac{1}{S_x} & 0 \\
+0 & \frac{1}{S_y}
+\end{bmatrix}
+\text{ή}
+\begin{bmatrix} x' \\ y' \end{bmatrix} =
+\begin{bmatrix} \frac{1}{S_x} & 0 \\ 0 & \frac{1}{S_y} \end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix} =
+\begin{bmatrix} \frac{x}{S_x} \\ \frac{y}{S_y} \end{bmatrix}
+\]
+
+ γ) Στροφή αξόνων:
+\[
+\bar{R}_{\theta} =
+\begin{bmatrix}
+\cos\theta & \sin\theta \\
+-\sin\theta & \cos\theta
+\end{bmatrix}
+\text{ή}
+\begin{bmatrix} x' \\ y' \end{bmatrix} =
+\begin{bmatrix}
+\cos\theta & \sin\theta \\
+-\sin\theta & \cos\theta
+\end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix} =
+\begin{bmatrix} x \cos\theta + y \sin\theta \\
+-x \sin\theta + y \cos\theta \end{bmatrix}
+\]
+
+ δ) Συμμετρία ως προς άξονα (x):
+\[
+\bar{M}_x =
+\begin{bmatrix} 1 & 0 \\
+0 & -1 \end{bmatrix}
+\text{ή}
+\begin{bmatrix} x' \\ y' \end{bmatrix} =
+\begin{bmatrix} 1 & 0 \\
+0 & -1 \end{bmatrix}
+\begin{bmatrix} x \\ y \end{bmatrix} =
+\begin{bmatrix} x \\ -y \end{bmatrix}
+\]
+
+Πριν προχωρήσουμε στους γεωμετρικούς μετασχηματισμούς πρέπει να αναφέρουμε ότι εκτός από τη μεταφορά όλες οι απεικονίσεις είναι ομοιόμορφες (τετραγωνικοί πίνακες 2x2). Είναι γνωστό ότι \underline{απεικονίσεις σημείων οι οποίες πραγματοποιούνται} με πίνακες έχουν πάντοτε \underline{ένα σταθερό σημείο (Fixpoint)} την αρχή των αξόνων δηλαδή:
+\[
+\begin{bmatrix} a & b \\ c & d \end{bmatrix} \cdot \begin{bmatrix} 0 \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}
+\]
+
+ για τυχαία \( a,b,c,d. \) Εάν τώρα θέλουμε να παραστήσουμε με πίνακες και \underline{μετασχηματισμούς} \underline{όπου όλα τα σημεία μπορούν να μετασχηματισθούν τότε πρέπει να προβλέψουμε ώστε το}\\ \underline{σταθερό σημείο να βρίσκεται εκτός του επιπέδου απεικόνισης}. Για το σκοπό αυτό χρησιμοποιούμε εδώ τις "\underline{ομογενείς συντεταγμένες}". Εισάγουμε δηλαδή μια τρίτη διάσταση και σχεδιάζουμε στο επίπεδο \( z=1 \) (το θεωρούμε σαν βασικό επίπεδο). Οι μετασχηματισμοί πραγματοποιούνται τώρα στο χώρο με πίνακες \( 3 \times 3 \) το δε σταθερό σημείο \( (0,0,0) \) βρίσκεται εκτός του επιπέδου σχεδίασης \( z=1 \). Πίνακες των οποίων η τελευταία γραμμή είναι \( (0,0,1) \) απεικονίζουν σημεία του επιπέδου  $z=1$ και στο επίπεδο $z=1$ διότι:
+
+\[
+\begin{bmatrix} a & b & c \\ d & e & f \\ 0 & 0 & 1 \end{bmatrix} \cdot \begin{bmatrix} x \\ y \\ 1 \end{bmatrix} = \begin{bmatrix} x' \\ y' \\ 1 \end{bmatrix}
+\]
+
+ Οι παραπάνω μετασχηματισμοί α) έως δ) γίνονται:
+
+ α') 
+\[
+\bar{T}_v= \begin{bmatrix} 1 & 0 & -t_x \\ 0 & 1 & -t_y \\ 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} x' \\ y' \\ 1 \end{bmatrix} = \begin{bmatrix} 1 & 0 & -t_x \\ 0 & 1 & -t_y \\ 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} x \\ y \\ 1 \end{bmatrix} = \begin{bmatrix} x - t_x \\ y - t_y \\ 1 \end{bmatrix}
+\]
+
+ β') 
+\[
+\bar{S}_{S_x,S_y} = \begin{bmatrix} \frac{1}{S_x} & 0 & 0 \\ 0 & \frac{1}{S_y} & 0 \\ 0 & 0 & 1 \end{bmatrix}
+\]
+
+ γ')   
+\[
+\bar{R}_{\theta} = \begin{bmatrix} \cos\theta & \sin\theta & 0 \\ -\sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{bmatrix}
+\]
+
+ δ') 
+
+\[
+\bar{M}_x = \begin{bmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1 \end{bmatrix}
+\]
+
+ Ανάλογα κατασκευάζονται και οι πίνακες των αντίστροφων μετασχηματισμών αξόνων.
+
+\subsection*{3.3.2 Πίνακες γεωμετρικών μετασχηματισμών.}
+
+ α)
+\[
+T_v = \begin{bmatrix} 1 & 0 & t_x \\ 0 & 1 & t_y \\ 0 & 0 & 1 \end{bmatrix}
+\]
+
+ β)  
+\[
+S_{S_x,S_y} = \begin{bmatrix} S_x & 0 & 0 \\ 0 & S_y & 0 \\ 0 & 0 & 1 \end{bmatrix}
+\]
+
+ γ)
+\[
+R_{\theta} = \begin{bmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{bmatrix}
+\]
+
+ δ) 
+\[
+M_x = \begin{bmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1 \end{bmatrix}, \quad M_y = \begin{bmatrix} -1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}
+\]
+
+ Ανάλογα κατασκευάζονται και οι πίνακες των αντίστροφων γεωμετρικών μετασχηματισμών.
+
+\subsection{Παράδειγμα 3.1}
+ Ζητάμε να υπολογίσουμε τον πίνακα μετασχηματισμού της συμμετρικής απεικόνισης εικόνας ως προς άξονα \( w \) ο οποίος σχηματίζει γωνία \( \theta \) με τον θετικό άξονα των \( x. \)
+
+%\input{figure9}
+
+
+ Όπως φαίνεται και στο σχήμα 3.9 ο μετασχηματισμός μπορεί να προκύψει ως εξής:
+ 
+\begin{tabular}{m{0.45\textwidth}m{0.5\textwidth}}
+1. Στροφή της εικόνας κατά γωνία \( -\theta \). & \( (R_{-\theta}) \) \\
+2. Συμμετρία ως προς άξονα $x$.& \( (M_x) \)\\
+3.  Στροφή της εικόνας κατά γωνία \( \theta \).& \( (R_{\theta}) \)
+\end{tabular}
+
+
+\[
+\text{Βήμα 1: } 
+\begin{bmatrix}
+x' \\ y' \\ 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+\cos(-\theta) & -\sin(-\theta) & 0 \\
+\sin(-\theta) & \cos(-\theta) & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x \\ y \\ 1
+\end{bmatrix}
+= \Pi_1
+\begin{bmatrix}
+x \\ y \\ 1
+\end{bmatrix}
+\]
+
+\[
+\text{Βήμα 2: } 
+\begin{bmatrix}
+x'' \\ y'' \\ 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x' \\ y' \\ 1
+\end{bmatrix}
+= \Pi_2
+\begin{bmatrix}
+x' \\ y' \\ 1
+\end{bmatrix}
+\]
+
+\[
+\text{Βήμα 3: } 
+\begin{bmatrix}
+x''' \\ y''' \\ 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+\cos \theta & -\sin \theta & 0 \\
+\sin \theta & \cos \theta & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x'' \\ y'' \\ 1
+\end{bmatrix}
+= \Pi_3
+\begin{bmatrix}
+x'' \\ y'' \\ 1
+\end{bmatrix}
+\]
+
+Άρα τελικά:
+\[
+\begin{bmatrix}
+x''' \\ y''' \\ 1
+\end{bmatrix}
+=
+\Pi_3 (\Pi_2 (\Pi_1
+\begin{bmatrix}
+x \\ y \\ 1
+\end{bmatrix}))
+\]
+
+Επειδή ο πολλαπλασιασμός πινάκων είναι πράξη προσεταιριστική, θα έχουμε:
+
+\[
+\begin{bmatrix}
+x''' \\ y''' \\ 1
+\end{bmatrix}
+=
+(\Pi_3 \cdot \Pi_2 \cdot \Pi_1)
+\begin{bmatrix}
+x \\ y \\ 1
+\end{bmatrix}
+\]
+
+και επομένως μπορούμε να υπολογίσουμε το γινόμενο $\Pi_3 \Pi_2 \Pi_1$ το οποίο θα αποτελεί και τον ζητούμενο πίνακα $\Pi$.
+
+\[
+\Pi =
+\begin{bmatrix}
+\cos \theta & -\sin \theta & 0 \\
+\sin \theta & \cos \theta & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\cos(-\theta) & -\sin(-\theta) & 0 \\
+\sin(-\theta) & \cos(-\theta) & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\]
+
+\[
+=
+\begin{bmatrix}
+\cos \theta & \sin \theta & 0 \\
+-\sin \theta & \cos \theta & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\cos \theta & \sin \theta & 0 \\
+-\sin \theta & \cos \theta & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+=
+\]
+
+\[
+\begin{bmatrix}
+\cos^2\theta - \sin^2\theta & 2\sin\theta\cos\theta & 0 \\
+2\sin\theta\cos\theta & \sin^2\theta - \cos^2\theta & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\cos 2\theta & \sin 2\theta & 0 \\
+\sin 2\theta & -\cos 2\theta & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\]
+
+\section{Σύνθεση μετασχηματισμών}
+
+Είναι φανερό ότι κάνοντας χρήση της προσεταιριστικής ιδιότητας του πολλαπλασιασμού πινάκων μπορούμε να παραστήσουμε \textbf{μία ακολουθία μετασχηματισμών} (που εφαρμόζονται πάνω σε μία εικόνα) \textbf{με έναν μόνο πίνακα.}
+
+Έστω γενικά $M_1, M_2, \ldots, M_n$ μετασχηματισμοί που εφαρμόζονται με τη σειρά αυτή πάνω σε μία εικόνα. Οι αντίστοιχοι ομογενείς πίνακες είναι $\Pi_i, i=1(\text{ή } n)$. Ο συνολικός μετασχηματισμός κάθε σημείου της εικόνας μπορεί να υπολογιστεί ως εξής:
+
+\[
+\begin{bmatrix}
+x' \\ y' \\ 1
+\end{bmatrix}
+=
+\Pi_n (\Pi_{n-1} (\ldots (\Pi_2 (\Pi_1
+\begin{bmatrix}
+x \\ y \\ 1
+\end{bmatrix}))))
+=
+((\Pi_n \Pi_{n-1}) \Pi_{n-2}) \ldots \Pi_1)
+\begin{bmatrix}
+x \\ y \\ 1
+\end{bmatrix}
+\]
+
+ή απλά:
+
+\[
+\begin{bmatrix}
+x' \\ y' \\ 1
+\end{bmatrix}
+=
+\Pi_n \Pi_{n-1} \Pi_{n-2} \ldots \Pi_1
+\begin{bmatrix}
+x \\ y \\ 1
+\end{bmatrix}
+\]
+
+Ο συνολικός μετασχηματισμός λοιπόν παρουσιάζεται με έναν πίνακα ο οποίος υπολογίζεται μία φορά και στη συνέχεια πολλαπλασιάζεται με τα εκάστοτε σημεία της εικόνας.
+
+\section{Παραδείγματα μετασχηματισμών στο επίπεδο}
+
+\input{Chapters/Chapter_2/Examples/eg1.tex}
+\input{Chapters/Chapter_2/Examples/eg2.tex}
+\input{Chapters/Chapter_2/Examples/eg3.tex}
+\input{Chapters/Chapter_2/Examples/eg4.tex}
+\input{Chapters/Chapter_2/Examples/eg5.tex}
+\input{Chapters/Chapter_2/Examples/eg6.tex}
+
+
+
+
+\input{Chapters/Chapter_2/chapter2-exercises.tex}

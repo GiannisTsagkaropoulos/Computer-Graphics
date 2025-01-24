@@ -1,0 +1,89 @@
+\documentclass[border=10pt]{standalone}
+
+ %Fonts
+ \usepackage{fontspec}
+ \usepackage{xltxtra,xunicode}
+ \setmainfont[Mapping=tex-text]{Times New Roman}
+ \newfontfamily\greekfont[Script=Greek]{Times New Roman}
+ \setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Futura}
+ %
+ %English - Greek
+ \usepackage{polyglossia}
+ \setdefaultlanguage[variant=mono]{greek}
+ \setotherlanguage[variant=uk]{english}
+ \PolyglossiaSetup{greek}{indentfirst=true}
+ %
+ 
+\usepackage{graphicx}
+ %Maths
+
+ \usepackage{amsmath}
+ \usepackage{amsfonts}
+ \usepackage{amssymb}
+ \usepackage{mathrsfs}
+ \usepackage{amsthm}
+ \usepackage{relsize}
+ \usepackage{mathdots}
+  
+\usepackage{amsmath} 
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+
+\definecolor{myLightGray}{RGB}{191,191,191}
+\definecolor{myGray}{RGB}{160,160,160}
+\definecolor{myDarkGray}{RGB}{144,144,144}
+\definecolor{myDarkRed}{RGB}{167,114,115}
+\definecolor{myRed}{RGB}{255,58,70}
+\definecolor{myGreen}{RGB}{0,255,71}
+
+
+
+\usetikzlibrary{positioning}
+\begin{document}
+%\begin{tikzpicture}[x=2.5cm,nodes={text width=4.2cm,align=center}]
+\begin{tikzpicture}[x=2.5cm, , nodes={text width=6.5cm}]
+\draw[black,->,thin,>=latex,line cap=rect]
+  (-1,0) -- (6,0);
+  
+%\foreach \Xc in {0,...,4}
+%{
+%  \draw[black,thick] 
+%    (\Xc,0) -- ++(0,5pt);
+%}
+
+\foreach \x/\label in {0.2/1951, 0.6/$1953$, 2.4/$1962$, 4/$1970$, 6/$1980$} {
+%        \draw (\x,0) -- (\x,-0.1); % vertical tick
+        \node[above] at (\x,0) {\label}; % label
+ }
+
+% 1951
+%Graph Plotters:
+%1953
+%Έγχρωμες Οθόνες: 1962
+%Τέλος 1960:
+%1970:
+%1980:
+%Graphics hardware ακριβό
+%τα γραφικά πολυτέλεια
+%  
+
+
+%\node[below, color=black] 
+%  at (0,-1) 
+%  {\small{MIT Whirlwind}};  
+  
+\node[above=0.6cm] at (0,0) {\small{MIT Whirlwind}};   
+\node[below=0.6cm] at (0.4,0) {\small{Graph Plotters}};   
+\node[above=0.6cm] at (2.1,0) {\small{Έγχρωμες Οθόνες}};
+
+\node[below=0.6cm] at (2.2,0) {\small{Time Sharing Συστήματα. Εισάγονται φθηνότερες μονάδες γραφικών. Tektronix $1968$ Storage tube (terminal γραφικών $1024 \times 768$)}};
+
+\node[above=0.6cm] at (3.2,0) {\small{Raster display. Εύκολο editing στην εικόνα. Πιο φθηνά. Εισάγεται ως επιπλέον διάσταση το χρώμα. Για πρώτη φορά εκτυπώνονται χάρτες με σκίαση και όχι μόνο γραμμές. Εμφανίζονται: flat-bed plotters, ink-jet plotters, laser printers.}};
+
+\node[below=0.6cm] at (4.9,0) {\small{Εμφάνιση μικροϋπολογιστών και workstations (Apple Macintosh έως SUN workstation). Σχεδιασμένα με δυνατότητες γραφικών θεμελιώδεις στην κατασκευή. Στενός συνδυασμός επεξεργαστή - οθόνης γραφικών. Περιβάλλον για interactive εφαρμογές. Έχουμε και “graphical supercomputers” που χρησιμοποιούν αρχιτεκτονική παράλληλης επεξεργασίας.}};
+
+\end{tikzpicture}
+
+\end{document}
+

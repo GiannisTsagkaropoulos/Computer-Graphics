@@ -1,0 +1,27 @@
+\begin{exercise}
+		
+4. Να κατασκευαστεί ο αλγόριθμος του Bresenham για το σχεδιασμό κύκλου κέντρου $Κ(x, y)$ και ακτίνας $r$, στο δεύτερο οκταμόριο.
+\end{exercise}
+
+\begin{solution}
+	Η μετατροπή του βασικού αλγορίθμου του Bresenham αφορά τη μετακίνηση του κέντρου του κύκλου από το $O(0,0)$ στο $Κ(x_c, y_c)$. Συγκεκριμένα, η μετατροπή αφορά την εκτύπωση του σημείου $(x + x_c,y +y_c)$ αντί του σημείου $(x,y)$ στην εντολή plot :
+
+\begin{lstlisting} 
+r = readline() 
+xc = readline() 
+yc = readline() 
+x=0
+y = r
+error = 3 -2r
+while x <= y plot(x+xc, y+ yc)
+	plot(x+xc, y+yc)
+	x=x+1
+	if error >= 0
+		y=y-1
+		error = error - 4y
+	end
+	error = error + 4x + 2 + c2
+end
+\end{lstlisting}		
+
+\end{solution}

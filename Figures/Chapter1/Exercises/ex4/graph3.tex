@@ -1,0 +1,52 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../../tikz-preamble.tex}
+
+
+\begin{document}
+	
+	\begin{tikzpicture}[my angle/.style = {draw, fill=orange,
+					opacity=0.4,
+                   angle radius=5mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize} 
+                   ]
+%%%%%%%%%%%%%%%%%%	
+
+%Grid
+\drawPosGrid{5}{13}
+   
+     
+\drawRectangle{0}{0}   
+\drawRectangle{0}{1}
+\drawRectangle{0}{2}   
+\drawRectangle{0}{3}   
+\drawRectangle{0}{4}   
+\drawRectangle{0}{5}   
+\drawRectangle{0}{6}   
+\drawRectangle{0}{7}   
+\drawRectangle{0}{8}   
+\drawRectangle{0}{9}   
+\drawRectangle{0}{10}   
+% Connect points with a line
+    \draw[very thin] (0, 0) -- (0, 10);
+    \draw[dashed, very thin] (0, 0) -- (0, 10);
+
+
+%    \node[below] at (0,0) {$P_1$};
+    \node[right] at (0,10) {$P_2(0,10)$};   
+
+
+%Angle
+\coordinate (x) at (5,0);
+\coordinate (O) at (0,0);
+\coordinate (P) at (5.5, 5.5);
+\pic[my angle, "$\ang{45}$"] {angle = x--O--P};
+
+
+\draw[very thin] (0, 0)  -- (5.5,5.5);
+    
+    
+\end{tikzpicture}
+
+\end{document}

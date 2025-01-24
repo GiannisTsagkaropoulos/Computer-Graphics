@@ -1,0 +1,34 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex} 
+\begin{document}	
+				
+	\begin{tikzpicture}
+						                			
+		\drawPosGrid{13}{13};
+			
+		 % Dashed lines
+            \draw[dashed] (6,0) -- (6,2);
+            \draw[dashed] (8,0) -- (8,2);
+            \draw[dashed] (10,0) -- (10,4);
+            \draw[dashed] (12,0) -- (12,4);
+            \draw[dashed] (6,2) -- (10,4);
+            \draw[dashed] (10,4) -- (12,4);
+            \draw[dashed] (0,4) -- (10,4);
+            \draw[dashed] (0,2) -- (6,2);
+
+            % Parallelogram
+            \draw[thick] (6,2) -- (8,2) -- (12,4) -- (10,4) -- cycle;
+            \node at (9,3) {$B$};
+
+            % Coordinates
+            \filldraw (6,2) circle (1pt) node[below left] {$(6,2)$};
+			\filldraw (8,2) circle (1pt) node[below right]  {$(8,2)$};
+			\filldraw (10,4) circle (1pt) node[above left] {$(10,4)$};
+			\filldraw (12,4) circle (1pt) node[above right] {$(12,4)$};
+			
+        
+       
+			 \node at (7,-1.5) {$(\beta)$};      
+        \end{tikzpicture}
+\end{document}

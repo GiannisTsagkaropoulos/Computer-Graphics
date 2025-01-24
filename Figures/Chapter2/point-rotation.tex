@@ -1,0 +1,55 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+
+\begin{document}
+	
+\begin{tikzpicture}[
+my angle/.style = {draw,
+				   opacity=0.3,
+                   angle radius=6mm, 
+                   angle eccentricity=1.3, 
+                   font=\footnotesize} 
+                   ]
+
+%%		%Grid
+%		\draw[very thin, dotted] (-2,-2) grid (4,4);
+%		\foreach \i in {1,...,4}
+%		{
+%%			\node at (\i,-2ex) {\i};	
+%%			\node at (-\i,-2ex) {-\i};	
+%		}
+%		\foreach \i in {1,...,4}
+%		{
+%%			\node at (-2ex,\i) {\i};	
+%%			\node at (-2ex,-\i) {-\i};	
+%		}
+		\node at (-2ex,-2ex) {0};
+		
+	
+	%Axis
+			
+	\draw[very thin,-latex] (-1,0) -- (4.5,0) coordinate(X) node [right] {$X$};
+	\draw[very thin,-latex] (0,-1) -- (0,4.5) node [above] {$Y$};
+
+	\draw[fill=black, draw=black] (0,0) coordinate (O) circle (1.2pt);
+%%%	
+    
+    \begin{scope}
+      \draw[-latex, red] (0,0)--(4,2) coordinate (P);
+      \draw[-latex, orange, rotate=40] (0,0)--(4,2) coordinate (P');
+    \end{scope}
+
+\pic[my angle, fill=green!30!blue, "$\eta$"] {angle = X--O--P};    
+\pic[my angle,fill=green!30!orange, angle radius=7mm, "$\theta$"] {angle = P--O--P'};
+
+\node[shift={(0.2,0.2)}] at (P) {\footnotesize{$\mathrm{P(x,y)}$}};
+\node[shift={(0.2,0.2)}] at (P') {\footnotesize{$\mathrm{P'(x',y')}$}};
+
+\node[shift={(0,0.2)}] at ($(O)!0.6!(P)$) {\footnotesize{$I$}};
+\node[shift={(-0.15,0)}] at ($(O)!0.6!(P')$) {\footnotesize{$I$}};
+
+\draw [-latex,black] ($(O)!0.25!(P)$) to [out=100,in=-20] ($(O)!0.25!(P')$);
+\end{tikzpicture}
+%
+\end{document}

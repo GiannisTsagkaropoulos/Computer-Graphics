@@ -1,0 +1,39 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../../tikz-preamble.tex}
+
+%Drawing
+\usepackage{tikz}
+
+\begin{document}
+	
+	\begin{tikzpicture}
+
+%%%%%%%%%%%%%%%%%%	
+%		%Grid
+		\draw[very thin, dotted] (-0.5,-0.5) grid (3.5,3.5);
+		
+		\node at (0.5,0) [below] {\scriptsize{$x_i$}};
+		\node at (0,0.5) [left] {\scriptsize{$y_i$}};
+		\foreach \i in {1,2}
+		{
+			\node at (\i+0.5,0) [below] {\scriptsize{$x_{i+\i}$}};	
+			\node at (0,\i+0.5) [left] {\scriptsize{$y_{i+\i}$}};				
+		}	
+%Axis
+\draw[very thin,-latex] (0,0) -- (3.5,0);
+\draw[very thin,-latex] (0,0) -- (0,3.5);
+
+%Octant
+\draw[very thin] (0,0) -- (3,3);
+		
+% Rectangles
+\fill[blue, opacity=0.2] (0,0) rectangle (1,1); 
+
+% Points
+\draw[fill=black, draw=black] (0.5,0.5) circle (1pt);
+
+
+\end{tikzpicture}
+	
+\end{document}

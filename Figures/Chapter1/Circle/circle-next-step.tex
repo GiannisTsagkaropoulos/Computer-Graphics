@@ -1,0 +1,61 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../tikz-preamble.tex}
+\usetkzobj{all}
+%Tikz Library
+
+\usepackage{pgfplots}
+
+\begin{document}
+
+	\begin{tikzpicture}[
+		my angle/.style = {draw, fill=green!30!blue,
+					opacity=0.4,
+                   angle radius=5mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize} 
+                   ]
+
+%Define axis length and radius
+    \pgfmathsetmacro{\axislength}{5}
+    \pgfmathsetmacro{\radius}{2}
+
+%\drawAxis{3.5}{3.5}{0}{0}
+
+\centerarc[black,thin](0,0)(0:90:\radius)
+		
+\draw[gray] (0,2) to[out=-15, in=110] (1,1); 
+\draw[gray] (0,2) to[out=10, in=170] (1,2); 
+%	     
+    \coordinate (O) at (0,0);
+    
+
+\draw[-latex] (-1,-1) -- (4,-1) node[right] {$x$};
+\draw[-latex] (-1,-1) -- (-1,4) node[above] {$y$};
+
+%		%Grid
+		\draw[very thin, dotted] (-1.5,-1.5) grid (4.5,4.5);
+		
+		\node at (0,-1) [below] {\scriptsize{$x_{i}$}};
+		\node at (1,-1) [below] {\scriptsize{$x_{i}+1$}};		
+		
+		\node at (-1,2) [left] {\scriptsize{$y_{i}$}};
+		\node at (-1,1) [left] {\scriptsize{$y_{i}-1$}};		
+		
+		\filldraw[black] (0, -1) circle (1pt);
+		\filldraw[black] (1, -1) circle (1pt);
+
+		\filldraw[black] (-1, 2) circle (1pt);
+		\filldraw[black] (-1, 1) circle (1pt);						
+
+\drawRectangleCol{0}{2}{blue}{0.2}
+\drawRectangleCol{1}{2}{green!50!blue}{0.15}
+\drawRectangleCol{1}{1}{green!50!blue}{0.15}
+%    \draw (O) circle[radius=\radius];
+		
+	
+
+
+\end{tikzpicture}
+	
+\end{document}

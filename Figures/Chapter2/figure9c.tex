@@ -1,0 +1,70 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex} 
+\begin{document}
+	
+
+
+        \begin{tikzpicture}[my angle/.style = {draw,->, fill=green!30!blue, fill opacity = 0.4,
+			        text opacity=1,
+                   angle radius=7mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize},
+                   my angle1/.style = {draw, <-, fill=green!30!blue,
+					fill opacity = 0.4,
+					text opacity=1,
+                   angle radius=7mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize},
+                   my angle2/.style = {draw, ->, fill=orange,
+					fill opacity = 0.4,
+					text opacity=1,
+                   angle radius=4mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize},
+                   my angle3/.style = {draw, <-, fill=orange,
+					fill opacity = 0.4,
+					text opacity=1,
+                   angle radius=3.5mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize} 
+                   ]
+
+              
+         \draw[-latex] (0,0) -- (4,0) coordinate[label=right: $x$] (x);
+        \filldraw (0,0) circle (1pt) coordinate[label=below: $O$] (o);
+        \draw[-latex]  (0,0) -- (0,4) coordinate[label=above: $y$] (y);
+        
+         \begin{scope}[rotate= 15]
+            \draw[-latex] (0,0) -- (4,0) coordinate[label=right: $w$] (w);
+        \end{scope}
+        
+        \begin{scope}[rotate=60]
+            \filldraw[opacity = 0.3] (3.5,0) circle (1pt) coordinate[label=right: \text{\footnotesize{$A(x,y)$}}] (A);
+            \draw[opacity = 0.3] (o) -- (A);
+        \end{scope}
+        
+        \draw[opacity = 0.3] (o) -- (A);
+        \pic [my angle,"$\theta$"] {angle = x--o--w};
+        
+          \begin{scope}[rotate=45]
+            \filldraw[opacity = 0.3] (3.5,0) circle (1pt) coordinate[label=right: \text{\footnotesize{$A'(x',y')$}}] (A');
+            \draw[opacity = 0.3] (o) -- (A');
+        \end{scope}
+        
+        \pic [my angle1,"$\text{\small{-}}\theta$"] {angle = A'--o--A};
+            
+            
+        \begin{scope}[rotate=-45]
+            \filldraw (3.5,0) circle (1pt) coordinate[label=right: \text{\footnotesize{$A''(x'',y'')$}}] (A'');
+            \draw[] (o) -- (A'');
+        \end{scope}
+
+		\draw[dashed] (A') -- (A'');
+		
+		\pic [my angle2,""] {angle = x--o--A'};
+		
+		\pic [my angle3,""] {angle = A''--o--x};    
+		
+        \end{tikzpicture}
+\end{document}

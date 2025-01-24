@@ -1,0 +1,18 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+
+\begin{document}
+	
+\begin{tikzpicture}
+
+	\drawPosAxis{4.5}{4.5}
+
+	\draw[dashed] (0,1) -- (2,1);
+	\draw[dashed] (2,0) -- (2,1);
+	\filldraw (2,1) circle (1pt) node[anchor= south west] {$P(x, y)$};
+	
+\end{tikzpicture}
+
+
+\end{document}

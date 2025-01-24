@@ -1,0 +1,72 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../tikz-preamble.tex}
+%Tikz Library
+%\usetikzlibrary{angles, quotes, intersections, arrows.meta,
+%                babel,backgrounds,
+%                calc,
+%                intersections}
+\usepackage{siunitx}
+
+
+\begin{document}
+
+	\begin{tikzpicture}[
+		my angle/.style = {draw, fill=green!30!blue,
+					opacity=0.4,
+                   angle radius=5mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize} 
+                   ]
+
+%Define axis length and radius
+    \pgfmathsetmacro{\axislength}{4}
+    \pgfmathsetmacro{\radius}{3}
+
+%Draw axes
+    \drawAxis{\axislength}{\axislength}{-\axislength}{-\axislength}
+    \coordinate (O) at (0,0);
+    
+%Draw circle
+    \draw (O) circle[radius=\radius];
+    
+%Draw line    
+    \draw[thin] (O) -- (3, 3) node[anchor=west] {$y = x$};
+    
+
+%Find intersection points using TikZ's name path feature
+    \path[name path=axis-x] (O) -- (\axislength, 0);
+    \path[name path=axis-y] (O) -- (0, \axislength); 
+    \path[name path=circle] (O) circle[radius=\radius];
+
+    \path[name path=bisector, save path= \bisector] (O) -- (\radius, \radius);
+
+     
+%Define the intersections
+    \path[name intersections={of=circle and bisector, by=A}];
+    
+	\draw[dashed] (A) -- ($(0,0)!(A)!(x)$) coordinate (x');
+	\draw[dashed] (A) -- ($(0,0)!(A)!(y)$) coordinate (y');	
+	
+%Mark intersection points
+    \fill[black] (A) circle[radius=2pt];   
+
+    
+%Label angle
+	\pic[my angle, "$45^\circ$"] {angle = x--O--A};
+    \node[anchor=west] at (3, 1.5) {$(1)$};
+    \node[anchor=west] at (1, 3.3) {$(2)$};
+
+
+% Braces to indicate lengths
+        
+	\draw [decorate,decoration={brace,mirror,raise=1ex}]   (0,0) -- (x') node[midway,yshift=-3ex]{$x = r \cos 45^\circ$};
+	
+	\draw [decorate,decoration={brace,raise=1ex}]  (0,0) -- (y') node[midway,xshift=-8ex]{$y = r \sin 45^\circ$};
+	
+	\draw [decorate,decoration={brace,raise=1ex}] (y') -- (0, \radius) node[midway,xshift=-5ex]{$\rho-y$};
+
+
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,55 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../../tikz-preamble.tex}
+
+%Tikz Library
+\usetikzlibrary{angles, quotes, intersections}
+
+%Notation
+\usepackage{physics}
+\usepackage{bm}
+
+\begin{document}
+	
+	\begin{tikzpicture}
+%		%Grid
+	%Grid
+	\drawGrid{5}{4}{-5}{-4}
+
+		
+		%New axis
+		\draw[very thin,-latex, red] (2.5,-2) -- (6,-2) node [below] {$x'$};
+		\draw[very thin,-latex, red] (4,-3.5) -- (4,1) node [left] {$y'$};
+		
+		%Octants
+		\draw[dotted, thin] (-4,-4) -- (4,4);
+		\draw[dotted, thin] (-4,4) -- (4,-4);
+		
+		%New Octants
+		\draw[dotted, thin] (2,-4) -- (5,-1);
+		\draw[dotted, thin] (2,0) -- (5,-3);
+%%%%%%%%%%%%%%%%%%	
+	
+		%Coordinates		
+		\coordinate (P1) at (2,-1);
+		\coordinate (P2) at (4,-2);
+
+		% Lines
+		\draw[blue,thick] (P1) -- (P2);
+
+		% Points
+		\draw[fill=black, draw=black] (0,0) circle (1.2pt);
+		
+		\draw[fill=black, draw=black] (P1) circle (1.2pt);
+		\draw[fill=black, draw=black] (P2) circle (1.2pt);
+
+		% Nodes
+		\node[shift={(-0.25,-0.25)}] at (P1) {$\mathrm{P_1}$};
+		\node[shift={(-0.25,-0.25)}] at (P2) {$\mathrm{P_2}$};
+
+		\node[shift={(0.25,0.25)}] at (P1) {$\mathrm{P_2'}$};
+		\node[shift={(0.25,0.25)}] at (P2) {$\mathrm{P_1'}$};
+
+	\end{tikzpicture}
+	
+\end{document}

@@ -1,0 +1,23 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex} 
+\begin{document}
+			
+\begin{tikzpicture}
+           
+			\plainAxis{4}{4}
+			
+			\node at (4,4) {$(\sigma \tau)$};
+			
+			\filldraw (1,1) circle (1pt) coordinate[label=below right: \text{$P(x,y)$}] (P);
+			
+			\filldraw[green!20!blue] (1,1) circle (1pt) ; 
+
+             
+             \draw[pattern color=green!20!blue, opacity=0.2, pattern=north east lines] (1,1) rectangle (2.5,3);
+
+
+			\draw[pattern color=green!20!blue, pattern=north east lines] (2,2) rectangle (3.5,4);
+			\draw[-latex] (o) -- (P);
+       \end{tikzpicture}
+\end{document}        

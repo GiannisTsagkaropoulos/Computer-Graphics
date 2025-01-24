@@ -1,0 +1,71 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex} 
+\begin{document}
+	
+				
+	\begin{tikzpicture}[my angle/.style = {draw, fill=green!30!blue, fill opacity = 0.4,
+			        text opacity=1,
+                   angle radius=5mm, 
+                   angle eccentricity=1.5, 
+                   font=\footnotesize}]
+
+% Axis                   			
+			\plainAxisFull{4}{4}{-2}{-2}	
+			
+% Coordinates			
+			\coordinate (i) at (0,1);
+   			\coordinate (j) at (1,0);   				
+			\coordinate (v) at (0,1.5);
+			
+			\coordinate (A) at (-2,-0.5);
+			\coordinate (B) at (2.5,4);
+			\coordinate (P) at (2,2.5);
+			\coordinate (transformation) at (4,4);
+
+% Paths
+
+    \path[name path=x-axis] (-3,0) -- (3,0);
+
+    \path[name path=AB] (A) -- (B);
+
+% Intersections
+    \path[name intersections={of=AB and x-axis, by={C}}];
+    
+% Lines/Vectors
+			\draw[-latex, thick]  (o) -- (i) node[left, midway] {\scriptsize{$j$}};
+            \draw[-latex, thick]  (o) -- (j) node[below, midway] {\scriptsize{$i$}};
+            
+            \draw[-latex] (o) -- (v) node[right] {\scriptsize{$v$}};
+            \node[left] at (v) {\scriptsize{$(0,b)$}};
+			
+			
+			\draw (A) -- (B) node[anchor = north] {\scriptsize{$L$}};
+			
+%			\draw[blue] (A) -- (B);			
+%			\draw[red] (A') -- (B');
+			
+			
+% Rotation			
+			\tikzset{rotation/.style={rotate around={30:(o)}}}
+			
+			\path[rotation] ([rotation]A) coordinate (A'); 
+			\path[rotation] ([rotation]B) coordinate (B');
+			
+			
+% Points
+			\filldraw (P) circle (1pt) node[below] {\scriptsize{$P$}};	
+			
+%			\node at (A) { $A$};
+%			\node at (B) { $B$};			
+%			\node at (A') { $A'$};
+%   		\node at (B') { $B'$};
+%			\node at (transformation) { $M_x$};			
+            
+% Angles                
+            \pic [my angle, "$\theta$"] {angle = x--C--B};
+
+ 		
+       \end{tikzpicture}
+\end{document}            
+        

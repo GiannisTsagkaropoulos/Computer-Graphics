@@ -1,0 +1,27 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex} 
+\begin{document}	
+				
+	\begin{tikzpicture}
+		                			
+		\drawPosGrid{5}{13};
+			
+            \draw[dashed] (2,0) -- (2,4);
+            \draw[dashed] (0,2) -- (4,2);
+            \draw[dashed] (4,0) -- (4,4);
+            \draw[dashed] (0,4) -- (4,4);
+
+            % Rectangle
+            \draw[thick] (2,2) rectangle (4,4);
+            
+            \node at (3,3) {$A$};
+			
+			\filldraw (2,2) circle (1pt) node[below left] at (2,2) {$(2,2)$};
+			\filldraw (2,4) circle (1pt) node[above left]  {$(2,4)$};
+			\filldraw (4,4) circle (1pt) node[above right] {$(4,4)$};
+			\filldraw (4,2) circle (1pt) node[below right] {$(4,2)$};
+            
+			 \node at (3,-1.5) {$(\alpha)$};            
+        \end{tikzpicture}
+\end{document}

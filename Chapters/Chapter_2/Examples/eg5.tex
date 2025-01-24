@@ -1,0 +1,139 @@
+\begin{example}
+Εκτελέστε περιστροφή $45^\circ$ του τριγώνου $A(0, 0)$, $B(1, 1)$, $C(5, 2)$ 
+\begin{enumerate}
+    \item[(α)] ως προς την αρχή των αξόνων και 
+    \item[(β)] ως προς το σημείο $P(-1, -1)$.
+\end{enumerate}
+\end{example}
+
+
+\begin{solution}
+Το τρίγωνο περιγράφεται υπό μορφή πίνακα ως εξής:
+
+
+\[
+ABC =
+\begin{bmatrix}
+0 & 1 & 5 \\
+0 & 1 & 2 \\
+1 & 1 & 1
+\end{bmatrix}
+\]
+
+Κάθε στήλη του παραπάνω πίνακα δημιουργείται από τις ομογενείς συντεταγμένες κάθε κορυφής.
+
+α) Για την περιστροφή ως προς την αρχή των αξόνων θα επιδράσουμε πάνω στον $ABC$ με το γνωστό πίνακα $R_{45^\circ}$. Οι συντεταγμένες των κορυφών του καινούργιου τριγώνου προκύπτουν ως εξής:
+
+\[
+A'B'C' = R_{45^\circ} \cdot ABC =
+\begin{bmatrix}
+\cos 45^\circ & -\sin 45^\circ & 0 \\
+\sin 45^\circ & \cos 45^\circ & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+0 & 1 & 5 \\
+0 & 1 & 2 \\
+1 & 1 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} & 0 \\
+\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+0 & 1 & 5 \\
+0 & 1 & 2 \\
+1 & 1 & 1
+\end{bmatrix}
+\]
+
+\[
+=
+\begin{bmatrix}
+0 & \frac{\sqrt{2}}{2} & \frac{3\sqrt{2}}{2} \\
+0 & \frac{\sqrt{2}}{2} & \frac{7\sqrt{2}}{2} \\
+1 & 1 & 1
+\end{bmatrix}
+\]
+
+Επομένως, οι συντεταγμένες των νέων κορυφών ισούνται με:
+
+\[
+A'(0, 0), \quad B'\left(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\right), \quad C'\left(\frac{3\sqrt{2}}{2}, \frac{7\sqrt{2}}{2}\right)
+\]
+
+β) Εφαρμόζουμε το παράδειγμα 1 για $\theta = 45^\circ$ και $P(-1, -1)$. Ο πίνακας που θα εκτελεί το ζητούμενο μετασχηματισμό θα δίνεται από τη σχέση:
+
+\[
+R_{45^\circ, P} = T_{-V} \cdot R_{45^\circ} \cdot T_V
+\]
+
+όπου το $V$ στην προκειμένη περίπτωση ισούται με $i + j$. Έτσι:
+
+\[
+R_{45^\circ, P} =
+\begin{bmatrix}
+1 & 0 & -(-1) \\
+0 & 1 & -(-1) \\
+0 & 0 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} & 0 \\
+\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+1 & 0 & -1 \\
+0 & 1 & -1 \\
+0 & 0 & 1
+\end{bmatrix}
+\]
+
+\[
+=
+\begin{bmatrix}
+\frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} & -1 \\
+\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} & -1 \\
+0 & 0 & 1
+\end{bmatrix}
+\]
+
+Οι συντεταγμένες του καινούργιου τριγώνου προκύπτουν από τη σχέση:
+
+\[
+A'B'C' = R_{45^\circ, P} \cdot ABC
+\]
+
+\[
+\begin{bmatrix}
+\frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} & -1 \\
+\frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} & -1 \\
+0 & 0 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+0 & 1 & 5 \\
+0 & 1 & 2 \\
+1 & 1 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+-1 & -\frac{\sqrt{2}}{2} & \frac{3\sqrt{2}}{2} - 1 \\
+-1 & \frac{\sqrt{2}}{2} & \frac{9\sqrt{2}}{2} - 1 \\
+1 & 1 & 1
+\end{bmatrix}
+\]
+
+Τελικά οι καινούργιες κορυφές δίνονται από τους τύπους:
+
+\[
+A'(-1, -\sqrt{2}-1), \quad B'(-1-\frac{\sqrt{2}}{2}, -1), \quad C'(\frac{3\sqrt{2}}{2}-1, \frac{9\sqrt{2}}{2}-1)
+\]
+
+\end{solution}

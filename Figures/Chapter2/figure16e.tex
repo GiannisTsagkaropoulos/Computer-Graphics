@@ -1,0 +1,129 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex} 
+\begin{document}
+	
+				
+	\begin{tikzpicture}[my angle/.style = {draw, ->, fill=green!20!blue, fill opacity = 0.4,
+			       text opacity=1,
+                   angle radius=5mm, 
+                   angle eccentricity=1.5, 
+                   font=\footnotesize}]
+
+
+			
+% Axis 
+			
+	\coordinate (i) at (0,1);
+		\coordinate (j) at (1,0);   				                			
+	\plainAxisFull{4}{4}{-2.5}{-2.5}	
+	
+	\draw[-latex, thick]  (o) -- (i) node[left, midway] {\scriptsize{$j$}};
+    \draw[-latex, thick]  (o) -- (j) node[below, midway] {\scriptsize{$i$}};		
+    
+    \path[name path=x-axis] (-3,0) -- (3,0);	
+
+
+% What type of transformation
+            
+	\coordinate (transformation) at (4,4);   
+	\node at (transformation) {$R_{\theta}$};			         
+            
+
+% Line 1  
+  
+	\coordinate (A) at (-2,-0.5);
+	\coordinate (B) at (2.5,4);
+	
+	\coordinate (P) at (2,2.5);
+	
+%	\node at (A) { $A$};
+%	\node at (B) { $B$};				
+%	\filldraw[opacity = 1] (P) circle (1pt) node[below] {\scriptsize{$P$}};	
+	
+	\path[name path=AB] (A) -- (B);	
+%	\draw[opacity = 0.3] (A) -- (B) node[anchor = north] {\scriptsize{$L$}};
+
+
+% Line 2
+
+	\coordinate (o') at ($(A)!(o)!(B)$); % projection of O(0,0) in line A--B
+	
+	\coordinate (A1) at ($(A) - (o')$);
+	\coordinate (B1) at ($(B) - (o')$);
+	
+	\coordinate (P1) at ($(P) - (o')$);	
+	
+%	\node at (A1) { $A1$};	
+%	\node at (B1) { $B1$};
+	
+%	\filldraw[opacity = 0.3] (P1) circle (1pt) node[below] {\scriptsize{$P1$}};		
+	
+%	\draw[opacity = 1] (A1) -- (B1) node[anchor = 130] {\scriptsize{$L_1$}};
+
+
+% Line 2
+
+	\tikzset{rotation/.style={rotate around={-45:(o)}}}
+					
+	\path[rotation] ([rotation]A1) coordinate (A2); 
+	\path[rotation] ([rotation]B1) coordinate (B2); 
+	
+	\path[rotation] ([rotation]P1) coordinate (P2); 
+	
+	\coordinate (P2_proj) at ($(A2)!(P2)!(B2)$);
+	
+	\path let \p2 = (P2) in coordinate (P3) at (\x2,-\y2); % Mirror of x-axis
+	
+%	\filldraw[opacity = 0.3] (P2) circle (1pt) node[below] {\scriptsize{$P2$}};	
+%	\filldraw[opacity = 0.3] (P2_proj) circle (1pt) node[below] {\scriptsize{$P_{2,proj}$}};	
+	
+%	\draw[opacity = 1] (A2) -- (B2) node[anchor = 130] {\scriptsize{$L_1$}};
+			
+			
+% Line 3
+
+	\coordinate (A3) at (A2);
+	\coordinate (B3) at (B2);
+	
+	\coordinate (P3_proj) at (P2_proj);
+		
+%	\node at (A3) { $A3$};	
+%	\node at (B3) { $B3$};
+	
+	\filldraw[opacity = 0.3] (P3) circle (1pt) node[above] {\scriptsize{$P_3$}};	
+%	\filldraw[opacity = 1] (P3_proj) circle (1pt) node[above] {\scriptsize{$P_{3,proj}$}};	
+	
+	\draw[dashed, opacity=0.3] (P3) -- (P3_proj);
+	
+	\draw[opacity = 0.3] (A3) -- (B3) node[right] {\scriptsize{$L_3$}};
+
+	\tkzMarkRightAngle[draw=black,size=.2, opacity=0.3](x,P3_proj,P3);         	
+% Line 4		    
+
+	\coordinate (A4) at (A1);
+	\coordinate (B4) at (B1);
+	
+	\tikzset{rotation/.style={rotate around={45:(o)}}}
+	\path[rotation] ([rotation]P3) coordinate (P4);
+	\coordinate (P4_proj) at ($(A4)!(P4)!(B4)$);		
+
+%	\node at (A4) { $A4$};	
+%	\node at (B4) { $B4$};
+
+	\filldraw[opacity = 1] (P4) circle (1pt) node[above] {\scriptsize{$P_4$}};	
+%	\filldraw[opacity = 1] (P4_proj) circle (1pt) node[above] {\scriptsize{$P_{4,proj}$}};	
+
+
+	\draw[dashed] (P4) -- (P4_proj);	
+	
+	\draw[opacity = 1]   (A4) -- (B4) node[anchor = north] {\scriptsize{$L_4$}};	
+
+
+	\pic [my angle, "$\theta$"] {angle = x--o--B4};
+	\tkzMarkRightAngle[draw=black,size=.2](B1,P4_proj,P4);         
+
+ 		
+       \end{tikzpicture}          
+		
+\end{document}

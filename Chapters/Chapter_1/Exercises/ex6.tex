@@ -1,0 +1,40 @@
+\begin{exercise}
+	
+Να υπολογιστούν ποια θα είναι τα τρία επόμενα προς φωτισμό pixels, σύμφωνα με τον αλγόριθμο του Bresenham, για σχεδιασμό κύκλου κέντρου $K(7,3)$ και ακτίνας $r = 5$, στο πρώτο οκταμόριο.
+\end{exercise}
+\begin{solution}
+	
+
+Το πρώτο σημείο είναι το $A(7+5, 3) \equiv A(12, 3)$. Για τα επόμενα σημεία, υπολογίζεται το κάθε σημείο σύμφωνα με τον αλγόριθμο του Bresenham με κέντρο το $O(0,0)$, στη συνέχεια το συμμετρικό του ως προς την ευθεία $y=x$ και τέλος μετατοπίζεται κατά $(7,3)$:
+
+
+\underline{1η Επανάληψη}
+\begin{itemize}
+  \item $d_1 = y_1^2 - y^2 = y_1^2 - \left[ r^2 - (x_1 + 1)^2 \right] = 5^2 - \left[ 5^2 - (0+1)^2 \right] = 1,$
+  \item $d_2 = y^2 - (y_1+1)^2 = \left[ r^2 - (x_1+1)^2 \right] - (y_1+1)^2 = \left[ 5^2 - (0+1)^2 \right] - (5+1)^2 = -12.$
+\end{itemize}
+
+Άρα $d_1 - d_2 = 1 - (-12) = 13 \geq 0 \\Rightarrow (1,4) \xRightarrow{\sim y = x} (4,1) \xRightarrow{+(7,3)} (11,4)$.
+
+
+\underline{2η Επανάληψη}
+\begin{itemize}
+  \item $d_1 = y_2^2 - y^2 = y_2^2 - \left[ r^2 - (x_2 + 1)^2 \right] = 4^2 - \left[ 5^2 - (1+1)^2 \right] = -5,$
+  \item $d_2 = y^2 - (y_2+1)^2 = \left[ r^2 - (x_2+1)^2 \right] - (y_2+1)^2 = \left[ 5^2 - (1+1)^2 \right] - (4+1)^2 = -4.$
+\end{itemize}
+
+Άρα $d_1 - d_2 = -5 - (-4) = -1 < 0 \\Rightarrow (2,4) \xRightarrow{\sim y = x} (4,2) \xRightarrow{+(7,3)} (11,5).$
+
+\underline{3η Επανάληψη}
+\begin{itemize}
+  \item $d_1 = y_3^2 - y^2 = y_3^2 - \left[ r^2 - (x_3 + 1)^2 \right] = 4^2 - \left[ 5^2 - (2+1)^2 \right] = 0,$
+  \item $d_2 = y^2 - (y_3+1)^2 = \left[ r^2 - (x_3+1)^2 \right] - (y_3+1)^2 = \left[ 5^2 - (2+1)^2 \right] - (4+1)^2 = -9.$
+\end{itemize}
+
+Άρα $d_1 - d_2 = 0 - (-9) = 9 \geq 0 \Rightarrow (3,3)  \xRightarrow{\sim y = x}(3,3) \xRightarrow{(+7,3)} (10,6).$
+
+
+
+
+Δηλαδή τα pixels που θα φωτιστούν είναι τα: \newline $A(12,3) \to (11,4) \to (11,5) to (10,6)$.
+\end{solution}

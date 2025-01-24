@@ -1,0 +1,24 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+\begin{document}
+	
+\begin{tikzpicture}
+	\draw[>=latex, <->] (-2,0) -- (2,0);
+	\draw[>=latex, <->] (0,-2) -- (0,2);
+	\node[anchor=north] at (-2,0) {$x'$};
+	\node[anchor=north] at (2,0) {$x$};
+	\node[anchor= west] at (0,-2) {$y'$};
+	\node[anchor= west] at (0,2) {$y$};
+	\filldraw (1,1) circle (1pt) coordinate[label=above: \scriptsize{$(1,1)$}] (a);
+	\filldraw (1,-1) circle (1pt) coordinate[label=below: \scriptsize{$(-1,1)$}] (b);
+	\filldraw (0,0) circle (1pt) node[anchor= north east] {$O$};
+	\draw[dashed] (0,1) -- (1,1);
+	\draw[dashed] (1,0) -- (1,1);
+	\draw[dashed] (0,-1) -- (1,-1);
+	\draw[dashed] (1,0) -- (1,-1);
+	\draw [>=latex, ->, opacity = 0.3,dashed] (a) to [out=-30,in=30] (b);
+	\node[anchor = west, opacity = 0.5] at (1.5,-1) {\scriptsize{$\bar{M}_x(1,1)$}};
+\end{tikzpicture}
+
+\end{document}

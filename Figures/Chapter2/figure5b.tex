@@ -1,0 +1,21 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex} 
+\begin{document}
+	
+
+
+\begin{tikzpicture}
+	\draw[-latex] (0,0) -- (4,0) node[anchor=north] {$x$};
+	\filldraw (0,0) circle (1pt) node[anchor=north] {$O$};
+	\draw[-latex]  (0,0) -- (0,4) node[anchor=north east] {$y$};
+	\draw [black] plot [smooth cycle] coordinates{(1,2) (0.8,2.5) (1,2.5) (1.7,2.4) (2, 1.5)};
+	\draw [black] plot [smooth cycle] coordinates{(2,3) (1.8,3.5) (2,3.5) (2.7,3.4) (3, 2.5)};
+	\filldraw (1.5,2) circle (1pt) coordinate (a);
+	\filldraw (2.5,3) circle (1pt) coordinate (b);
+	\node[anchor= west] at (2.9,3) {\scriptsize{$P'(x,y)$}};
+	\node[anchor= east] at (1.4,1.6) {\scriptsize{$P(x,y)$}};
+	\draw [>=latex, ->] (a) -- (b) node[pos= 0.3, anchor= west] {\scriptsize{$v = (t_x, t_y)$}};
+\end{tikzpicture}
+
+\end{document}

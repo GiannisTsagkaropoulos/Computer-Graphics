@@ -1,0 +1,68 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../tikz-preamble.tex}
+
+
+\begin{document}
+	
+	\begin{tikzpicture}
+
+\drawGrid{11}{13}{-5}{-4}    
+			
+Iteration: 1
+%\drawRectangle{-4}{5.0}
+\drawRectangle{-4}{5.0}
+Iteration: 2
+\drawRectangle{-3}{8.60555127546399}
+\drawRectangle{-3}{1.3944487245360109}
+Iteration: 3
+\drawRectangle{-2}{9.898979485566356}
+\drawRectangle{-2}{0.10102051443364424}
+Iteration: 4
+\drawRectangle{-1}{10.744562646538029}
+\drawRectangle{-1}{-0.7445626465380286}
+Iteration: 5
+\drawRectangle{0}{11.32455532033676}
+\drawRectangle{0}{-1.324555320336759}
+Iteration: 6
+\drawRectangle{1}{11.70820393249937}
+\drawRectangle{1}{-1.7082039324993694}
+Iteration: 7
+\drawRectangle{2}{11.928203230275509}
+\drawRectangle{2}{-1.9282032302755088}
+Iteration: 8
+\drawRectangle{3}{12.0}
+\drawRectangle{3}{-2.0}
+Iteration: 9
+\drawRectangle{4}{11.928203230275509}
+\drawRectangle{4}{-1.9282032302755088}
+Iteration: 10
+\drawRectangle{5}{11.70820393249937}
+\drawRectangle{5}{-1.7082039324993694}
+Iteration: 11
+\drawRectangle{6}{11.32455532033676}
+\drawRectangle{6}{-1.324555320336759}
+Iteration: 12
+\drawRectangle{7}{10.744562646538029}
+\drawRectangle{7}{-0.7445626465380286}
+Iteration: 13
+\drawRectangle{8}{9.898979485566356}
+\drawRectangle{8}{0.10102051443364424}
+Iteration: 14
+\drawRectangle{9}{8.60555127546399}
+\drawRectangle{9}{1.3944487245360109}
+Iteration: 15
+\drawRectangle{10}{5.0}
+%\drawRectangle{10}{5.0}
+%\drawRectangle{-2}{0}
+% Connect points with a line
+		 
+		\node[below] at (3,5) {$K(3,5)$};
+		\node[right] at (3.2, 8.5) {$\rho = 7$};
+		\filldraw[black] (3,5) circle (2pt);
+		
+		\draw[very thin] (3, 5) -- (3, 12);
+    
+\end{tikzpicture}
+
+\end{document}

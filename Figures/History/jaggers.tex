@@ -1,0 +1,14 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+ 
+\begin{document}
+
+\begin{tikzpicture}
+
+\foreach \x/\y in {0/0, 1/0.1, 2/0.2, 3/0.3, 4/0.4} {        
+	\draw[] (\x,\y) -- (\x+1,\y);
+}
+\end{tikzpicture}
+
+\end{document}

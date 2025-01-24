@@ -1,0 +1,70 @@
+\documentclass[border=10pt]{standalone}
+
+%Drawing
+\usepackage{tikz}
+
+%Tikz Library
+\usetikzlibrary{angles, quotes, intersections}
+
+%Notation
+\usepackage{physics}
+\usepackage{bm}
+
+\begin{document}
+	
+	\begin{tikzpicture}
+%		%Grid
+		\draw[very thin, dotted] (-0.5,-4.5) grid (5.5,1.5);
+%		\foreach \i in {1,...,5}
+%		{
+%			\node at (\i,2ex) {\i};	
+%%			\node at (-\i,-2ex) {-\i};	
+%		}
+%		\foreach \i in {1,...,4}
+%		{
+%%			\node at (-2ex,\i) {\i};	
+%			\node at (-2ex,-\i) {-\i};	
+%		}
+%		\node at (-2ex,-2ex) {0};
+		
+%%%%%%%%%%%%%%%%%%		
+%		%Axis
+%		\draw[very thin,-latex] (-0.5,0) -- (6,0) node [below] {$x$};
+%		\draw[very thin,-latex] (0,-4.5) -- (0,1.5) node [left] {$y$};
+		
+		%New axis
+		\draw[very thin,-latex, red] (2.5,-2) -- (6,-2) node [below] {$x'$};
+		\draw[very thin,-latex, red] (4,-3.5) -- (4,1) node [left] {$y'$};
+		
+		%Octants
+%		\draw[dotted, thin] (-4,-4) -- (4,4);
+%		\draw[dotted, thin] (-4,4) -- (4,-4);
+		
+		%New Octants
+		\draw[dotted, thin] (2.5,-3.5) -- (5.5,-0.5);
+		\draw[dotted, thin] (2.5,-0.5) -- (5.5,-3.5);
+%%%%%%%%%%%%%%%%%%	
+	
+		%Coordinates		
+		\coordinate (P1) at (2,-1);
+		\coordinate (P2) at (4,-2);
+
+		% Lines
+		\draw[blue,thick] (P1) -- (P2);
+
+		% Points
+%		\draw[fill=black, draw=black] (0,0) circle (1.2pt);
+		
+		\draw[fill=black, draw=black] (P1) circle (1.2pt);
+		\draw[fill=black, draw=black] (P2) circle (1.2pt);
+
+		% Nodes
+%		\node[shift={(-0.25,-0.25)}] at (P1) {$\mathrm{P_1}$};
+%		\node[shift={(-0.25,-0.25)}] at (P2) {$\mathrm{P_2}$};
+
+		\node[shift={(0.25,0.25)}] at (P1) {$\mathrm{P_2'}$};
+		\node[shift={(0.25,0.25)}] at (P2) {$\mathrm{P_1'}$};
+
+	\end{tikzpicture}
+	
+\end{document}

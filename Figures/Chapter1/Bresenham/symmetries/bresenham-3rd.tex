@@ -1,0 +1,92 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../../tikz-preamble.tex}
+\begin{document} 
+\begin{tikzpicture} 
+% Grid
+  
+\draw[very thin, dotted] (-5.5,-2.5) grid (5.5,5.5);   
+\foreach \i in {1,...,5}
+ { 
+ \node at (\i,-2ex) {\i}; 
+ \node at (-\i,-2ex) {-\i}; 
+ } 
+\foreach \i in {1,...,5} 
+ { 
+ \node at (-2ex,\i) {\i};
+ % \node at (-2ex,-\i) {-\i}; 
+ } 
+ \node at (-2ex,-2ex) {0}; 
+ 
+% Axis
+  
+\draw[very thin,-latex] (-5.5,0) -- (5.5,0) node [below] {$x$}; 
+\draw[very thin,-latex] (0,-2.5) -- (0,5.5) node [left] {$y$}; 
+% Octants
+  
+\draw[dotted, semithick] (-2,-2) -- (5.5,5.5); 
+\draw[dotted, semithick] (-5.5,5.5) -- (2,-2); 
+% %%%%%%%%%%%%%%%%%% 
+% Coordinates 
+        \coordinate (O) at (0,0); 
+        \coordinate (P1) at (5,3); 
+        \coordinate (P2) at (-3,5); 
+        \coordinate (P3) at (3,5);
+        
+     % Lead lines
+  
+\draw[black,thin] (2,1) -- (5,3); 
+\draw[black,thin] (-1,2) -- (-3,5); 
+% Rectangles 
+% Blue 
+\fill[blue, opacity=0.2] (1.5,0.5) -- (2.5,0.5) -- (2.5,1.5) -- (1.5,1.5); 
+\fill[blue, opacity=0.2] (2.5,1.5) -- (3.5,1.5) -- (3.5,2.5) -- (2.5,2.5); 
+\fill[blue, opacity=0.2] (3.5,1.5) -- (4.5,1.5) -- (4.5,2.5) -- (3.5,2.5); 
+\fill[blue, opacity=0.2] (4.5,2.5) -- (5.5,2.5) -- (5.5,3.5) -- (4.5,3.5); 
+% Green 
+\fill[green, opacity=0.2] (-1.5,1.5) -- (-0.5,1.5) -- (-0.5,2.5) -- (-1.5,2.5); 
+\fill[green, opacity=0.2] (-2.5,2.5) -- (-1.5,2.5) -- (-1.5,3.5) -- (-2.5,3.5); 
+\fill[green, opacity=0.2] (-2.5,3.5) -- (-1.5,3.5) -- (-1.5,4.5) -- (-2.5,4.5); 
+\fill[green, opacity=0.2] (-3.5,4.5) -- (-2.5,4.5) -- (-2.5,5.5) -- (-3.5,5.5); 
+% Points 
+% Centers of squares 
+% Blue 
+\draw[fill=blue, draw=blue] (2,1) circle (1.1pt); 
+\draw[fill=blue, draw=blue] (3,2) circle (1.1pt); 
+\draw[fill=blue, draw=blue] (4,2) circle (1.1pt); 
+\draw[fill=blue, draw=blue] (5,3) circle (1.1pt); 
+% Green 
+\draw[fill=green, draw=green] (-1,2) circle (1.1pt); 
+\draw[fill=green, draw=green] (-2,3) circle (1.1pt); 
+\draw[fill=green, draw=green] (-2,4) circle (1.1pt); 
+\draw[fill=green, draw=green] (-3,5) circle (1.1pt); 
+oct3 
+% Helping 
+% Gray/Helping Square 
+\fill[black, opacity=0.2] (0.5,1.5) -- (1.5,1.5) -- (1.5,2.5) -- (0.5,2.5); 
+\fill[black, opacity=0.2] (1.5,2.5) -- (2.5,2.5) -- (2.5,3.5) -- (1.5,3.5); 
+\fill[black, opacity=0.2] (1.5,3.5) -- (2.5,3.5) -- (2.5,4.5) -- (1.5,4.5); 
+\fill[black, opacity=0.2] (2.5,4.5) -- (3.5,4.5) -- (3.5,5.5) -- (2.5,5.5); 
+% Gray/Helping square centers 
+\draw[fill=black, draw=black] (1,2) circle (1.1pt); 
+\draw[fill=black, draw=black] (2,3) circle (1.1pt); 
+\draw[fill=black, draw=black] (2,4) circle (1.1pt); 
+\draw[fill=black, draw=black] (3,5) circle (1.1pt); 
+% Red symmetry line 
+\draw[red,dashed, semithick] (2,1) -- (1,2); 
+\draw[red,dashed, semithick] (3,2) -- (2,3); 
+\draw[red,dashed, semithick] (4,2) -- (2,4); 
+\draw[red,dashed, semithick] (5,3) -- (3,5); 
+% Blue symmetry line 
+\draw[blue,dashed, semithick] (1,2) -- (-1,2); 
+\draw[blue,dashed, semithick] (2,3) -- (-2,3); 
+\draw[blue,dashed, semithick] (2,4) -- (-2,4); 
+\draw[blue,dashed, semithick] (3,5) -- (-3,5); 
+
+	% Nodes
+	
+		\node[shift={(0.6,0)}] at (P1) {$\mathrm{(y,-x)}$};
+		\node[shift={(0,0.3)}] at (P2) {$\mathrm{(x,y)}$};
+		\node[shift={(0,0.3)}] at (P3) {$\mathrm{(-x,y)}$};
+\end{tikzpicture} 
+\end{document} 

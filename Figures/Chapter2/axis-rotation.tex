@@ -1,0 +1,94 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+
+\usetkzobj{all}
+
+
+\begin{document}
+%Right angle mark
+
+
+	\begin{tikzpicture}[
+my angle/.style = {draw, fill=green!30!blue,
+					opacity=0.4,
+                   angle radius=5mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize} 
+                   ]
+%	Axis
+		
+            		
+	\draw[thin,orange, -latex] (-1.5,0) -- (6.5,0) node [right] {$X$};
+	\draw[thin,orange, -latex] (0,-1.5) -- (0,6.5) node [above] {$Y$};	
+		
+%	New axis		
+	\begin{scope}[rotate=15,draw=black]
+        \draw[thin,-latex] (0,0) -- (6.5,0) coordinate(X') node[xshift=7ex, yshift=.5ex, text width=5em] {$X'$};
+        \draw[thin,-latex] (0,0) -- (0,6.5) coordinate(Y') node[xshift=5ex, yshift=2ex, text width=5em] {$Y'$};
+    \end{scope}
+    
+
+%	Rectangle
+	% Extract coordinates of corners
+	\path (0,0) coordinate (O) 
+	(5,4) coordinate (P) % Lower-left corner
+	(O |- P) coordinate (y) % Upper-left corner
+	(P |- O) coordinate (x); % Upper-right corner
+      
+      
+    \draw[blue] (P) -- ($(0,0)!(P)!(X')$) coordinate (x');
+    \draw[red, thin] (y) -- ($(0,0)!(y)!(X')$) coordinate (B'); 
+    
+    \draw[red, thin] (y) -- ($(0,0)!(y)!(Y')$) coordinate (A');
+   	\draw[blue] (P) -- ($(0,0)!(P)!(Y')$) coordinate (y');    
+
+% Lines
+	
+	\draw[black,thin, dashed] (P) -- (x);
+	\draw[black,thin, dashed] (P) -- (y);
+
+	% Points
+	
+	\draw[fill=black, draw=black] (P) circle (1.2pt);
+	
+	\draw[fill=black, draw=black] (x) circle (1.2pt);
+	\draw[fill=black, draw=black] (y) circle (1.2pt);
+	
+	\draw[fill=black, draw=black] (x') circle (1.2pt);
+	\draw[fill=black, draw=black] (y') circle (1.2pt);
+
+	
+	% Nodes 
+	
+	\node[shift={(0.2,0.3)}] at (P) {\small{$\mathrm{P(x,y)}$}};
+	\node[shift={(0,-0.25)}] at (x) {$x$};
+	\node[shift={(-0.25,0)}] at (y) {$y$};
+		
+	\node[shift={(0.1,-0.2)}] at (x') {$x'$};   	
+	\node[shift={(-0.3,-0.1)}] at (y') {$y'$};  
+
+
+% Intersection of lines 
+
+	\node[orange,scale=3] at (intersection of  y--B' and P--y'){.};  
+
+% Angles
+
+
+\pic[my angle, "$\theta$"] {angle = O--y--B'};
+\pic[my angle, "$\theta$"] {angle = y--O--A'};
+\pic[my angle, "$\theta$"] {angle = x--O--x'};
+\pic[my angle, "$\theta$"] {angle = y--P--y'};
+
+% Right angles
+
+\tkzMarkRightAngle[draw=black,size=.2](x,O,y);
+\tkzMarkRightAngle[draw=black,size=.2](x',B',y);
+\tkzMarkRightAngle[draw=black,size=.2](X',x',P);
+\tkzMarkRightAngle[draw=black,size=.2](O,A',y);
+\tkzMarkRightAngle[draw=black,size=.2](P,y',A');
+
+\end{tikzpicture}
+%
+\end{document}

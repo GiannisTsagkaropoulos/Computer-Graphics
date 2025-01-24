@@ -1,0 +1,36 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+
+\newcommand{\drawPosAxisDiv}[2]{
+%    \drawAxis{x}{y}{x'}{y'}
+ \node at (-1.9ex,-1.9ex) {0};
+\foreach \x in {1,...,#1}
+	{
+		\node at (\x,-3ex) {\x/2};	
+		\draw[thin] (\x, 0) -- (\x, -0.1); % Add a small dash	
+	}
+		\foreach \y in {1,...,#2}
+	{
+		\node at (-3ex,\y) {\y/2};
+		\draw[thin] (0, \y) -- (-0.1, \y);			
+	}
+
+    \draw[-latex] (0,0) -- (#1, 0) coordinate(x) node[right] {$x$}; % Draw x-axis
+    \draw[-latex] (0,0) -- (0, #2) coordinate(y) node[above] {$y$}; % Draw y-axis
+}
+
+\begin{document}
+	
+\begin{tikzpicture}
+
+
+	\drawPosAxisDiv{4.5}{4.5}
+
+	\draw[dashed] (0,1) -- (2,1);
+	\draw[dashed] (2,0) -- (2,1);
+	\filldraw (2,1) circle (1pt) node[anchor= south west] {$P'(x', y')$};
+\end{tikzpicture}
+
+
+\end{document}

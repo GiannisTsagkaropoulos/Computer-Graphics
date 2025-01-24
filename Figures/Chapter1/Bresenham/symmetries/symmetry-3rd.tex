@@ -1,0 +1,105 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../../tikz-preamble.tex}
+
+%Tikz Library
+\usetikzlibrary{angles, quotes, intersections}
+
+%Notation
+\usepackage{physics}
+\usepackage{bm}
+
+\begin{document}
+	
+	\begin{tikzpicture}
+%		%Grid
+		\draw[very thin, dotted] (-4.5,-2.5) grid (4.5,4.5);
+		\foreach \i in {1,...,4}
+		{
+			\node at (\i,-2ex) {\i};	
+			\node at (-\i,-2ex) {-\i};	
+		}
+		\foreach \i in {1,...,4}
+		{
+			\node at (-2ex,\i) {\i};	
+%			\node at (-2ex,-\i) {-\i};	
+		}
+		\node at (-2ex,-2ex) {0};
+		
+	
+	%Axis
+		
+		\draw[very thin,-latex] (-4.5,0) -- (4.5,0) node [below] {$x$};
+		\draw[very thin,-latex] (0,-2.5) -- (0,4.5) node [left] {$y$};
+		
+	%Octants
+	
+		\draw[dotted, thin] (-2,-2) -- (4.5,4.5);
+		\draw[dotted, thin] (-4,4) -- (2,-2);
+%%%%%%%%%%%%%%%%%%	
+	
+	%Coordinates		
+	
+		\coordinate (O) at (0,0);
+						
+		\coordinate (P1) at (4,2);
+		\coordinate (P2) at (2,4);
+		\coordinate (P3) at (-2,4);
+	
+	% Lines
+	
+		\draw[black,thin] (O) -- (P1);
+		\draw[black,thin] (O) -- (P2);
+		\draw[black,thin] (O) -- (P3);		
+				
+%		\draw[black,thin] (0,4) -- (P2);
+		\draw[black,thin] (4,0) -- (P1);
+%		\draw[black,thin] (P3) -- (P2);		
+		
+		\draw[red,dashed, semithick] (P1) -- (P2);
+		\draw[blue,dashed, semithick] (P3) -- (P2);
+% Triangles
+
+	\filldraw[fill=green!30!blue, opacity=0.2] (0,0) -- (4,0) -- (4,2);
+%	\filldraw[fill=blue, opacity=0.1] (0,0) -- (0,4) -- (2,4);
+	
+	\filldraw[fill=green!30!blue, opacity=0.2] (0,0) -- (0,4) -- (-2,4);
+
+
+% Rectangles
+
+%	
+%\filldraw[fill=blue, opacity=0.2] (-0.5,-0.5) -- (0.5,-0.5) -- (0.5,0.5) -- (-0.5,0.5);
+%\filldraw[fill=blue, opacity=0.2] (0.5,0.5) -- (1.5,0.5) -- (1.5,1.5) -- (0.5,1.5);
+%\filldraw[fill=blue, opacity=0.2] (1.5,0.5) -- (2.5,0.5) -- (2.5,1.5) -- (1.5,1.5);
+%\filldraw[fill=blue, opacity=0.2] (2.5,1.5) -- (3.5,1.5) -- (3.5,2.5) -- (2.5,2.5);
+%\filldraw[fill=blue, opacity=0.2] (3.5,1.5) -- (4.5,1.5) -- (4.5,2.5) -- (3.5,2.5);
+%\filldraw[fill=green, opacity=0.2] (-0.5,-0.5) -- (0.5,-0.5) -- (0.5,0.5) -- (-0.5,0.5);
+%\filldraw[fill=green, opacity=0.2] (0.5,0.5) -- (1.5,0.5) -- (1.5,1.5) -- (0.5,1.5);
+%\filldraw[fill=green, opacity=0.2] (0.5,1.5) -- (1.5,1.5) -- (1.5,2.5) -- (0.5,2.5);
+%\filldraw[fill=green, opacity=0.2] (1.5,2.5) -- (2.5,2.5) -- (2.5,3.5) -- (1.5,3.5);
+%\filldraw[fill=green, opacity=0.2] (1.5,3.5) -- (2.5,3.5) -- (2.5,4.5) -- (1.5,4.5);
+% Points
+			
+		\draw[fill=black, draw=black] (O) circle (1.2pt);
+		\draw[fill=black, draw=black] (3,3) circle (1.5pt);
+		\draw[fill=black, draw=black] (0,4) circle (1.5pt);
+
+		
+		% end of blue lines	
+	
+		\draw[fill=black, draw=black] (P1) circle (1.2pt);
+		\draw[fill=black, draw=black] (P2) circle (1.2pt);
+		\draw[fill=black, draw=black] (P3) circle (1.2pt);		
+	
+	% Nodes
+	
+		\node[shift={(0.6,0)}] at (P1) {$\mathrm{(y,-x)}$};
+		\node[shift={(0,0.3)}] at (P2) {$\mathrm{(-x,y)}$};
+		\node[shift={(0,0.3)}] at (P3) {$\mathrm{(x,y)}$};		
+%		\node[shift={(0,0.3)}] at (P3) {$\mathrm{(-y,x)}$};
+%		\node[shift={(0,0.3)}] at (P4) {$\mathrm{(-x,y)}$};
+
+\end{tikzpicture}
+	
+\end{document}

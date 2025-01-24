@@ -1,0 +1,39 @@
+\documentclass[border=10pt]{standalone}
+ %Fonts
+ \usepackage{fontspec}
+ \usepackage{xltxtra,xunicode}
+ \setmainfont[Mapping=tex-text]{Times New Roman}
+ \newfontfamily\greekfont[Script=Greek]{Times New Roman}
+ \setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Futura}
+ %
+ %English - Greek
+ \usepackage{polyglossia}
+ \setdefaultlanguage[variant=mono]{greek}
+ \setotherlanguage[variant=uk]{english}
+ \PolyglossiaSetup{greek}{indentfirst=true}
+ 
+\input{../tikz-preamble.tex} 
+\begin{document}
+\begin{tikzpicture}
+    % Draw axes
+    \draw[>=latex, ->] (-3,0) -- (3,0) node[right] {$x$};
+    \draw[>=latex, ->] (0,-3) -- (0,3) node[above] {$y$};
+    
+    % Original point P
+    \filldraw (2,2) circle (1pt) coordinate[label = above right: {$P(x,y)$}]  (P);
+    
+    % Reflected across Y-axis
+    \filldraw (-2,2) circle (1pt) coordinate[label = above left: {$P'(-x,y)$}]  (P1);    
+    % Reflected across X-axis
+    \filldraw (2,-2) circle (1pt) coordinate[label = below right: {$P'(x,-y)$}]  (P2);
+    % Origin point
+    \node[below left] at (0,0) {$O$};
+    \filldraw (0,0) circle (1pt);
+    \draw[dashed] (-2,2) -- (2,2) -- (2,-2);
+    \draw [>=latex, ->, opacity = 0.3,dashed] (P) to [out=-135,in=315] (P1);
+    \draw [>=latex, ->, opacity = 0.3,dashed] (P) to [out=-135,in=135] (P2);
+    \node[opacity = 0.5,align=left] at (-2,1) {\scriptsize{$S_{-1,1}(x,y)$} \\ \scriptsize{αντί $M_y(x,y)$}};
+    \node[opacity = 0.5,align=left] at (1,-2) {\scriptsize{$S_{1,-1}(x,y)$} \\ \scriptsize{αντί $M_x(x,y)$}};
+\end{tikzpicture}
+
+\end{document}

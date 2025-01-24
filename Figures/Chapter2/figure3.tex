@@ -1,0 +1,37 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+\begin{document}
+	
+
+\begin{tikzpicture}
+    % Axes
+    \draw[-latex] (0,0) -- (7,0) coordinate[label=below: $x$] (x);
+    \filldraw (0,0) circle (1pt) coordinate[label=below: $O$] (o);
+    \filldraw (3.5,0) circle (1pt) node[anchor=north] {$B$};
+    \filldraw (0,3) circle (1pt) coordinate[label=below left: $A$] (A);
+    \draw[-latex]  (0,0) -- (0,4) coordinate[label=left: $y$] (y);
+    \draw[dashed] (0,3) -- (3.5,3);
+    \draw[dashed] (3.5,0) -- (3.5,3);
+    \filldraw (3.5,3) circle (1pt) coordinate[label=right: \text{$P(x,y)$}] (P);
+    \draw[-latex,opacity = 0.5] (0,0) -- (15:7cm) coordinate[label=below: $x'$] (x');
+    \draw[-latex,opacity = 0.5] (0,0) -- (105:4cm) coordinate[label=below left: $y'$] (y');
+    \draw [dashed, opacity = 0.5] ($(o)!(P)!(x')$) -- (P) ;
+    \draw [dashed, opacity = 0.5] ($(o)!(P)!(y')$) -- (P) node[coordinate, pos=0] (b) {};
+    \draw [dashed, opacity = 0.5] ($(o)!(A)!(y')$) -- (A) ;
+    \draw [dashed, opacity = 0.5] ($(o)!(A)!(x')$) -- (A) node[coordinate, pos=0] (a) {};
+    \pic [draw, -, opacity= 0.7,
+      angle radius=11mm, angle eccentricity=1.3,
+      "$\theta$"] {angle = x--o--x'};
+    \pic [draw, -, opacity= 0.7,
+      angle radius=11mm, angle eccentricity=1.3,
+      "$\theta$"] {angle = y--o--y'};
+    \pic [draw, -, opacity= 0.7,
+      angle radius=8mm, angle eccentricity=1.3,
+      "$\theta$"] {angle = o--A--a};
+    \pic [draw, -, opacity= 0.7,
+      angle radius=11mm, angle eccentricity=1.3,
+      "$\theta$"] {angle = A--P--b};
+\end{tikzpicture}
+
+\end{document}

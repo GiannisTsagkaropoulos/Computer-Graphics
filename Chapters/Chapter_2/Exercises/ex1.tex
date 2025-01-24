@@ -1,0 +1,70 @@
+\begin{exercise}
+Δίνονται οι εικόνες (α) και (β). Με ποια σύνθεση μετασχηματισμών μπορεί να φέρουμε την εικόνα (α), (β) στη θέση (γ).
+
+%\input{figure18}
+
+\end{exercise}
+
+\begin{solution}
+Πρώτα στην εικόνα (α) μπορούμε να δράσουμε ως εξής:
+\begin{enumerate}
+    \item Σύμπτυξη στις $x$-συντεταγμένες με: \(s_x = \frac{1}{2}\), \(s_y = 1\) (ως προς την αρχή των αξόνων).
+    \item Μεταφορά κατά \(\vec{v} = (\frac{3}{2},1) \).
+\end{enumerate}
+
+Έτσι, παίρνουμε τον πίνακα μετασχηματισμού:
+\[
+M_{(a)} = T_v \cdot S_{\frac{1}{2},1} = \begin{bmatrix}
+1 & 0 & \frac{3}{2} \\
+0 & 1 & 1 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+\frac{1}{2} & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix} = \begin{bmatrix}
+\frac{1}{2} & 0 & \frac{3}{2} \\
+0 & 1 & 1 \\
+0 & 0 & 1
+\end{bmatrix}
+\]
+
+Πράξεις:
+\[
+\begin{bmatrix}
+\frac{1}{2} & 0 & \frac{3}{2} \\
+0 & 1 & 1 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+-1 & 1 & 0 \\
+0 & 0 & 1 \\
+1 & 1 & 1
+\end{bmatrix} = \begin{bmatrix}
+1 & 2 & \frac{3}{2} \\
+1 & 1 & 2 \\
+1 & 1 & 1
+\end{bmatrix}
+\]
+
+
+Αν στην εικόνα (β) μεταφερθεί κατά \(\vec{v} = (1,1)\), θα πάρουμε το τετράγωνο της εικόνας (γ):
+\[
+\begin{bmatrix}
+1 & 0 & 1 \\
+0 & 1 & 1 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+0 & 1 & 1 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 1 & 1
+\end{bmatrix} = \begin{bmatrix}
+1 & 2 & 2 & 1 \\
+2 & 1 & 2 & 2 \\
+1 & 1 & 1 & 1
+\end{bmatrix}
+\]
+
+\end{solution}

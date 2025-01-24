@@ -1,0 +1,24 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex} 
+\begin{document}
+				
+	\begin{tikzpicture}
+	           
+		\drawGrid{5}{5}{-5}{-5}
+
+		\filldraw (-5,-2) circle (1pt) coordinate[label=below: \scalebox{0.8}{$A'$}] (A');
+		\filldraw (-3,0) circle (1pt) coordinate[label=above: \scalebox{0.8}{$B'$}] (B');
+		
+		\filldraw (5,2) circle (1pt) coordinate[label=above: \scalebox{0.8}{$C'$}] (C');
+		
+		\draw[dashed] (0,2) -- (5,2) -- (5,0) ;
+		\draw[dashed] (-5,0) -- (-5,-2) -- (0,-2);
+		
+		\draw (A') -- (B') -- (C') -- (A');
+		\node at (0,-7) {($b$)};
+
+
+
+	\end{tikzpicture}
+\end{document}

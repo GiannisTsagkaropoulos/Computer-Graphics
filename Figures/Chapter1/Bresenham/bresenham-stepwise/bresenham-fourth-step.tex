@@ -1,0 +1,60 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../../tikz-preamble.tex}
+
+\begin{document}
+	
+	\begin{tikzpicture}
+%%%%%%%%%%%%%%%%%%	
+
+%		%Grid
+		\draw[very thin, dotted] (-0.5,-0.5) grid (4.5,4.5);
+		
+		\node at (0.5,0) [below] {\scriptsize{$x_{i-3}$}};
+		\node at (0,0.5) [left] {\scriptsize{$y_{i-3}$}};
+		
+		\node at (1.5,0) [below] {\scriptsize{$x_{i-2}$}};
+		\node at (0,1.5) [left] {\scriptsize{$y_{i-1}, y_{i-2}$}};
+		
+		\node at (2.5,0) [below] {\scriptsize{$x_{i-1}$}};
+	
+		\node at (3.5,0) [below] {\scriptsize{$x_{i}$}};
+		\node at (0,2.5) [left] {\scriptsize{$y_{i}$}};
+			
+	
+%Axis
+\draw[very thin,-latex] (0,0) -- (3.5,0);
+\draw[very thin,-latex] (0,0) -- (0,3.5);
+
+
+	
+%Coordinates	
+\coordinate (start) at (0.5, 0.5);
+\coordinate (end) at (3.5,2.5);
+\coordinate (up) at (3.5,2.5);
+\coordinate (down) at (3.5,1.5);
+
+
+\draw[name path=lineA, very thin] (start) -- (end);
+
+
+% Rectangles
+\fill[blue, opacity=0.2] (0,0) rectangle (1,1); 
+\fill[blue, opacity=0.2] (1,1) rectangle (3,2) ;
+\fill[blue, opacity=0.2] (3,2) rectangle (4,3) ;
+
+
+\draw[black, very thin] (2,1) -- (2,2); 
+
+
+% Points
+\draw[fill=black, draw=black] (start) circle (1.2pt);
+
+\draw[fill=black, draw=black] (end) circle (1.2pt);	
+
+\draw[fill=black, draw=black] (1.5,1.5) circle (1.2pt);	
+\draw[fill=black, draw=black] (2.5,1.5) circle (1.2pt);	
+
+
+\end{tikzpicture}
+\end{document}

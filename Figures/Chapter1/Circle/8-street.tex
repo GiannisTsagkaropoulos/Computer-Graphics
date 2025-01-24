@@ -1,0 +1,109 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../tikz-preamble.tex}
+\usetkzobj{all}
+
+\usepackage{siunitx}
+
+\begin{document}
+
+	\begin{tikzpicture}[
+		my angle/.style = {draw, fill=green!30!blue,
+					opacity=0.4,
+                   angle radius=5mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize} 
+                   ]
+
+%Define axis length and radius
+    \pgfmathsetmacro{\axislength}{5}
+    \pgfmathsetmacro{\radius}{4}
+
+%Draw axes
+    \drawAxis{\axislength}{\axislength}{-\axislength}{-\axislength}
+    \coordinate (O) at (0,0);
+    
+%Draw circle
+    \draw (O) circle[radius=\radius];
+		
+		
+%Define paths 
+	\path[name path=circle] (O) circle[radius=\radius];
+    \path[name path=axis-x] (O) -- (\axislength, 0);
+    \path[name path=axis-y] (O) -- (0, \axislength); 
+    
+    \path[name path=dichotomus1] (O) -- (45:\axislength);   
+
+    
+    \path[name path=bisector1] (O) -- (22.5:\axislength);   
+	\path[name path=bisector2] (O) -- (67.5:\axislength); 
+	\path[name path=bisector3] (O) -- (112.5:\axislength); 
+	\path[name path=bisector4] (O) -- (157.5:\axislength);
+	\path[name path=bisector5] (O) -- (202.5:\axislength);	 	
+	\path[name path=bisector6] (O) -- (247.5:\axislength);	
+	\path[name path=bisector7] (O) -- (292.5:\axislength);
+	\path[name path=bisector8] (O) -- (337.5:\axislength);		 			 		
+
+     
+%Define the intersections
+	\path[name intersections={of=circle and dichotomus1, by=A}];
+
+
+	\path[name intersections={of=circle and bisector1, by=1}];
+	\path[name intersections={of=circle and bisector2, by=2}];
+	\path[name intersections={of=circle and bisector3, by=3}];    
+	\path[name intersections={of=circle and bisector4, by=4}];
+	\path[name intersections={of=circle and bisector5, by=5}];
+	\path[name intersections={of=circle and bisector6, by=6}];    
+	\path[name intersections={of=circle and bisector7, by=7}];
+	\path[name intersections={of=circle and bisector8, by=8}];
+
+
+%Points in circle  
+	\draw[fill=black, draw=black] (1) circle (1.2pt) node [xshift=4ex, yshift=0.5ex] {$(x,y)$};
+	\draw[fill=black, draw=black] (2) circle (1.2pt)	  node [xshift=0.5ex, yshift=3ex] {$(y,x)$};
+	\draw[fill=black, draw=black] (3) circle (1.2pt)	 node [xshift=-0.5ex, yshift=3ex] {$(-y,x)$};
+	\draw[fill=black, draw=black] (4) circle (1.2pt)	 node [xshift=-5ex, yshift=0.5ex] {$(-x,y)$};
+	\draw[fill=black, draw=black] (5) circle (1.2pt)	 node [xshift=-5.5ex, yshift=-1.5ex] {$(-x, -y)$};
+	\draw[fill=black, draw=black] (6) circle (1.2pt)	 node [xshift=-0.5ex, yshift=-3.5ex] {$(-y, -x)$};
+	\draw[fill=black, draw=black] (7) circle (1.2pt)	 node [xshift=0.5ex, yshift=-3.5ex] {$(y, -x)$};  
+	\draw[fill=black, draw=black] (8) circle (1.2pt)	 node [xshift=4.5ex, yshift=-1.5ex] {$(x, -y)$};
+
+
+%Angle
+	\pic[my angle, "$45^\circ$"] {angle = x--O--A};    
+    
+%Axis-mirrors    
+	\draw[dashed, blue] (1) -- (8);
+	\draw[dashed, blue] (2) -- (3);
+	\draw[dashed, blue] (4) -- (5);
+	\draw[dashed, blue] (6) -- (7);
+
+%Bisector-mirrors    
+	\draw[dashed, red] (1) -- (2);
+	\draw[dashed, red] (3) -- (4);
+	\draw[dashed, red] (5) -- (6);
+	\draw[dashed, red] (7) -- (8);
+
+%Octants
+	\draw[thin] (-4,-4) -- (4,4);
+	\draw[thin] (-4,4) -- (4,-4);
+													
+%Octant Points
+	\draw[] (3,1.25)  node  {\Large{1}};
+	\draw[] (1.25,3)  node  {\Large{2}};
+	\draw[] (-1.25,3)  node  {\Large{3}};		
+	\draw[] (-3,1.25)  node  {\Large{4}};
+
+	\draw[] (-3,-1.25)  node  {\Large{5}};
+	\draw[] (-1.25,-3)  node  {\Large{6}};
+	\draw[] (1.25,-3)  node  {\Large{7}};		
+	\draw[] (3,-1.25)  node  {\Large{8}};												
+		
+		
+%%%%%%%%%%%%%%%%%%	
+	
+
+\end{tikzpicture}
+	
+\end{document}

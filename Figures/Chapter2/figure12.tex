@@ -1,0 +1,25 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex} 
+\begin{document}
+	
+\begin{tikzpicture}[my angle/.style = {draw,->, fill=green!30!blue, fill opacity = 0.4,
+			        text opacity=1,
+                   angle radius=7mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize}]
+                   
+    \draw[-latex] (0,0) -- (4,0) coordinate[label=right: $x$] (x);
+    \draw[-latex]  (0,0) -- (0,4) coordinate[label=above: $y$] (y);
+    \filldraw (0,0) circle (1pt) coordinate[label=below: $O$] (o);
+    \filldraw (2,2.5) circle (1pt) coordinate[label=right: \text{$Q(x,y)$}] (Q);
+    \draw (o) -- (Q);
+    \begin{scope}[rotate=70]
+        \filldraw (2,2.5) circle (1pt) coordinate[label=left: \text{$Q'(x,y)$}] (Q');
+    \draw (o) -- (Q');
+    \end{scope}
+    \pic [my angle, "$\theta$"] {angle = Q--o--Q'};
+    \pic [draw, -latex,angle radius=32mm] 
+    {angle = Q--o--Q'};
+\end{tikzpicture}
+\end{document}

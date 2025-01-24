@@ -1,0 +1,32 @@
+\begin{exercise}
+
+Να κατασκευαστεί ο αλγόριθμος του Bresenham για ευθεία, για το δεύτερο οκταμόριο.
+\end{exercise}
+
+\begin{solution}
+	Στο δεύτερο οκταμόριο ισχύει $s >1$, οπότε είναι προτιμότερο η εξίσωση της ευθείας να επιλυθεί ως προς $x$, δηλαδή να εξαχθεί μία σχέση της μορφής $x= f (y)$. Τότε, ο αλγόριθμος του Bresenham λαμβάνει την ακόλουθη μορφή:
+	
+\begin{lstlisting}[caption={Bresenham Algorithm for 2nd Octant Line Algorithm}]
+	x1, y1 = get_coordinates("Give the coordinates of P1 e.g. (1,2):")
+	x2, y2 = get_coordinates("Give the coordinates of P2:")
+	Dx = x2 - x1
+	Dy = y2-y1
+	x = x1
+	y = y1
+	c1 = 2Dx
+	error = c1 - Dy
+	c2 = error - Dy
+	while y <= y2
+		if error <0
+			error = error + c1
+		else
+			x = x+1
+			error = error + c2
+		plot(x,y)
+		y = y + 1
+		end
+	end	
+\end{lstlisting}
+
+
+\end{solution}

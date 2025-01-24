@@ -1,0 +1,67 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+
+
+\begin{document}
+	
+
+	\begin{tikzpicture}
+%		%Grid
+		\draw[very thin, dotted] (-4.5,-2.5) grid (4.5,4.5);
+				
+	
+	%Axis
+		
+            		
+	\draw[very thin,-latex] (-4.5,0) -- (4.5,0) node [right] {$X$};
+	\draw[very thin,-latex] (0,-2.5) -- (0,4.5) node [above] {$Y$};
+
+	\draw[fill=black, draw=black] (0,0) circle (1.2pt);
+	
+			
+	\begin{scope}[rotate=15,draw=red]
+        \draw[very thin,-latex] (0,0) -- (5,0) node[xshift=7ex, yshift=.5ex, text width=5em] {$X'$};
+        \draw[very thin,-latex] (0,0) -- (0,5)  node[xshift=5ex, yshift=2ex, text width=5em] {$Y'$};
+    \end{scope}
+    
+% orange		
+    \begin{scope}
+      \draw[->,orange,rotate=15] (0,0)--(3,2);
+    \end{scope}
+
+% Rectangles
+
+\draw[ultra thin] (0,0) coordinate (O) rectangle (3,2) coordinate (test);
+\draw[black, thin, rotate around={15:(0,0)}] (0,0) rectangle (3,2);
+
+	
+	 % Calculate the coordinates of all corners of the rotated rectangle
+    \path (0,0) ++(15:3) coordinate (DR);
+    \path (0,0) ++(15:3) ++(105:2) coordinate (UR);
+    \path (0,0) ++(105:2) coordinate (UL);
+    
+     % Draw circles at all corner coordinates
+    \foreach \corner in {DR, UR, UL} {
+        \draw[fill=black, draw=black] (\corner) circle (1.2pt);
+    }  
+    
+    \draw[black, thin] (DR) -- ($(0,0)!(DR)!(1,0)$) coordinate (x');
+    \draw[black, thin] (UR) -- ($(0,0)!(UR)!(0,1)$) coordinate (y');
+    
+
+%    \draw (0,0) coordinate(A) -- (2,2) coordinate (B);
+%    \draw (2,0) coordinate(C) -- (0,2) coordinate (D);
+%    \node[red,scale=3] at (intersection of  DR--x' and ){.};
+\draw[black, thin] (DR) -- (DR|-O) coordinate(int1);
+\draw[black, thin] (UR) -- (O|-UR) coordinate(int2);
+\draw[blue, thin] (int2) -- ($(0,0)!(int2)!(UL)$) coordinate(int3);
+    
+    % Draw point DR
+        \fill (int3) circle (2pt);
+%    \node[red,scale=3] at (intersection of  DR--x' and UR--D){.};
+  
+%    \draw[blue,vert outwards={from {($(B)!0.3!(C)$)} by 3cm on line to {(C)}}];
+\end{tikzpicture}
+%
+\end{document}

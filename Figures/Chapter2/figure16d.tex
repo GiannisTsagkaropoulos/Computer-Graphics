@@ -1,0 +1,102 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex} 
+\begin{document}
+	
+				
+	\begin{tikzpicture}[my angle/.style = {draw, <-, fill=orange, fill opacity = 0.4,
+			       text opacity=1,
+                   angle radius=5mm, 
+                   angle eccentricity=1.5, 
+                   font=\footnotesize}]
+
+			
+% Coordinates			
+			\coordinate (i) at (0,1);
+   			\coordinate (j) at (1,0);   				
+%			\coordinate (v) at (0,1.5);
+			
+			\coordinate (A) at (-2,-0.5);
+			\coordinate (B) at (2.5,4);
+			
+			\coordinate (P) at (2,2.5);
+			\coordinate (transformation) at (4,4);
+
+% Axis                   			
+			\plainAxisFull{4}{4}{-2.5}{-2.5}	
+			
+			\draw[-latex, thick]  (o) -- (i) node[left, midway] {\scriptsize{$j$}};
+            \draw[-latex, thick]  (o) -- (j) node[below, midway] {\scriptsize{$i$}};
+
+%            \draw[-latex] (o) -- (v) node[right] {\scriptsize{$v$}};
+%            \node[left] at (v) {\scriptsize{$(0,b)$}};
+
+
+%Transformations 
+
+	%Transform of points			
+		
+			\coordinate (o') at ($(A)!(o)!(B)$); % projection of O(0,0) in line A--B
+
+    		\coordinate (A') at ($(A) - (o')$);
+		    \coordinate (B') at ($(B) - (o')$);
+		    \coordinate (P') at ($(P) - (o')$);		    
+
+	% Rotation			
+			\tikzset{rotation/.style={rotate around={-45:(o)}}}
+			
+			
+			\path[rotation] ([rotation]A') coordinate (A''); 
+			\path[rotation] ([rotation]B') coordinate (B''); 
+			\path[rotation] ([rotation]P') coordinate (P''); 
+			
+	%Transform of point			
+		
+		\coordinate (P''_proj) at ($(A'')!(P'')!(B'')$);
+		\path let \p1 = (P'') in coordinate (P''') at (\x1,-\y1);
+		
+				
+% Lines/Vectors
+			
+			
+%		\draw[opacity = 0.3] (A) -- (B) node[anchor = north] {\scriptsize{$L$}};
+%		\draw[opacity = 0.3] (A') -- (B') node[anchor = north] {\scriptsize{$L'$}};
+		\draw[opacity = 1]   (A'') -- (B'') node[anchor = north] {\scriptsize{$L_2$}};
+			
+
+		\draw[opacity = 1, dashed, ]   (P'') -- (P''') ;			
+% Points
+
+	\node at (transformation) {$M_x$};
+						
+%	\filldraw[opacity = 0.3] (P) circle (1pt) node[below] {\scriptsize{$P$}};	
+%	\filldraw[opacity = 0.3] (P') circle (1pt) node[below] {\scriptsize{$P'$}};	
+	\filldraw[opacity = 0.3] (P'') circle (1pt) node[below] {\scriptsize{$P_2$}};	
+	\filldraw[opacity = 1] (P''') circle (1pt) node[above] {\scriptsize{$P_3$}};					
+%			\node at (A) { $A$};
+%			\node at (A') { $A'$};	
+%			\node at (A'') { $A''$};
+
+%			\node at (B) { $B$};		
+%			\node at (B') { $B'$};		
+%   		\node at (B'') { $B''$};
+
+
+            
+% Angles                
+%            \pic [my angle, "$\theta$"] {angle = P''--P''_proj--B''};
+	\tkzMarkRightAngle[draw=black,size=.2](P'',P''_proj,B'');            
+
+% Paths
+
+%    \path[name path=x-axis] (-3,0) -- (3,0);
+%
+%    \path[name path=AB] (A) -- (B);
+%
+%% Intersections
+%    \path[name intersections={of=AB and x-axis, by={C}}];
+
+ 		
+       \end{tikzpicture}          
+		
+\end{document}

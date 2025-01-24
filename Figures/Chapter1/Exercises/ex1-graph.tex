@@ -1,0 +1,37 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../tikz-preamble.tex}
+
+\begin{document}
+	
+	\begin{tikzpicture}
+
+		\drawPosGrid{5}{13}
+			
+		\drawRectangle{1}{1}
+		\drawRectangle{1}{2}
+		\drawRectangle{2}{3}
+		\drawRectangle{2}{4}
+		\drawRectangle{2}{5}
+		\drawRectangle{2}{6}
+		\drawRectangle{3}{7}
+		\drawRectangle{3}{8}
+		\drawRectangle{3}{9}
+		\drawRectangle{3}{10}
+		\drawRectangle{4}{11}
+		\drawRectangle{4}{12}
+		\drawRectangle{4}{13}
+		
+		% Connect points with a line
+		 
+		\node[below] at (1,1) {$P_1(1,1)$};
+		\node[right] at (4,13) {$P_2(4,13)$};
+		
+		\draw[very thin] (1, 1) -- (4, 13);
+    
+\end{tikzpicture}
+
+\end{document}
+
+
+

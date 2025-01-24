@@ -1,0 +1,50 @@
+\begin{exercise}
+
+Να προσδιοριστούν οι πίνακες στροφής στο χώρο ενός αντικειμένου κατά γωνία $\theta$, ως προς τους άξονες $y'y$, $x'x$, $R_{\theta,y}$ και $R_{\theta,x}$ αντίστοιχα.	
+\end{exercise}
+\begin{solution}
+	
+
+
+
+\begin{itemize}
+  \item  Για τη στροφή ως προς τον άξονα $y'y$ ισχύουν οι εξής μετασχηματισμοί:
+\[
+\begin{aligned}
+    x' &= x\cos\theta + z\sin\theta, \\
+    y' &= y, \\
+    z' &= -x\sin\theta + z\cos\theta.
+\end{aligned}
+\]
+Ο αντίστοιχος πίνακας είναι:
+\[
+R_{\theta,y} = \begin{bmatrix}
+\cos\theta & 0 & \sin\theta & 0\\
+0 & 1 & 0  & 0\\
+-\sin\theta & 0 & \cos\theta & 0\\
+0 & 0 & 0 & 1
+\end{bmatrix}.
+\]
+
+\item Για τη στροφή ως προς τον άξονα $x'x$ ισχύουν οι εξής μετασχηματισμοί:
+
+\[
+\begin{aligned}
+    x' &= x, \\
+    y' &= y\cos\theta - z\sin\theta, \\
+    z' &= y\sin\theta + z\cos\theta.
+\end{aligned}
+\]
+
+Ο αντίστοιχος πίνακας είναι:
+\[
+R_{\theta,x} = \begin{bmatrix}
+1 & 0 & 0 & 0\\
+0 & \cos\theta & -\sin\theta & 0\\
+0 & \sin\theta & \cos\theta & 0\\
+0 & 0 & 0 & 1
+\end{bmatrix}.
+\]
+
+\end{itemize}
+\end{solution}

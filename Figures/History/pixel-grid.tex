@@ -1,0 +1,58 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary {patterns,patterns.meta}
+\usepackage{amsmath}
+
+\pgfdeclarepattern{
+  name=hatch,
+  parameters={\hatchsize,\hatchangle,\hatchlinewidth},
+  bottom left={\pgfpoint{-.05pt}{-.05pt}},
+  top right={\pgfpoint{\hatchsize+.05pt}{\hatchsize+.05pt}},
+  tile size={\pgfpoint{\hatchsize}{\hatchsize}},
+  tile transformation={\pgftransformrotate{\hatchangle}},
+  code={
+    \pgfsetlinewidth{\hatchlinewidth}
+    \pgfpathmoveto{\pgfpoint{-.05pt}{-.05pt}}
+    \pgfpathlineto{\pgfpoint{\hatchsize+.05pt}{\hatchsize+.05pt}}
+    \pgfpathmoveto{\pgfpoint{-.05pt}{\hatchsize+.05pt}}
+    \pgfpathlineto{\pgfpoint{\hatchsize+.05pt}{-.05pt}}
+    \pgfusepath{stroke}
+  }
+}
+
+\tikzset{
+  hatch size/.store in=\hatchsize,
+  hatch angle/.store in=\hatchangle,
+  hatch line width/.store in=\hatchlinewidth,
+  hatch size=3pt,
+  hatch angle=0pt,
+  hatch line width=.5pt,
+}
+%
+\definecolor{myyellow}{RGB}{255, 255, 191}
+\definecolor{mygreen}{RGB}{171, 221, 164}
+\definecolor{myblue}{RGB}{216, 225, 246}
+
+\begin{document}
+%\begin{tikzpicture}[x=2.5cm,nodes={text width=4.2cm,align=center}]
+\begin{tikzpicture}
+
+\node at (-1.9ex,-1.9ex) {\large{0}};
+	\draw[thin, dotted] (0,0) grid (10.5,10.5);
+	\draw (0,0) -- (11,0);
+	\draw (0,0) -- (0,11);		
+	\foreach \i in {1,2,...,10}
+	{
+		\node at (-2ex, \i) {\large{\i}};
+		\node at (\i, -2ex) {\large{\i}};		
+	}
+
+
+	\draw [pattern=hatch, pattern color=mygreen] (5,5) rectangle (6,6);
+	\draw[fill=black] (5.5,5.5) circle (1pt);
+	\draw[thin,->,>=latex] (5.5,5.5) -- (11,6.5) node[right] {\Large{pixel$(5,5)$}};
+
+\end{tikzpicture}
+
+\end{document}
+

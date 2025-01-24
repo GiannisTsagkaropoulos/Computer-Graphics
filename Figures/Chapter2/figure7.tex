@@ -1,0 +1,40 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex} 
+\begin{document}
+    \begin{tikzpicture}[my angle/.style = {draw,-stealth, fill=green!30!blue,
+					opacity=0.4,
+                   angle radius=7mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize},
+                   my angle1/.style = {draw,-stealth, fill=orange,
+					opacity=0.4,
+                   angle radius=5mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize} 
+                   ]
+    \draw[-latex] (0,0) -- (6,0) coordinate[label=below: $x$] (x);
+    \filldraw (0,0) circle (1pt) coordinate[label=below: $O$] (o);
+    \draw[-latex]  (0,0) -- (0,6) coordinate[label=left: $y$] (y);
+    \draw [black] plot [smooth cycle] coordinates{(4.5,2) (4.3,2.5) (4.5,2.5) (5.2,2.4) (5.5, 1.5)};
+    \filldraw (5,2) circle (1pt);
+    \node at (6,2) {\scriptsize{$P(x,y)$}};
+    \draw[-latex, opacity = 0.5] (0,0) -- (5,2) coordinate (P) node[midway, anchor = south west] {$l$};
+    \draw [black] plot [smooth cycle] coordinates{(4.5,2) (4.3,2.5) (4.5,2.5) (5.2,2.4) (5.5, 1.5)};
+    
+    \begin{scope}[rotate=40]
+        \node at (6,2) {\scriptsize{$P'(x,y)$}};
+        \filldraw (5,2) circle (1pt);
+        \draw[-latex, opacity = 0.5] (0,0) -- (5,2) coordinate (P') node[midway, anchor = east] {$l$};
+        \draw [black] plot [smooth cycle] coordinates{(4.5,2) (4.3,2.5) (4.5,2.5) (5.2,2.4) (5.5, 1.5)};
+    \end{scope}
+	
+	
+    \draw [dashed, opacity = 0.5] ($(o)!(P)!(x)$) -- (P) ;
+    \draw [dashed, opacity = 0.5] ($(o)!(P')!(x)$) -- (P') ;
+    
+    \pic[my angle,"$\theta$"] {angle = P--o--P'};
+    \pic [my angle1, "$h$"] {angle = x--o--P};
+\end{tikzpicture}
+
+\end{document}

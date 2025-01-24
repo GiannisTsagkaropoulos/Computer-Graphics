@@ -1,0 +1,22 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex} 
+\begin{document}	
+						
+	\begin{tikzpicture}
+	
+	\drawGrid{2}{3}{-2}{-1}
+            % Axes
+            
+            \draw[] (1,1) -- (1.5,2) -- (2,1) -- cycle; % Triangle
+            \draw[] (1,1) rectangle (2,2); % Square
+            % Dashed Lines
+            \draw[dashed] (1,0) -- (1,1);
+            \draw[dashed] (2,0) -- (2,2);
+            \draw[dashed] (0,1) -- (1,1);
+            \draw[dashed] (0,2) -- (2,2);
+	
+	 \node at (0,-2.5) {$(\gamma)$};                
+        \end{tikzpicture}
+        
+\end{document}

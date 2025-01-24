@@ -1,0 +1,21 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex} 
+\begin{document}
+				
+	\begin{tikzpicture}
+	           
+		\drawGrid{5}{5}{-5}{-5}
+	
+		\filldraw (0,0) circle (1pt) coordinate[label=above left: \scalebox{0.8}{$A$}] (A);
+		\filldraw (1,1) circle (1pt) coordinate[label=above: \scalebox{0.8}{$B$}] (B);
+		\filldraw (5,2) circle (1pt) coordinate[label=above: \scalebox{0.8}{$C$}] (C);
+	
+		\draw[dashed] (1,0) -- (1,1);
+		\draw[dashed] (0,1) -- (1,1);
+	
+		\draw (A) -- (B) -- (C) -- (A);\
+		\node at (0,-7) {($a$)};
+		
+	\end{tikzpicture}
+\end{document}

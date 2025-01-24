@@ -1,0 +1,44 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../tikz-preamble.tex}
+
+%Notation
+\usepackage{physics}
+\usepackage{bm}
+
+\begin{document}
+	
+	\begin{tikzpicture}
+%		%Grid
+
+		
+%%%%%%%%%%%%%%%%%%		
+		%Axis
+		\draw[very thin,-latex] (-5,0) -- (5,0) node [right] {$x$};
+		\draw[very thin,-latex] (0,-5) -- (0,5) node [above] {$y$};
+			
+		
+		%Octants
+		\draw[dotted,thick] (-4,-4) -- (4,4);
+		\draw[dotted,thick] (-4,4) -- (4,-4);
+		
+		
+		\draw[fill=black, draw=black] (4,2) circle (1.2pt) node [below] {$(x,y)$};
+		%Octant Points
+		\draw[] (3,1.25)  node  {\Large{1}};
+		\draw[] (1.25,3)  node  {\Large{2}};
+		\draw[] (-1.25,3)  node  {\Large{3}};		
+		\draw[] (-3,1.25)  node  {\Large{4}};
+
+		\draw[] (-3,-1.25)  node  {\Large{5}};
+		\draw[] (-1.25,-3)  node  {\Large{6}};
+		\draw[] (1.25,-3)  node  {\Large{7}};		
+		\draw[] (3,-1.25)  node  {\Large{8}};												
+		
+		
+%%%%%%%%%%%%%%%%%%	
+	
+
+	\end{tikzpicture}
+	
+\end{document}

@@ -1,0 +1,17 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+\usetikzlibrary{decorations.pathmorphing} 
+\begin{document}	
+						
+	\begin{tikzpicture}
+		
+		\drawGrid{2}{3}{-2}{-1}
+		
+		\draw[thick] (0,0) rectangle (1,1);
+		
+		\node at (0,-2.5) {$(\beta)$};    
+		               
+	\end{tikzpicture}
+        
+\end{document}

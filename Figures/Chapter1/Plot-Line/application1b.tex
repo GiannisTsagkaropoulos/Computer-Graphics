@@ -1,0 +1,60 @@
+\documentclass[border=10pt]{standalone}
+
+%Drawing
+\usepackage{tikz}
+\usetikzlibrary{intersections}
+\usetikzlibrary{calc}
+
+
+\newcommand{\drawRectangle}[2]{
+   	\draw[fill=blue, opacity=0.2] ($(#1,#2) - (0.5,0.5)$) rectangle ($(#1,#2) + (0.5,0.5)$) ;   
+}
+
+\begin{document}
+	
+	\begin{tikzpicture}
+%%%%%%%%%%%%%%%%%%	
+
+%Grid
+	\draw[very thin, dotted] (-0.5,-0.5) grid (5.5,14.5);
+	\foreach \i in {1,...,4}
+	{
+		\node at (\i,-2ex) {\i};	
+%		\node at (-2ex,\i) {\i};				
+	}
+	\foreach \i in {1,...,13}
+	{
+		\node at (-2ex,\i) {\i};				
+	}
+
+%Draw axes
+    \draw[->] (-0.5, 0) -- (4.5, 0) node[right] {$x$};
+    \draw[->] (0, -0.5) -- (0, 13.5) node[above] {$y$};
+    
+    (1,1),(2,5),(3,9),(4,13)
+    
+    
+% Plot points
+    \filldraw[black] (1, 1) circle (1pt) ;
+	\filldraw[black] (2, 5) circle (1pt) ;
+	\filldraw[black] (3, 9) circle (1pt) ;	
+    \filldraw[black] (4, 13) circle (1pt); 
+
+%	\fill[blue, opacity=0.2] (1,1) rectangle (2,2) ; 
+\drawRectangle{1}{1}   
+\drawRectangle{2}{5}
+\drawRectangle{3}{9}
+\drawRectangle{4}{13}   
+% Connect points with a line
+    \draw[very thin] (1, 1) -- (2, 5) -- (3, 9) -- (4,13);
+    \draw[dashed, very thin] (1, 1) -- (4, 13);
+
+\node[right] at (1,1) {$P_1(1,1)$};
+    \node[left] at (4,13) {$P_2(4,13)$};
+    
+\end{tikzpicture}
+
+\end{document}
+
+
+

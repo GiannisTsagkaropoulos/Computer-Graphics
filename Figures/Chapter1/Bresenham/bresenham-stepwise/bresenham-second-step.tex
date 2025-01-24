@@ -1,0 +1,77 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../../tikz-preamble.tex}
+
+\begin{document}
+	
+	\begin{tikzpicture}
+%%%%%%%%%%%%%%%%%%	
+
+%		%Grid
+		\draw[very thin, dotted] (-0.5,-0.5) grid (4.5,4.5);
+		
+		\node at (0.5,0) [below] {\scriptsize{$x_{i-1}$}};
+		\node at (0,0.5) [left] {\scriptsize{$y_{i-1}$}};
+		
+		\node at (1.5,0) [below] {\scriptsize{$x_i$}};
+		\node at (0,1.5) [left] {\scriptsize{$y_i$}};
+		
+		\node at (2.5,0) [below] {\scriptsize{$x_{i+1}$}};
+		\node at (0,2.5) [left] {\scriptsize{$y_{i+1}$}};
+		
+	
+%Axis
+\draw[very thin,-latex] (0,0) -- (3.5,0);
+\draw[very thin,-latex] (0,0) -- (0,3.5);
+
+%Coordinates	
+\coordinate (start) at (0.5, 0.5);
+\coordinate (end) at (3.5,2.5);
+\coordinate (up) at (2.5,2.5);
+\coordinate (down) at (2.5,1.5);
+
+
+\draw[name path=lineA, very thin] (start) -- (end);
+\draw[name path=lineB, very thin] (up) -- (down);
+
+
+\path [name intersections={of=lineA and lineB, by=intersection}];
+\fill[black] (intersection) circle (1pt) ;
+
+\draw[dashed] (intersection) -- ($(0,0)!(intersection)!(0,1)$) node[left] {\scriptsize{$y$}};
+
+
+\coordinate (middle1) at ($(up)!0.5!(intersection)$);
+\coordinate (middle2) at ($(down)!0.5!(intersection)$);
+		
+% Lines		
+\draw[|-|,black] (up) -- (intersection);
+\draw[|-|,black] (down) -- (intersection);
+
+
+\node[right] at (middle2) {\tiny{$d_1$}};
+\node[left] at (middle1) {\tiny{$d_2$}};
+
+
+% Rectangles
+\fill[blue, opacity=0.2] (0,0) rectangle (1,1); 
+\fill[blue, opacity=0.2] (1,1) rectangle (2,2) ;
+
+
+\fill[green!50!blue, opacity=0.1] (2,1) rectangle (3,3) ;
+
+\draw[black, very thin] (2,2) -- (3,2); 
+
+
+% Points
+\draw[fill=black, draw=black] (start) circle (1.2pt);
+\draw[fill=black, draw=black] (up) circle (1.2pt);
+\draw[fill=black, draw=black] (down) circle (1.2pt);	
+\draw[fill=black, draw=black] (end) circle (1.2pt);	
+
+\draw[fill=black, draw=black] (1.5,1.5) circle (1.2pt);	
+
+
+\end{tikzpicture}
+	
+\end{document}
