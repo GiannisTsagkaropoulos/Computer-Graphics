@@ -5,6 +5,11 @@
 \begin{document}
 	
 \begin{tikzpicture}
+
+\coordinate (P) at (2.5,2.5);
+
+  \filldraw (P) circle (1pt);
+%    \node[right] at (P) {$P_1$};
     % Axes
     \draw[-latex] (0,0) -- (6,0) node[anchor=west] {$x$};
     \draw[-latex] (0,0) -- (0,4) node[anchor=south] {$y$};
@@ -16,6 +21,8 @@
     \filldraw (2.5,2.5) circle (1pt) node[right] {$\begin{matrix}
         P(x,y) \\ P'(x',y')
     \end{matrix}$};
+    
+    
     % Vectors
     \draw[-latex] (0,0) -- (1.5,1.5) node[midway, below right] {$V=(t_x,t_y)$};
     \draw[dashed] (1.5,2.5) -- (2.5,2.5) -- (2.5,1.5);

@@ -13,6 +13,7 @@
 
 \definecolor{bluegray}{rgb}{0.4, 0.6, 0.8}
 
+
 \newcommand{\drawPoint}[3]{
 	\draw[ultra thin, dashed] (0,#2) -- (#1,#2);
 	\draw[ultra thin, dashed] (#1,0) -- (#1,#2);
@@ -25,6 +26,10 @@
     \draw[-latex] ($(#3,0) + (-1,0)$) -- ($(#1,0) + (1,0)$) node[right] {$x$};
     
     \draw[-latex] ($(0,#4)+ (0,-1)$) -- ($(0,#2) + (0,1)$) node[above] {$y$};    
+    
+    \coordinate (o) at (0,0);
+    \coordinate (x) at (#1,0);
+    \coordinate (y) at (0,#2);
 %Draw points in axes    
     \node at (-1.9ex,-1.9ex) {0};
     \foreach \x in {1,...,#1}
@@ -55,9 +60,10 @@
 \newcommand{\drawPosGrid}[2]{
 	\draw[very thin, dotted] (-0.5, -0.5) grid ($(#1,#2) + (0.5,0.5)$);
 %Draw axes
-    \draw[-latex] (0,0) -- ($(#1,0) + (1,0)$) node[right] {$x$};
+    \draw[-latex] (0,0) -- ($(#1,0) + (1,0)$) coordinate (x) node[right] {$x$};
     
-    \draw[-latex] (0,0) -- ($(0,#2) + (0,1)$) node[above] {$y$};    
+    \draw[-latex] (0,0) -- ($(0,#2) + (0,1)$) coordinate (y) node[above] {$y$};    
+        \coordinate (o) at (0,0);
 %Draw points in axes    
     \node at (-1.9ex,-1.9ex) {0};
     \foreach \x in {1,...,#1}
