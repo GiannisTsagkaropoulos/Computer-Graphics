@@ -1,12 +1,17 @@
 \usepackage{siunitx}
-\usepackage{ams math}
-
+\usepackage{amsmath}
+\usepackage{pgfplots}
 % TikZ Packages
 \usepackage{tikz}
 \usepackage{tkz-euclide}
 
-\usetikzlibrary{angles, quotes, intersections, arrows.meta, babel, backgrounds, decorations, calc, intersections, patterns, positioning}
+\usetikzlibrary{angles, quotes, intersections, arrows, arrows.meta, babel, backgrounds, decorations, calc, intersections, patterns, positioning, shapes.geometric, patterns, patterns.meta, hobby}
 
+\def\width{6}
+\def\hauteur{6}
+\def\N{100}
+
+\definecolor{bluegray}{rgb}{0.4, 0.6, 0.8}
 
 \newcommand{\drawPoint}[3]{
 	\draw[ultra thin, dashed] (0,#2) -- (#1,#2);

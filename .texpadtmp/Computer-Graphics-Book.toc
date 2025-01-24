@@ -1,21 +1,43 @@
 \xpginauxfiletrue 
 \selectlanguage *[variant=mono]{greek}
-\contentsline {chapter}{\numberline {1}Μετασχηματισμοί στο Επίπεδο – Παραστάσεις με Πίνακες}{5}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Βασικοί μετασχηματισμοί αξόνων συντεταγμένων}{5}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Παράλληλη μεταφορά αρχής συντεταγμένων}{5}{subsection.1.1.1}%
-\contentsline {section}{\numberline {1.2}Αλλαγή κλίμακας αξόνων συντεταγμένων}{6}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Στροφή των αξόνων συντεταγμένων}{6}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Συμμετρία ως προς άξονα}{7}{subsection.1.2.2}%
-\contentsline {subsection}{\numberline {1.2.3} Αντίστροφοι μετασχηματισμοί αξόνων συντεταγμένων}{8}{subsection.1.2.3}%
-\contentsline {section}{\numberline {1.3}Βασικοί γεωμετρικοί μετασχηματισμοί.}{8}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Μεταφορά σχήματος}{8}{subsection.1.3.1}%
-\contentsline {subsection}{\numberline {1.3.2}Αλλαγή κλίμακας (Μεγέθυνση - σμίκρυνση)}{8}{subsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.3.3}Στροφή σχήματος γύρω από την αρχή των αξόνων}{9}{subsection.1.3.3}%
-\contentsline {subsection}{\numberline {1.3.4}Συμμετρία ως προς άξονα}{9}{subsection.1.3.4}%
-\contentsline {subsection}{\numberline {1.3.5} Αντίστροφοι γεωμετρικοί μετασχηματισμοί}{10}{subsection.1.3.5}%
-\contentsline {section}{\numberline {1.4}Πίνακες μετασχηματισμών}{11}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Πίνακες μετασχηματισμού αξόνων συντεταγμένων}{11}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2}Παράδειγμα 3.1}{13}{subsection.1.4.2}%
-\contentsline {section}{\numberline {1.5}Σύνθεση μετασχηματισμών}{14}{section.1.5}%
-\contentsline {section}{\numberline {1.6}Παραδείγματα μετασχηματισμών στο επίπεδο}{14}{section.1.6}%
+\contentsline {chapter}{\numberline {1}Ιστορική Αναδρομή}{5}{chapter.1}%
+\contentsline {subsection}{\numberline {1.0.1}Η έννοια του pixel}{6}{subsection.1.0.1}%
+\contentsline {chapter}{\numberline {2}Σχεδιασμός Βασικών Σχημάτων}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Σχεδιασμός ευθείας}{10}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Αλγόριθμός Εξίσωσης Ευθείας}{10}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Μειονεκτήματα Αλγορίθμου εξίσωσης ευθείας}{12}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Αλγόριθμος Bresenham για ευθύγραμμο τμήμα}{13}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Δημιουργία μεταβλητής σφάλματος $\epsilon _i$}{14}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Προσπάθεια δημιουργίας αναδρομικού τύπου}{14}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}Υλοποίηση αλγορίθμου για 1ο Οκταμόριο}{15}{subsection.2.1.6}%
+\contentsline {subsubsection}{\numberline {2.1.6.1}Συνάρτηση ``φωτισμού" pixel}{15}{subsubsection.2.1.6.1}%
+\contentsline {subsection}{\numberline {2.1.7}Σκιαγράφηση μεθόδου για σημεία εκτός 1ου οκταμορίου}{17}{subsection.2.1.7}%
+\contentsline {subsection}{\numberline {2.1.8}Αλγόριθμος του Bresenham για σημεία στο 2ο οκταμόριο}{19}{subsection.2.1.8}%
+\contentsline {subsection}{\numberline {2.1.9}Αλγόριθμος του Bresenham για σημεία στο 3ο οκταμόριο}{20}{subsection.2.1.9}%
+\contentsline {subsection}{\numberline {2.1.10}Αλγόριθμος του Bresenham για σημεία στο 4ο οκταμόριο}{20}{subsection.2.1.10}%
+\contentsline {subsection}{\numberline {2.1.11}Γενικός Αλγόριθμος Bresenham}{21}{subsection.2.1.11}%
+\contentsline {section}{\numberline {2.2}Σχεδιασμός του Κύκλου}{22}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Σχεδιασμός Κύκλου μέσω της αλγεβρικής εξίσωσης}{22}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Σχεδιασμός κύκλου με τον Αλγόριθμο του Bresenham}{24}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Καθορισμός της μεταβλητής απόφασης}{25}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Δημιουργία αναδρομικού τύπου}{26}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Αλγόριθμος Bresenham για κύκλο}{27}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Υπολογιστική Πολυπλοκότητα}{27}{subsection.2.2.6}%
+\contentsline {chapter}{\numberline {3}Μετασχηματισμοί στο Επίπεδο – Παραστάσεις με Πίνακες}{47}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Βασικοί μετασχηματισμοί αξόνων συντεταγμένων}{47}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Παράλληλη μεταφορά αρχής συντεταγμένων}{47}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}Αλλαγή κλίμακας αξόνων συντεταγμένων}{48}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Στροφή των αξόνων συντεταγμένων}{48}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Συμμετρία ως προς άξονα}{50}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3} Αντίστροφοι μετασχηματισμοί αξόνων συντεταγμένων}{50}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Βασικοί γεωμετρικοί μετασχηματισμοί.}{50}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Μεταφορά σχήματος}{50}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Αλλαγή κλίμακας (Μεγέθυνση - σμίκρυνση)}{50}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Στροφή σχήματος γύρω από την αρχή των αξόνων}{51}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Συμμετρία ως προς άξονα}{52}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Αντίστροφοι γεωμετρικοί μετασχηματισμοί}{53}{subsection.3.3.5}%
+\contentsline {section}{\numberline {3.4}Πίνακες μετασχηματισμών}{53}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Πίνακες μετασχηματισμού αξόνων συντεταγμένων}{53}{subsection.3.4.1}%
+\contentsline {section}{\numberline {3.5}Σύνθεση μετασχηματισμών}{56}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Παραδείγματα μετασχηματισμών στο επίπεδο}{56}{section.3.6}%
 \xpginauxfilefalse 

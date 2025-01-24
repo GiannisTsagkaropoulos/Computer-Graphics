@@ -1,0 +1,75 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../../tikz-preamble.tex}
+
+
+\begin{document}
+	
+	\begin{tikzpicture}[my angle/.style = {draw, fill=orange,
+					opacity=0.4,
+                   angle radius=5mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize} 
+                   ]
+%%%%%%%%%%%%%%%%%%	
+
+%Grid
+\drawPosGrid{18}{18}
+      
+\filldraw (3,5) circle (1pt) coordinate (P1); 
+\filldraw (5,10) circle (1pt) coordinate (P2); 
+\filldraw (9,18) circle (1pt) coordinate (P3); 
+
+\filldraw (5,3) circle (1pt) coordinate (P1'); 
+\filldraw (10,5) circle (1pt) coordinate (P2'); 
+\filldraw (18,9) circle (1pt) coordinate (P3'); 
+      
+
+     
+\drawRectangleCol{3}{5}{blue}{0.2}   
+\drawRectangleCol{3}{6}{blue}{0.2}
+\drawRectangleCol{4}{7}{blue}{0.2}
+\drawRectangleCol{4}{8}{blue}{0.2}
+\drawRectangleCol{5}{9}{blue}{0.2}
+\drawRectangleCol{5}{10}{blue}{0.2}
+
+\drawRectangleCol{9}{18}{blue}{0.2}
+
+\drawRectangleCol{5}{3}{green!90!blue}{0.2}
+\drawRectangleCol{6}{3}{green!80!blue}{0.2}
+\drawRectangleCol{7}{4}{green!80!blue}{0.2}
+\drawRectangleCol{8}{4}{green!80!blue}{0.2}
+\drawRectangleCol{9}{5}{green!80!blue}{0.2}
+\drawRectangleCol{10}{5}{green!80!blue}{0.2}
+\drawRectangleCol{18}{9}{green!80!blue}{0.2}
+
+
+
+%Angle
+\coordinate (x) at (5,0);
+\coordinate (O) at (0,0);
+\coordinate (P) at (5.5, 5.5);
+\pic[my angle, "$\ang{45}$"] {angle = x--O--P};
+
+
+    \draw[very thin] (0, 0)  -- (19,19);
+    
+% Connect points with a line
+	\draw[] (P1) -- (P3);
+	\draw[] (P1') -- (P3');	
+
+\node[below] at (P1) {$P_1(3,5)$};
+\node[left] at (P2) {$P_2(5,10)$};
+\node[above] at (P3) {$P_3(9,18)$};
+
+
+\node[below] at (P1') {$P_1^{'} (5,3)$};
+\node[right] at (P2') {$P_2^{'} (18,9)$};
+\node[above] at (P3') {$P_2^{'} (18,9)$};
+    
+\end{tikzpicture}
+
+\end{document}
+
+
+

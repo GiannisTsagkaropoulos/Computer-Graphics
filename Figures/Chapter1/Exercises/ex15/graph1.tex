@@ -1,0 +1,58 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../../tikz-preamble.tex}
+
+%\definecolor{yellow1}{green!95!black}
+%\definecolor{yellow2}{yellow!60!black}
+
+\begin{document}
+	
+\begin{tikzpicture}[my angle/.style = {draw, fill=orange,
+					opacity=0.4,
+                   angle radius=10mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize} 
+                   ]
+
+\drawGrid{18}{17}{-4}{-4}    
+			
+%Iteration:1
+\drawRectangleCol{7}{17}{green!95!black}{0.3}
+\drawRectangleCol{17}{7}{green!95!black}{0.3}
+\drawRectangleCol{7}{-3}{green!95!black}{0.3}
+\drawRectangleCol{-3}{7}{green!95!black}{0.3}
+%Iteration:2
+\drawRectangleCol{8}{17}{bluegray}{0.5}
+\drawRectangleCol{8}{-3}{bluegray}{0.5}
+\drawRectangleCol{6}{17}{bluegray}{0.5}
+\drawRectangleCol{6}{-3}{bluegray}{0.5}
+\drawRectangleCol{17}{8}{bluegray}{0.5}
+\drawRectangleCol{-3}{8}{bluegray}{0.5}
+\drawRectangleCol{17}{6}{bluegray}{0.5}
+\drawRectangleCol{-3}{6}{bluegray}{0.5}
+%Iteration:3
+\drawRectangleCol{9}{17}{orange}{0.4}
+\drawRectangleCol{9}{-3}{orange}{0.4}
+\drawRectangleCol{5}{17}{orange}{0.4}
+\drawRectangleCol{5}{-3}{orange}{0.4}
+\drawRectangleCol{17}{9}{orange}{0.4}
+\drawRectangleCol{-3}{9}{orange}{0.4}
+\drawRectangleCol{17}{5}{orange}{0.4}
+\drawRectangleCol{-3}{5}{orange}{0.4}
+
+\drawPoint{7}{7}{1} 
+\node[below] at (P1) {\Large{$K(7,7)$}};
+		
+\draw (P1) -- node[sloped, yshift=10pt, pos=0.45] {\Large{$\rho = 10$}} (17, 7);
+
+\coordinate (x) at (5,0);
+\coordinate (O) at (0,0);
+\coordinate (P) at (5.5, 5.5);
+\pic[my angle, "\Large{$\ang{45}$}"] {angle = x--O--P};
+
+\draw (O) -- (18,18);
+
+    
+\end{tikzpicture}
+
+\end{document}

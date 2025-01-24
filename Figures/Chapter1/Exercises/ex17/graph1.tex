@@ -1,0 +1,55 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../../tikz-preamble.tex}
+
+
+\begin{document}
+	
+	\begin{tikzpicture}[my angle/.style = {draw, fill=orange,
+					opacity=0.4,
+                   angle radius=5mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize} 
+                   ]
+%%%%%%%%%%%%%%%%%%	
+
+%Grid
+\drawGrid{4}{5}{-1}{-1}
+      
+\filldraw (2,2) circle (1pt) coordinate (A);
+\filldraw (3,5) circle (1pt) coordinate (B);
+\filldraw (1,5) circle (1pt) coordinate (C);
+\filldraw (-1,4) circle (1pt) coordinate (D);
+\filldraw (-1,2) circle (1pt) coordinate (E);  
+      
+\draw[] (A) -- (B) -- (C) -- (D) -- (E) -- cycle;
+	
+
+\node[right , outer sep=5pt] at (A) {$A(2,2)$};
+\node[right, outer sep=5pt] at (B) {$B(3,5)$};
+\node[above, outer sep=5pt] at (C) {$C(1,5)$};
+\node[left, outer sep=5pt] at (D) {$D(-1,4)$};
+\node[left, outer sep=5pt] at (E) {$E(-1,2)$};
+     
+
+
+
+
+%Angle
+%\coordinate (x) at (5,0);
+%\coordinate (O) at (0,0);
+%\coordinate (P) at (5.5, 5.5);
+%\pic[my angle, "$\ang{45}$"] {angle = x--O--P};
+
+
+%    \draw[very thin] (0, 0)  -- (19,19);
+    
+% Connect points with a line
+	
+    
+\end{tikzpicture}
+
+\end{document}
+
+
+
