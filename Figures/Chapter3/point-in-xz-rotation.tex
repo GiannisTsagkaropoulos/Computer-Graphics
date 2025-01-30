@@ -1,0 +1,124 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+
+%3D
+\usepackage{tikz-3dplot}
+
+
+%Tikz Library
+\usetikzlibrary{angles, quotes, intersections}
+
+\newcommand{\RightAngle}[5][6pt]{%
+        \draw ($#3!#1!#2$)
+        --($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $) node[anchor = 200] {#5}
+        --($#3!#1!#4$) ;
+        }
+
+
+
+\newcommand{\rotateRPY}[3]% roll, pitch, yaw
+{   \pgfmathsetmacro{\rollangle}{#1}
+    \pgfmathsetmacro{\pitchangle}{#2}
+    \pgfmathsetmacro{\yawangle}{#3}
+
+    % to what vector is the x unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newxx}{cos(\yawangle)*cos(\pitchangle)}
+    \pgfmathsetmacro{\newxy}{sin(\yawangle)*cos(\pitchangle)}
+    \pgfmathsetmacro{\newxz}{-sin(\pitchangle)}
+    \path (\newxx,\newxy,\newxz);
+    \pgfgetlastxy{\nxx}{\nxy};
+
+    % to what vector is the y unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newyx}{cos(\yawangle)*sin(\pitchangle)*sin(\rollangle)-sin(\yawangle)*cos(\rollangle)}
+    \pgfmathsetmacro{\newyy}{sin(\yawangle)*sin(\pitchangle)*sin(\rollangle)+ cos(\yawangle)*cos(\rollangle)}
+    \pgfmathsetmacro{\newyz}{cos(\pitchangle)*sin(\rollangle)}
+    \path (\newyx,\newyy,\newyz);
+    \pgfgetlastxy{\nyx}{\nyy};
+
+    % to what vector is the z unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newzx}{cos(\yawangle)*sin(\pitchangle)*cos(\rollangle)+ sin(\yawangle)*sin(\rollangle)}
+    \pgfmathsetmacro{\newzy}{sin(\yawangle)*sin(\pitchangle)*cos(\rollangle)-cos(\yawangle)*sin(\rollangle)}
+    \pgfmathsetmacro{\newzz}{cos(\pitchangle)*cos(\rollangle)}
+    \path (\newzx,\newzy,\newzz);
+    \pgfgetlastxy{\nzx}{\nzy};
+}
+
+\tikzset{RPY/.style={x={(\nxx,\nxy)},y={(\nyx,\nyy)},z={(\nzx,\nzy)}}}
+
+
+\begin{document}
+
+
+
+
+\tdplotsetmaincoords{70}{140}
+
+\pgfmathsetmacro{\rvec}{4} 
+\pgfmathsetmacro{\phivec}{75}
+\pgfmathsetmacro{\turn}{35}
+
+
+
+\begin{tikzpicture}[tdplot_main_coords]
+
+% Axis
+	\threeDAxis{5}{5}{4}
+
+
+%% Coordinates
+
+\tdplotsetcoord{P}{\rvec}{\phivec}{0}
+
+\filldraw (P) node[anchor = -10] {$P(x, 0, z)$} circle (1pt);
+
+\draw[] (O) -- node[anchor=70,midway] {$\rho$} (P);  
+
+\draw[ultra thin, dashed] (P) -- (Px);  
+\draw[ultra thin, dashed] (P) -- (Pz);  
+
+
+\RightAngle{(O)}{(Px)}{(P)}{}; 
+\RightAngle{(O)}{(Pz)}{(P)}{}; 
+
+\RightAngle{(x)}{(O)}{(y)}{}; 
+
+
+\tdplotsetrotatedcoords{0}{-\turn}{0}
+
+\begin{scope}[tdplot_rotated_coords]
+	
+\end{scope}
+
+
+\rotateRPY{0}{-\turn}{0}
+    \begin{scope}[RPY]
+		\tdplotsetcoord{P'}{4}{\phivec}{0}
+		
+		\filldraw (P') node[anchor = -130] {$P'(x', 0, z')$} circle (1pt);
+		
+		\draw[] (O) -- node[anchor=250,midway] {$\rho$} (P');  
+    \end{scope}
+
+
+% Rotated Pyramid
+
+
+\tdplotsetrotatedcoords{90}{90}{90}
+
+\tdplotdrawarc[tdplot_rotated_coords, black]{(O)}{0.2*\rvec}{90+\phivec-\turn}{90+\phivec}{anchor = 330}{$\theta$}
+
+
+
+\path[tdplot_rotated_coords,fill=blue,fill opacity=0.4] (0,0,0) -- plot[variable=\t, domain=-40:-75] (xyz spherical cs:radius=0.8,longitude=\t,latitude=0) -- cycle; 
+
+
+
+  
+\end{tikzpicture}
+
+
+
+
+\end{document}
+

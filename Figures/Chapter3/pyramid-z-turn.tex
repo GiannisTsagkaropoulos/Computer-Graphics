@@ -1,0 +1,168 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+
+%3D
+\usepackage{tikz-3dplot}
+
+
+%Tikz Library
+\usetikzlibrary{angles, quotes, intersections}
+
+\newcommand{\RightAngle}[4][8pt]{%
+        \draw ($#3!#1!#2$)
+        --($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $) node[anchor = 200] {}
+        --($#3!#1!#4$) ;
+        }
+
+
+
+\newcommand{\rotateRPY}[3]% roll, pitch, yaw
+{   \pgfmathsetmacro{\rollangle}{#1}
+    \pgfmathsetmacro{\pitchangle}{#2}
+    \pgfmathsetmacro{\yawangle}{#3}
+
+    % to what vector is the x unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newxx}{cos(\yawangle)*cos(\pitchangle)}
+    \pgfmathsetmacro{\newxy}{sin(\yawangle)*cos(\pitchangle)}
+    \pgfmathsetmacro{\newxz}{-sin(\pitchangle)}
+    \path (\newxx,\newxy,\newxz);
+    \pgfgetlastxy{\nxx}{\nxy};
+
+    % to what vector is the y unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newyx}{cos(\yawangle)*sin(\pitchangle)*sin(\rollangle)-sin(\yawangle)*cos(\rollangle)}
+    \pgfmathsetmacro{\newyy}{sin(\yawangle)*sin(\pitchangle)*sin(\rollangle)+ cos(\yawangle)*cos(\rollangle)}
+    \pgfmathsetmacro{\newyz}{cos(\pitchangle)*sin(\rollangle)}
+    \path (\newyx,\newyy,\newyz);
+    \pgfgetlastxy{\nyx}{\nyy};
+
+    % to what vector is the z unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newzx}{cos(\yawangle)*sin(\pitchangle)*cos(\rollangle)+ sin(\yawangle)*sin(\rollangle)}
+    \pgfmathsetmacro{\newzy}{sin(\yawangle)*sin(\pitchangle)*cos(\rollangle)-cos(\yawangle)*sin(\rollangle)}
+    \pgfmathsetmacro{\newzz}{cos(\pitchangle)*cos(\rollangle)}
+    \path (\newzx,\newzy,\newzz);
+    \pgfgetlastxy{\nzx}{\nzy};
+}
+
+\tikzset{RPY/.style={x={(\nxx,\nxy)},y={(\nyx,\nyy)},z={(\nzx,\nzy)}}}
+
+
+\begin{document}
+
+\tdplotsetmaincoords{65}{80}
+
+\pgfmathsetmacro{\rvec}{4} 
+\pgfmathsetmacro{\thetavec}{42}
+\pgfmathsetmacro{\phivec}{42}
+\pgfmathsetmacro{\phivecnew}{\phivec + 25}
+
+
+
+\begin{tikzpicture}[tdplot_main_coords]
+
+% Axis
+	\threeDAxis{7}{5}{4}
+
+% 1st Pyramid 
+
+%% Coordinates
+
+\coordinate (P) at (2,2.23,2);
+\coordinate (Pz) at (0,0,2);
+
+\coordinate (Q) at ($(P)+(.5,1.5,0.4)$);
+\coordinate (R) at ($(P)+(-1.3,-.6,0.2)$);
+\coordinate (S) at ($(P)+(-1.2,0.5,2)$);
+
+
+\filldraw (P) node[anchor = 90] {$P$} circle (1pt); 
+\filldraw (Q) node[anchor = 170] {$Q$} circle (1pt); 
+\filldraw (R) node[anchor = -60] {$R$} circle (1pt); 
+\filldraw (S) node[above] {$S$} circle (1pt); 
+
+
+%% Faces of Pyramid
+
+\draw[ultra thin, fill=orange, fill opacity=0.5] (P) --(Q) -- (S) -- cycle;
+\draw[thin] (P) -- (R);
+\draw[ultra thin, fill=blue, opacity=0.1] (P) -- (R) -- (Q) -- cycle;
+\draw[thin, fill=blue, fill opacity=0.5] (P) -- (R) -- (S) -- cycle;
+\draw[ultra thin, fill=blue,opacity=0.1] (Q) -- (R) -- (S) -- cycle;	
+
+
+\draw[dashed, orange] (Pz) -- node[anchor=70,midway] {$\rho$} (P);  
+
+
+
+% Rotated Pyramid
+
+
+
+\rotateRPY{0}{0}{90}
+    \begin{scope}[RPY]
+		\coordinate (P) at (2,2.23,2);
+		\coordinate (Pz) at (0,0,2);
+		
+		\coordinate (Q) at ($(P)+(.5,1.5,0.4)$);
+		\coordinate (R) at ($(P)+(-1.3,-.6,0.2)$);
+		\coordinate (S) at ($(P)+(-1.2,0.5,2)$);
+		%
+		%
+		\filldraw (P) node[anchor = 220] {$P'$} circle (1pt); 
+		\filldraw (Q) node[anchor = 250] {$Q'$} circle (1pt); 
+		\filldraw (R) node[anchor = 60] {$R'$} circle (1pt); 
+		\filldraw (S) node[above] {$S'$} circle (1pt); 
+		%
+		%
+		%
+		%%% Faces of Pyramid
+		%
+		\draw[ultra thin, fill=orange, fill opacity=0.5] (P) --(Q) -- (S) -- cycle;
+		\draw[thin] (P) -- (R);
+		\draw[ultra thin, fill=blue, opacity=0.1] (P) -- (R) -- (Q) -- cycle;
+		\draw[thin, fill=blue, fill opacity=0.5] (P) -- (R) -- (S) -- cycle;
+		\draw[ultra thin, fill=blue,opacity=0.1] (Q) -- (R) -- (S) -- cycle;
+		
+		\draw[dashed, orange] (Pz) -- node[anchor=150,midway] {$\rho$} (P);    
+    \end{scope}
+
+
+\draw[opacity=0.2] (0,0,2.4) -- (-1, -1.46, 2.2);
+%\draw[] (0,0,2.4) -- (−1.77, 0 ,2.4);
+
+% Z axis circle    
+
+\filldraw[black] (0,0,2) circle (1pt); 
+
+\filldraw[opacity=0.1] (0,0,2.4) circle (1pt); 
+
+
+
+\RightAngle{(1,1,2)}{(0,0,2)}{(-1,1,2)}; 
+
+%\RightAngle{(z)}{(O)}{(x)}; 
+
+\tdplotsetrotatedcoords{0}{0}{90}
+
+
+\tdplotdrawarc[tdplot_rotated_coords, black]{(0,0,2)}{3}{31}{48}{}{}
+\tdplotdrawarc[tdplot_rotated_coords, black]{(0,0,2)}{3}{72.5}{78}{}{}
+\tdplotdrawarc[tdplot_rotated_coords, black]{(0,0,2)}{3}{82}{318}{}{}
+
+
+%\tdplotdrawarc[dashed, ultra thin, tdplot_rotated_coords, black]{(0,0,2.4)}{4.5}{-34}{56}{}{}
+
+\tdplotdrawarc[dashed, ultra thin, tdplot_rotated_coords, black]{(0,0,2.2)}{1.77}{66}{334}{}{}
+
+
+%\tdplotdrawarc[dashed, ultra thin, tdplot_rotated_coords, black]{(0,0,4)}{2.84}{-14}{72}{}{} %s
+
+  
+  
+\end{tikzpicture}
+
+
+
+
+\end{document}
+

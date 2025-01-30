@@ -1,0 +1,118 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+
+%3D
+\usepackage{tikz-3dplot}
+
+
+%Tikz Library
+\usetikzlibrary{angles, quotes, intersections}
+
+\begin{document}
+
+\tdplotsetmaincoords{70}{170}
+
+\pgfmathsetmacro{\rvec}{4} 
+\pgfmathsetmacro{\thetavec}{42}
+\pgfmathsetmacro{\phivec}{42}
+\pgfmathsetmacro{\phivecnew}{\phivec + 25}
+
+
+
+\begin{tikzpicture}[tdplot_main_coords]
+
+% Axis
+	\threeDAxis{4}{5}{4}
+
+% 1st Pyramid 
+
+%% Coordinates
+
+%\tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+\coordinate (P) at (2,2,3);
+\coordinate (Py) at (0,2,0);
+
+\coordinate (Q) at ($(P)+(-.7,-1,0.4)$);
+\coordinate (R) at ($(P)+(.8,-1,0.5)$);
+\coordinate (S) at ($(P)+(0.2,-0.5,2)$);
+
+
+\filldraw (P) node[anchor = 10] {$P$} circle (1pt); 
+\filldraw (Q) node[anchor = 220] {$Q$} circle (1pt); 
+\filldraw (R) node[anchor = -40] {$R$} circle (1pt); 
+\filldraw (S) node[above] {$S$} circle (1pt); 
+
+
+
+%% Faces of Pyramid
+
+\draw[thin, fill=blue, fill opacity=0.5] (P) --(Q) -- (S) -- cycle;
+\draw[thin] (P) -- (R);
+\draw[ultra thin, fill=blue, fill opacity=0.1] (P) -- (R) -- (Q) -- cycle;
+\draw[ultra thin, fill=orange, fill opacity=0.5] (P) -- (R) -- (S) -- cycle;
+\draw[ultra thin, fill=blue, fill opacity=0.1] (Q) -- (R) -- (S) -- cycle;
+	
+\draw[dashed, orange] (Py) -- node[anchor=180,midway] {$\rho$} (P);  
+
+
+
+% Rotated Pyramid
+
+	\tdplotsetrotatedcoords{0}{30}{0}
+
+	\begin{scope}[tdplot_rotated_coords]
+	
+			\coordinate (P) at (2,2,3);
+			\coordinate (Py) at (0,2,0);
+			
+			\coordinate (Q) at ($(P)+(-.7,-1,0.4)$);
+			\coordinate (R) at ($(P)+(.8,-1,0.5)$);
+			\coordinate (S) at ($(P)+(0.2,-0.5,2)$);
+			
+			
+			\filldraw (P) node[anchor = 30] {$P'$} circle (1pt); 
+			\filldraw (Q) node[anchor = 270] {$Q'$} circle (1pt); 
+			\filldraw (R) node[anchor = -40] {$R'$} circle (1pt); 
+			\filldraw (S) node[above] {$S'$} circle (1pt); 
+			
+			
+			
+			%% Faces of Pyramid
+			
+			\draw[thin, fill=blue, fill opacity=0.5] (P) --(Q) -- (S) -- cycle;
+			\draw[thin] (P) -- (R);
+			\draw[ultra thin, fill=blue, fill opacity=0.1] (P) -- (R) -- (Q) -- cycle;
+			\draw[ultra thin, fill=orange, fill opacity=0.5] (P) -- (R) -- (S) -- cycle;
+			\draw[ultra thin, fill=blue, fill opacity=0.1] (Q) -- (R) -- (S) -- cycle;
+			
+				
+			\draw[dashed, orange] (Py) -- node[below,midway] {$\rho$} (P); 
+
+	
+	\end{scope}
+
+
+%\tdplotsetcoord{P}{2}{90}{90}
+
+\tdplotsetrotatedcoords{90}{90}{90}
+
+
+			\filldraw[black] (0,2,0) circle (1pt); 
+			\draw[black] (0,2,0) -- node[below,midway] {$\rho$} (-3.6,2,0);
+
+
+
+
+\tdplotdrawarc[tdplot_rotated_coords, black]{(0,0,2)}{1.5}{125}{155}{anchor = 310}{$\theta$}
+
+\tdplotdrawarc[tdplot_rotated_coords, black]{(0,0,2)}{3.6}{0}{360}{}{}
+
+  
+\end{tikzpicture}
+
+
+
+
+\end{document}
+

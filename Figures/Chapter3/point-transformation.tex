@@ -1,0 +1,46 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+
+%3D
+\usepackage{tikz-3dplot}
+
+%Tikz Library
+\usetikzlibrary{angles, quotes, intersections}
+
+\begin{document}
+
+\tdplotsetmaincoords{70}{110}
+
+\pgfmathsetmacro{\rvec}{4} 
+\pgfmathsetmacro{\thetavec}{60}
+\pgfmathsetmacro{\phivec}{50}
+
+
+\begin{tikzpicture}[tdplot_main_coords]
+
+	\threeDAxis{4}{4}{4}
+	
+	\tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec} 
+	\filldraw (P) circle (1pt); 
+	
+	\draw[thin, color=black] (O) -- (P) node[anchor = -10] {$P(x,y,z)$};
+    \draw[thick, dotted, color=black] (P) -- (Pxy);	  
+	
+% Draw projection on xy plane and connecting lines
+    \draw[dashed] (Px) -- (Pxy);
+    \draw[dashed] (Py) -- (Pxy); 
+    
+
+% Point P'    
+	
+	\coordinate[shift={(0.5,2,.7)}] (P') at (P);
+	\filldraw (P') circle (1pt); 
+    	
+    \draw[color=black] (P) -- node[sloped, yshift=5pt, pos=0.45] {$\vec{v}$} (P') node[anchor = 180] {$P'(x',y',z')$};
+
+\end{tikzpicture}
+
+
+\end{document}
+

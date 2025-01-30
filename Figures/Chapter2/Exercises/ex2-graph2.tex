@@ -1,0 +1,38 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../tikz-preamble.tex}
+
+\begin{document}	
+	\begin{tikzpicture}
+
+		\drawGrid{2}{2}{-2}{-2}
+		
+    % Define the vertices
+    \coordinate (Aprime) at (0, 1);
+    \coordinate (Bprime) at (1, 1);
+    \coordinate (Gammaprime) at (0, -1);
+    \coordinate (Deltaprime) at (-1, -1);
+
+    % Draw the shape
+    \draw[thick] (Aprime) -- (Bprime) -- (Gammaprime) -- (Deltaprime) -- cycle;
+		
+	\filldraw (Aprime) circle (1.2pt);
+    \filldraw (Bprime) circle (1.2pt);
+    \filldraw (Gammaprime) circle (1.2pt);
+    \filldraw (Deltaprime) circle (1.2pt);         
+
+    % Draw the shape
+    \draw[thick] (Aprime) -- (Bprime) -- (Gammaprime) -- (Deltaprime) -- cycle;
+
+    % Label the vertices
+    \node[outer sep=1pt, anchor = 220] at (Aprime) {$A'$};
+    \node[outer sep=2pt, right] at (Bprime) {$B'$};
+    \node[outer sep=2pt, right] at (Gammaprime) {$\Gamma'$};
+    \node[left] at (Deltaprime) {$\Delta'$};	
+    
+\end{tikzpicture}
+
+\end{document}
+
+
+

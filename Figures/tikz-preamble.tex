@@ -5,13 +5,22 @@
 \usepackage{tikz}
 \usepackage{tkz-euclide}
 
-\usetikzlibrary{angles, quotes, intersections, arrows, arrows.meta, babel, backgrounds, decorations, calc, intersections, patterns, positioning, shapes.geometric, patterns, patterns.meta, hobby}
+\usetikzlibrary{3d, angles, quotes, intersections, arrows, arrows.meta, babel, backgrounds, decorations, calc, intersections, patterns, positioning, shapes.geometric, patterns, patterns.meta, hobby}
 
 \def\width{6}
 \def\hauteur{6}
 \def\N{100}
 
 \definecolor{bluegray}{rgb}{0.4, 0.6, 0.8}
+
+
+
+\newcommand{\threeDAxis}[3]{
+	\coordinate (O) at (0,0,0);
+	\draw[-latex] (0,0,0) -- (#1,0,0) node[anchor=north east]{$x$} coordinate (x);
+  	\draw[-latex]  (0,0,0) -- (0,#2,0) node[anchor=north west]{$y$} coordinate (y);
+  	\draw[-latex]  (0,0,0) -- (0,0,#3) node[anchor=south]{$z$} coordinate (z);	
+}
 
 
 \newcommand{\drawPoint}[3]{

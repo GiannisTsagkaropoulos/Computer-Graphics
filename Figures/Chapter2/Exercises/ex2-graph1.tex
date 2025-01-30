@@ -1,0 +1,38 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../tikz-preamble.tex}
+
+\begin{document}
+	
+	\begin{tikzpicture}
+	
+\drawGrid{2}{2}{-2}{-2}
+
+    % Define the vertices
+    \coordinate (A) at (0, {sqrt(2)});
+    \coordinate (B) at ({sqrt(2)}, 0);
+    \coordinate (Gamma) at (0, {-sqrt(2)});
+    \coordinate (Delta) at ({-sqrt(2)}, 0);
+    
+    \filldraw (A) circle (1.2pt);
+    \filldraw (B) circle (1.2pt);
+    \filldraw (Gamma) circle (1.2pt);
+    \filldraw (Delta) circle (1.2pt);         
+
+    % Draw the shape
+    \draw[thick] (A) -- (B) -- (Gamma) -- (Delta) -- cycle;
+
+    % Label the vertices
+    \node[outer sep=2pt, above] at (A) {$A$};
+    \node[outer sep=2pt, right] at (B) {$B$};
+    \node[outer sep=2pt, below] at (Gamma) {$\Gamma$};
+    \node[left] at (Delta) {$\Delta$};
+
+
+    
+\end{tikzpicture}
+
+\end{document}
+
+
+

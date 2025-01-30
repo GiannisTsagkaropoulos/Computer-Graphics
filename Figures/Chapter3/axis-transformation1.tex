@@ -1,0 +1,143 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+
+%3D
+\usepackage{tikz-3dplot}
+
+%Tikz Library
+\usetikzlibrary{angles, quotes, intersections}
+
+
+\newcommand{\threeDAxisCol}[4]{
+	\coordinate (O) at (0,0,0);
+	\draw[-latex,#4] (0,0,0) -- (#1,0,0) node[anchor=north east]{$x$} coordinate (x);
+  	\draw[-latex, #4]  (0,0,0) -- (0,#2,0) node[anchor=north west]{$y$} coordinate (y);
+  	\draw[-latex, #4]  (0,0,0) -- (0,0,#3) node[anchor=south]{$z$}; coordinate (z);	
+}
+
+\newcommand{\RightAngle}[6][6pt]{%
+        \draw[#6] ($#3!#1!#2$)
+        --($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $) node[anchor = 200] {#5}
+        --($#3!#1!#4$) ;
+        }
+
+
+
+\newcommand{\rotateRPY}[3]% roll, pitch, yaw
+{   \pgfmathsetmacro{\rollangle}{#1}
+    \pgfmathsetmacro{\pitchangle}{#2}
+    \pgfmathsetmacro{\yawangle}{#3}
+
+    % to what vector is the x unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newxx}{cos(\yawangle)*cos(\pitchangle)}
+    \pgfmathsetmacro{\newxy}{sin(\yawangle)*cos(\pitchangle)}
+    \pgfmathsetmacro{\newxz}{-sin(\pitchangle)}
+    \path (\newxx,\newxy,\newxz);
+    \pgfgetlastxy{\nxx}{\nxy};
+
+    % to what vector is the y unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newyx}{cos(\yawangle)*sin(\pitchangle)*sin(\rollangle)-sin(\yawangle)*cos(\rollangle)}
+    \pgfmathsetmacro{\newyy}{sin(\yawangle)*sin(\pitchangle)*sin(\rollangle)+ cos(\yawangle)*cos(\rollangle)}
+    \pgfmathsetmacro{\newyz}{cos(\pitchangle)*sin(\rollangle)}
+    \path (\newyx,\newyy,\newyz);
+    \pgfgetlastxy{\nyx}{\nyy};
+
+    % to what vector is the z unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newzx}{cos(\yawangle)*sin(\pitchangle)*cos(\rollangle)+ sin(\yawangle)*sin(\rollangle)}
+    \pgfmathsetmacro{\newzy}{sin(\yawangle)*sin(\pitchangle)*cos(\rollangle)-cos(\yawangle)*sin(\rollangle)}
+    \pgfmathsetmacro{\newzz}{cos(\pitchangle)*cos(\rollangle)}
+    \path (\newzx,\newzy,\newzz);
+    \pgfgetlastxy{\nzx}{\nzy};
+}
+
+\tikzset{RPY/.style={x={(\nxx,\nxy)},y={(\nyx,\nyy)},z={(\nzx,\nzy)}}}
+
+\begin{document}
+
+\pgfmathsetmacro{\rvec}{3.2} 
+\pgfmathsetmacro{\thetavec}{53.13}
+\pgfmathsetmacro{\phivec}{51.32}
+
+
+\tdplotsetmaincoords{25}{115}
+
+\begin{tikzpicture}[tdplot_main_coords,]
+
+	\threeDAxisCol{5}{5}{5}{gray}
+	\RightAngle{(y)}{(O)}{(x)}{}{}{gray}; 
+		
+	\tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec} % (1.5, 2, 2)
+
+	\filldraw (P) circle (1pt);
+	
+	\draw[gray] (O) -- (P);
+	
+% Projections
+	\draw[dashed, gray] (P) -- (Pxy);
+	\draw[dashed, gray] (Pxy) -- (Py) node[anchor=250] {$y_0$};	
+	\draw[dashed, gray] (Pxy) -- (Px) node[anchor=20] {$x_0$};				
+	\draw[dashed, gray] (P) -- (Pz) node[anchor=0] {$z_0$};				
+		
+		
+		
+%	\pgfmathsetmacro{\rS}{5.385} % Radius
+%    \pgfmathsetmacro{\thetaS}{56.15} % Polar angle (theta)
+%    \pgfmathsetmacro{\phiS}{63.43} % Azimuthal angle (phi)
+%    \tdplotsetcoord{Shift}{\rS}{\thetaS}{\phiS}
+	
+	\pgfmathsetmacro{\Sx}{-2} % Radius
+    \pgfmathsetmacro{\Sy}{4} % Polar angle (theta)
+    \pgfmathsetmacro{\Sz}{3} % 
+    
+	\coordinate (Shift) at (\Sx, \Sy,\Sz);	
+	\tdplotsetrotatedcoordsorigin{(Shift)} % (2,4,3) 
+
+	
+%	\tdplotsetrotatedcoordsorigin{(Shift)}
+	  		  		
+	\draw[tdplot_rotated_coords] (-3,0,0) --(0,0,0) coordinate (O');  	
+	\draw[tdplot_rotated_coords] (0,-3,0) --(0,0,0) ;  		
+	\draw[tdplot_rotated_coords] (0,0,-2) --(0,0,0) ;  			
+		  		
+	\draw [color=black, tdplot_rotated_coords, -latex] (O') 
+	-- (6,0,0) node [anchor= north west]{$x'$} coordinate (x');
+	\draw [color=black, tdplot_rotated_coords, -latex] (O')
+	-- (0,5,0) node [anchor= north west] {$y'$} coordinate (y');
+	\draw [color=black, tdplot_rotated_coords, -latex] (0,0,0)
+	-- (0,0,5) node [anchor=south] {$z'$} coordinate (z');
+	
+	
+
+\draw [tdplot_rotated_coords] (O')--(3.6,0,0) coordinate (Sx);
+\draw [tdplot_rotated_coords] (O')--(0,-2.01,0) coordinate (Sy);
+\draw [tdplot_rotated_coords] (O')--(0,0,-1.1) coordinate (Sz);	
+
+
+\draw[orange] (O') -- (P); 
+\draw [color=orange, dashed] (P)--($(P)+(-3.6,0,0)$) coordinate (Pyy);	
+\draw [color=orange, dashed] (P)--($(P)+(0,2,0)$) coordinate (Pxx);
+\draw [color=orange, dashed] (Pxx)--(Sx) node[anchor=220] {$x_0^{'}$};
+\draw [color=orange, dashed] (Pyy)--(Sy) node[anchor=260] {$y_0^{'}$};	
+\draw [color=orange, dashed] (Sz) node[anchor=190] {$z_0^{'}$} -- (Pxx);	
+\draw [color=orange, dashed] (Sz)--(Pyy);	
+\draw [color=orange, dashed] (Sz)--(P);	
+
+\filldraw[orange] (Sx) circle (1pt);
+\filldraw[orange] (Sy) circle (1pt);
+\filldraw[orange] (Sz) circle (1pt);
+
+
+
+\draw[gray] (P) coordinate (Pval) to[out=160, in=0] (-1,-1,4) circle (0.4pt) node[anchor=-90, outer sep=5pt,gray] {$P(x_0, y_0,z_0)$};
+			
+\draw[] (P) coordinate (Pval) to[out=340, in=190] (3,5,1) circle (0.4pt) node[anchor=180, outer sep=5pt]  {$P^{'}(x_0^{'}, y_0^{'},z_0^{'})$};
+
+	\RightAngle{(y')}{(O')}{(x')}{}{black}; 
+	\RightAngle{(z')}{(O')}{(y')}{}{black}; 	
+
+\end{tikzpicture}
+
+
+\end{document}
+

@@ -1,0 +1,122 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+
+%3D
+\usepackage{tikz-3dplot}
+\usetikzlibrary{3d}
+
+%Tikz Library
+\usetikzlibrary{angles, quotes, intersections}
+
+
+\newcommand{\RightAngle}[5][6pt]{%
+        \draw[] ($#3!#1!#2$)
+        --($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $) node[anchor = 200] {#5}
+        --($#3!#1!#4$) ;
+        }
+
+
+\newcommand{\rotateRPY}[3]% roll, pitch, yaw
+{   \pgfmathsetmacro{\rollangle}{#1}
+    \pgfmathsetmacro{\pitchangle}{#2}
+    \pgfmathsetmacro{\yawangle}{#3}
+
+    % to what vector is the x unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newxx}{cos(\yawangle)*cos(\pitchangle)}
+    \pgfmathsetmacro{\newxy}{sin(\yawangle)*cos(\pitchangle)}
+    \pgfmathsetmacro{\newxz}{-sin(\pitchangle)}
+    \path (\newxx,\newxy,\newxz);
+    \pgfgetlastxy{\nxx}{\nxy};
+
+    % to what vector is the y unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newyx}{cos(\yawangle)*sin(\pitchangle)*sin(\rollangle)-sin(\yawangle)*cos(\rollangle)}
+    \pgfmathsetmacro{\newyy}{sin(\yawangle)*sin(\pitchangle)*sin(\rollangle)+ cos(\yawangle)*cos(\rollangle)}
+    \pgfmathsetmacro{\newyz}{cos(\pitchangle)*sin(\rollangle)}
+    \path (\newyx,\newyy,\newyz);
+    \pgfgetlastxy{\nyx}{\nyy};
+
+    % to what vector is the z unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newzx}{cos(\yawangle)*sin(\pitchangle)*cos(\rollangle)+ sin(\yawangle)*sin(\rollangle)}
+    \pgfmathsetmacro{\newzy}{sin(\yawangle)*sin(\pitchangle)*cos(\rollangle)-cos(\yawangle)*sin(\rollangle)}
+    \pgfmathsetmacro{\newzz}{cos(\pitchangle)*cos(\rollangle)}
+    \path (\newzx,\newzy,\newzz);
+    \pgfgetlastxy{\nzx}{\nzy};
+}
+
+\tikzset{RPY/.style={x={(\nxx,\nxy)},y={(\nyx,\nyy)},z={(\nzx,\nzy)}}}
+
+
+\begin{document}
+
+
+
+\pgfmathsetmacro{\rvec}{4} 
+\pgfmathsetmacro{\thetavec}{42}
+\pgfmathsetmacro{\phivec}{42}
+\pgfmathsetmacro{\phivecnew}{\phivec + 25}
+
+
+\tdplotsetmaincoords{75}{110}
+
+\begin{tikzpicture}[tdplot_main_coords,x={(-0.5cm,-0.5cm)}, y={(1cm,0cm)}, z={(0cm,1cm)}]
+    
+\newcommand\drawface{\draw[fill=gray!10,double] (-1,-1) rectangle (1,1)}
+
+% Axis
+	\threeDAxis{4}{5}{4}
+	
+	\RightAngle{(x)}{(O)}{(y)}{}{black}; 
+	\RightAngle{(z)}{(O)}{(y)}{}{black}; 
+
+% 1st Pyramid 
+
+%% Coordinates
+
+%%\tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+\coordinate (P) at (3,3.23,3.5);
+\coordinate (Px) at (2,0,0);
+
+\coordinate (Q) at ($(P)+(-.1,1,0.4)$);
+\coordinate (R) at ($(P)+(-1.3,-1,0.5)$);
+\coordinate (S) at ($(P)+(-1.2,0.5,2)$);
+%
+%
+\filldraw (P) node[anchor = 80] {$C$} circle (1pt); 
+\filldraw (Q) node[anchor = 150] {$D$} circle (1pt); 
+\filldraw (R) node[anchor = -60] {$B$} circle (1pt); 
+\filldraw (S) node[above] {$A$} circle (1pt); 
+
+\draw[-latex] (O) -- (1,0,0) coordinate (i) node[anchor=-80] {$i$};
+\draw[-latex] (O) -- (0,1,0) coordinate (j) node[anchor=270] {$j$};
+\draw[-latex] (O) -- (0,0,1) coordinate (k) node[anchor=10] {$k$};
+
+%
+%
+%
+%%% Faces of Pyramid
+%
+\draw[thin, fill=blue, fill opacity=0.5] (P) --(Q) -- (S) -- cycle;
+\draw[thin] (P) -- (R);
+\draw[ultra thin, fill=blue, fill opacity=0.1] (P) -- (R) -- (Q) -- cycle;
+\draw[ultra thin, fill=orange, fill opacity=0.5] (P) -- (R) -- (S) -- cycle;
+\draw[ultra thin, fill=blue, fill opacity=0.1] (Q) -- (R) -- (S) -- cycle;
+
+
+	
+\draw[-latex] (0,1.5,0) -- node[midway, anchor = 180] {$\vec{v}=a\vec{i}+b\vec{j}+c\vec{k}$} (0,1.5,0.7);
+
+\draw (0,.5,0.7) -- (0,4.5,0.7) node[anchor=180] {$R$};
+
+   
+
+
+
+  
+\end{tikzpicture}
+
+
+
+
+\end{document}
+

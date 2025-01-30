@@ -1,0 +1,66 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+
+%3D
+\usepackage{tikz-3dplot}
+
+
+%Tikz Library
+\usetikzlibrary{angles, quotes, intersections}
+
+\begin{document}
+
+\tdplotsetmaincoords{70}{110}
+
+\pgfmathsetmacro{\rvec}{4} 
+\pgfmathsetmacro{\thetavec}{90}
+\pgfmathsetmacro{\phivec}{30}
+\pgfmathsetmacro{\phivecnew}{\phivec + 25}
+
+
+\begin{tikzpicture}[tdplot_main_coords, my angle/.style = {draw, , fill=green!20!blue, fill opacity = 0.4,
+			       text opacity=1,
+                   angle radius=0mm, 
+                   angle eccentricity=1.5, 
+                   font=\footnotesize}]
+
+	\threeDAxis{4}{4}{4}
+	
+	\tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec} 
+	\filldraw (P) circle (1pt); 
+	
+	
+	\tdplotsetcoord{P'}{\rvec}{\thetavec}{\phivecnew} 
+	\filldraw (P') circle (1pt); 
+
+	
+	\draw[thin, color=black] (O) -- (P) node[anchor = 50] {$P(x,y, 0)$};
+    \draw[thick, dotted, color=black] (P) -- (Pxy);	  
+    
+% Draw projection on xy plane and connecting lines
+    \draw[dashed, blue] (Px) -- (Pxy);
+    \draw[dashed, blue] (Py) -- (Pxy); 
+    
+    
+    \draw[thin, color=black] (O) -- (P') node[anchor = 170] {$P'(x',y',0)$};
+
+	\draw[dashed, orange] (P'x) -- (P'xy);
+    \draw[dashed, orange] (P'y) -- (P'xy); 
+
+
+\path[fill=blue,fill opacity=0.4] (0,0,0) -- plot[variable=\t, domain=36:60] (xyz spherical cs:radius=.6,longitude=\t,latitude=0) -- cycle; 
+
+
+    
+\coordinate (Parc) at ($(O) + 0.1*(P)$);
+\coordinate (P'arc) at ($(O) + 0.1*(P')$);
+
+\tdplotdrawarc[]{(O)}{.6}{\phivec}{\phivecnew}{anchor = 128, inner sep= 2pt, outer sep = 0pt}{$\theta$};
+
+
+\end{tikzpicture}
+
+
+\end{document}
+
