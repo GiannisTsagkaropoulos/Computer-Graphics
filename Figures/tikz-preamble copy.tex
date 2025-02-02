@@ -38,6 +38,36 @@
   	\draw[-latex]  (0,0,0) -- (0,0,#3) node[anchor=south]{$z$} coordinate (z);	
 }
 
+\newcommand{\drawGridNoNums}[4]{
+	\draw[very thin, dotted] ($(#3, #4)$) grid ($(#1,#2)$);
+%Draw axes
+    \draw[-latex] ($(#3,0)$) -- ($(#1,0)$) node[right] {$x$};
+    
+    \draw[-latex] ($(0,#4)$) -- ($(0,#2)$) node[above] {$y$};    
+    
+    \coordinate (x) at (#1,0);
+    \coordinate (y) at (0,#2);
+%Draw points in axes    
+}
+
+
+\newcommand{\drawPosAxis}[2]{
+%    \drawAxis{x}{y}{x'}{y'}
+ \node at (-1.9ex,-1.9ex) {0};
+\foreach \x in {1,...,#1}
+	{
+		\node at (\x,-2ex) {\x};	
+		\draw[thin] (\x, 0) -- (\x, -0.1); % Add a small dash	
+	}
+		\foreach \y in {1,...,#2}
+	{
+		\node at (-2ex,\y) {\y};
+		\draw[thin] (0, \y) -- (-0.1, \y);			
+	}
+
+    \draw[-latex] (0,0) -- (#1, 0) coordinate(x) node[right] {$x$}; % Draw x-axis
+    \draw[-latex] (0,0) -- (0, #2) coordinate(y) node[above] {$y$}; % Draw y-axis
+}
 
 \newcommand{\drawPoint}[3]{
 	\draw[ultra thin, dashed] (0,#2) -- (#1,#2);
@@ -148,23 +178,7 @@
     \draw[-latex] (0, #4) -- (0, #2) coordinate(y) node[above] {$y$}; % Draw y-axis
 }
 
-\newcommand{\drawPosAxis}[2]{
-%    \drawAxis{x}{y}{x'}{y'}
- \node at (-1.9ex,-1.9ex) {0};
-\foreach \x in {1,...,#1}
-	{
-		\node at (\x,-2ex) {\x};	
-		\draw[thin] (\x, 0) -- (\x, -0.1); % Add a small dash	
-	}
-		\foreach \y in {1,...,#2}
-	{
-		\node at (-2ex,\y) {\y};
-		\draw[thin] (0, \y) -- (-0.1, \y);			
-	}
 
-    \draw[-latex] (0,0) -- (#1, 0) coordinate(x) node[right] {$x$}; % Draw x-axis
-    \draw[-latex] (0,0) -- (0, #2) coordinate(y) node[above] {$y$}; % Draw y-axis
-}
 
 \newcommand{\drawAxisNoNums}[4]{
 %    \drawAxis{x}{y}{x'}{y'}
@@ -189,19 +203,16 @@
 	\filldraw[black] (#1, #2) circle (1pt) ;
    	\draw[fill=#3, opacity=#4] ($(#1,#2) - (0.5,0.5)$) rectangle ($(#1,#2) + (0.5,0.5)$) ;   
 }
-%
-%\tikzset{
-%	transition/.style = {
-%		semithick,
-%		->
-%	},
-%	every path/.style = {
-%		transition, 
-%		->, 
-%		every node/.style={
-%			font=\scriptsize, 
-%			align=center
-%		}
-%	}
-%}
+
+
+\newcommand{\drawRectangleColB}[4]{
+	\filldraw[black] (#1, #2) circle (0.5pt) ;
+   	\draw[fill=#3, opacity=#4] ($(#1,#2) - (0.5,0.5)$) rectangle ($(#1,#2) + (0.5,0.5)$) ;   
+}
+
+\def\centerarc[#1](#2)(#3:#4:#5){ \draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5); }
+
+
+   
+
 

@@ -1,0 +1,213 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../tikz-preamble.tex}
+
+%3D
+\usepackage{tikz-3dplot}
+
+
+%Tikz Library
+\usetikzlibrary{angles, quotes, intersections}
+
+
+\newcommand{\RightAngle}[5][6pt]{%
+        \draw[] ($#3!#1!#2$)
+        --($ #3!2!($($#3!#1!#2$)!.5!($#3!#1!#4$)$) $) node[anchor = 200] {#5}
+        --($#3!#1!#4$) ;
+        }
+        
+\newcommand{\rotateRPY}[3]% roll, pitch, yaw
+{   \pgfmathsetmacro{\rollangle}{#1}
+    \pgfmathsetmacro{\pitchangle}{#2}
+    \pgfmathsetmacro{\yawangle}{#3}
+
+    % to what vector is the x unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newxx}{cos(\yawangle)*cos(\pitchangle)}
+    \pgfmathsetmacro{\newxy}{sin(\yawangle)*cos(\pitchangle)}
+    \pgfmathsetmacro{\newxz}{-sin(\pitchangle)}
+    \path (\newxx,\newxy,\newxz);
+    \pgfgetlastxy{\nxx}{\nxy};
+
+    % to what vector is the y unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newyx}{cos(\yawangle)*sin(\pitchangle)*sin(\rollangle)-sin(\yawangle)*cos(\rollangle)}
+    \pgfmathsetmacro{\newyy}{sin(\yawangle)*sin(\pitchangle)*sin(\rollangle)+ cos(\yawangle)*cos(\rollangle)}
+    \pgfmathsetmacro{\newyz}{cos(\pitchangle)*sin(\rollangle)}
+    \path (\newyx,\newyy,\newyz);
+    \pgfgetlastxy{\nyx}{\nyy};
+
+    % to what vector is the z unit vector transformed, and which 2D vector is this?
+    \pgfmathsetmacro{\newzx}{cos(\yawangle)*sin(\pitchangle)*cos(\rollangle)+ sin(\yawangle)*sin(\rollangle)}
+    \pgfmathsetmacro{\newzy}{sin(\yawangle)*sin(\pitchangle)*cos(\rollangle)-cos(\yawangle)*sin(\rollangle)}
+    \pgfmathsetmacro{\newzz}{cos(\pitchangle)*cos(\rollangle)}
+    \path (\newzx,\newzy,\newzz);
+    \pgfgetlastxy{\nzx}{\nzy};
+}
+
+\tikzset{RPY/.style={x={(\nxx,\nxy)},y={(\nyx,\nyy)},z={(\nzx,\nzy)}}}
+
+
+\begin{document}
+
+
+
+\tdplotsetmaincoords{50}{155}
+
+\begin{tikzpicture}[tdplot_main_coords]
+
+
+\pgfmathsetmacro{\x}{5} 
+\pgfmathsetmacro{\y}{5}
+\pgfmathsetmacro{\z}{6}
+
+
+%% Coordinates
+
+	\coordinate (O) at (0,0,0);
+	
+	\coordinate (x) at (\x,0,0);
+	\coordinate (y) at (0,\y,0);
+	\coordinate (z) at (0,0,\z);
+	
+	\coordinate (x') at (-\x,0,0);
+	\coordinate (y') at (0,-\y,0);
+	\coordinate (z') at (0,0,-\z);
+	
+	\PointCoordinatesThreeD{3}{3.5}{2}{P}
+	
+	\coordinate (Pproj) at ($(Px) + (0, 0, 4.03)$);
+	\coordinate (Pproj') at ($(0, 0, 4.03)$);
+	\coordinate (Pproj'') at ($(0, 0, 5.024)$);	
+
+
+% Filldraw Points
+
+	\filldraw[opacity=0.4] (P)  circle (1pt);
+	
+	\filldraw (Px) circle (1pt);
+	\filldraw (Py) circle (1pt);
+
+	
+	\filldraw (Pproj) circle (1pt);
+	\filldraw (Pproj') circle (1pt);
+
+
+% Nodes
+	
+	\node[anchor=north east] at (x) {$x$};
+	\node[anchor=north west] at (y) {$y$};
+	\node[anchor=south] at (z) {$z$};
+	
+	\node[anchor = 160] at (P) {\textcolor{gray}{$P(a,b,c)$}};
+	
+	\node[anchor=-30] at (Px)  {$a$};
+	\node[anchor=220] at (Py) {$b$};
+	
+	\node[anchor=0] at (Pproj) {$P^{'}(a, 0 ,\sqrt{b^2+c^2})$};
+	\node[anchor=190] at (Pproj') {$\sqrt{b^2+c^2}$};	
+
+% Axis
+	
+	% xyz
+	
+	\draw[-latex] (O) -- (x);
+	\draw[-latex] (O) -- (y);
+	\draw[-latex] (O) -- (z);
+	
+			
+ 	\RightAngle{(x)}{(O)}{(y)}{}{}
+%	\RightAngle{(y')}{(O)}{(z)}{}{}
+	
+	
+	% % x'y'z'
+	
+	\draw[-, opacity=0.4] (O) -- ($0.2*(x')$);
+	\draw[-, opacity=0.4] (O) -- ($0.2*(y')$);		
+		
+				
+% XY plane
+	\draw[ultra thin] (P) -- (Pxy) -- (Px);
+	\draw[ultra thin] (P) -- (Pxy) -- (Py);
+
+% XZ plane
+	\draw[dashed, ultra thin] (Pproj) -- (Pproj');
+
+% YZ plane
+	\draw[dashed, ultra thin] (P) -- (Pyz) -- (Py);
+
+% Radius
+
+	\draw[thin, black, opacity=0.4] (O) -- node[anchor=10,midway] {\textcolor{gray}{$\rho$}} (P); 
+	
+	\draw[green!10!purple, thick] (O) -- node[midway, anchor=30] {$\rho$} (Pproj) ;	
+
+	\draw[green!10!purple, thick] (O) -- node[midway, anchor=180] {$\rho$} (Pproj'') ;	
+% Orange
+	
+	\draw[orange, thin, opacity=0.4] (Px) -- (P);
+	\draw[orange, thick] (Px) -- (Pproj);
+
+
+% 
+	\draw[green!30!blue, thin, opacity = 0.4] (O) -- (Pyz);
+
+%	\draw[green!30!blue, thick] (O) -- (Pproj');	
+
+ 
+
+
+%
+\tdplotsetrotatedcoords{0}{90}{0}
+%	
+	
+	
+% green!30!blue Circle	
+	
+	\tdplotdrawarc[tdplot_rotated_coords, green!30!blue, dotted, -latex]{(0,0,0)}{4.03}{120}{180}{anchor = 310}{}
+	
+
+% Theta 1
+
+\tdplotdrawarc[tdplot_rotated_coords, -latex, black]{(0,0,0)}{0.6}{120}{180}{anchor=230}{$\theta_1^{'}$} 
+
+\path[tdplot_rotated_coords,fill=green!30!blue,fill opacity=0.4] (0,0,0) -- plot[variable=\t, domain=-30:-90] (xyz spherical cs:radius=0.6,longitude=\t,latitude=0) -- cycle; 
+	
+
+
+%	
+\coordinate (Shift) at (Px);
+\tdplotsetrotatedcoordsorigin{(Shift)}
+%	
+
+	
+% Orange Circle	
+	
+\tdplotdrawarc[tdplot_rotated_coords, orange, dotted, -latex]{(0,0,0)}{4.03}{120}{180}{anchor = 310}{}
+ 
+ 
+%\tdplotdrawarc[tdplot_rotated_coords, orange, dashed]{(0,0,0)}{4.03}{180}{313}{anchor = 310}{}
+
+%\tdplotdrawarc[tdplot_rotated_coords, orange, dashed]{(0,0,0)}{4.03}{316}{480}{anchor = 310}{}
+
+
+% Theta 1'
+
+	\tdplotdrawarc[tdplot_rotated_coords, -latex, black]{(0,0,0)}{0.6}{120}{180}{anchor=230}{$\theta_1$} 
+
+\path[tdplot_rotated_coords,fill=orange,fill opacity=0.4] (0,0,0) -- plot[variable=\t, domain=-30:-90] (xyz spherical cs:radius=0.6,longitude=\t,latitude=0) -- cycle; 
+
+
+\tdplotsetrotatedcoords{270}{90}{0}
+
+\tdplotsetrotatedcoordsorigin{(O)}
+
+\tdplotdrawarc[tdplot_rotated_coords, -latex, black]{(0,0,0)}{0.6}{144.5}{180}{anchor=280}{$\theta_2$} 
+
+\path[tdplot_rotated_coords,fill=green!10!purple,fill opacity=0.4] (0,0,0) -- plot[variable=\t, domain=-54:-90] (xyz spherical cs:radius=0.6,longitude=\t,latitude=0) -- cycle; 
+  
+\end{tikzpicture}
+
+
+
+
+\end{document}
+
