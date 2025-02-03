@@ -1,0 +1,32 @@
+\begin{example}
+	Να υπολογιστεί ο πίνακας μετασχηματισμού \( T \) για την περίπτωση στροφής γύρω από τον άξονα \( x \) κατά γωνία \( \theta _x \) και στη συνέχεια στροφή ως προς \( y \) κατά γωνία \( \theta _y \).
+\end{example}
+
+\begin{solution}
+	Ο μετασχηματισμός προκύπτει διαδοχικά. Αρχικά συμβαίνει στροφή γύρω από τον άξονα \( x \) κατά γωνία \( \theta _x \) και έπειτα η στροφή ως προς τον άξονα \( y \) κατά γωνία \( \theta  _y \). Θα εκμεταλλευτούμε τη διαδικάσια σύνθεσης των παραπάνω μετασχηματισμών. Αναλυτικότερα: 
+\begin{align*}
+	T &= R_{\theta _y, y}  \circ R_{\theta _x, x} =
+		\begin{bmatrix}
+		\cos \theta_y & 0 & \sin \theta_y & 0 \\
+		0 & 1 & 0 & 0 \\
+		-\sin \theta_y & 0 & \cos \theta_y & 0 \\
+		0 & 0 & 0 & 1
+		\end{bmatrix}
+	\cdot	
+		\begin{bmatrix}
+		1 & 0 & 0 & 0 \\
+		0 & \cos \theta_x & -\sin \theta_x & 0 \\
+		0 & \sin \theta_x & \cos \theta_x & 0 \\
+		0 & 0 & 0 & 1
+		\end{bmatrix}
+	= \\ 
+	&=
+		\begin{bmatrix}
+		\cos \theta_y & \sin \theta_y \sin \theta_x & \sin \theta_y \cos \theta_x & 0 \\
+		0 & \cos \theta_x & -\sin \theta_x & 0 \\
+		-\sin \theta_y & \cos \theta_y \sin \theta_x & \cos \theta_y \cos \theta_x & 0 \\
+		0 & 0 & 0 & 1
+		\end{bmatrix}
+\end{align*}
+
+\end{solution}

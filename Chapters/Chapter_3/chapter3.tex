@@ -1,3 +1,5 @@
+% Page 71 start
+
 \chapter{Πίνακες μετασχηματισμών στο χώρο τριών διαστάσεων}
 
 \section{Γεωμετρικοί μετασχηματισμοί}
@@ -13,7 +15,7 @@
 
 
 
-Έστω \( V = (t_x, t_y, t_z) \) τότε \( P' = T_v(P) \) με \( x' = x + t_x \), \( y' = y + t_y \), \( z' = z + t_z \). Το σημείο \((x, y, z)\) σε ομογενείς συντεταγμένες γράφεται:
+Έστω \( v = (t_x, t_y, t_z) \) τότε \( P' = T_v(P) \) με \( x' = x + t_x \), \( y' = y + t_y \), \( z' = z + t_z \). Το σημείο \((x, y, z)\) σε ομογενείς συντεταγμένες γράφεται:
 
 \[
 \begin{bmatrix}
@@ -36,28 +38,16 @@ T_v =
 \end{bmatrix}
 \]
 
-\subsubsection*{5.1.2 Μετασχηματισμός κλίμακας}
+\subsubsection{Μετασχηματισμός κλίμακας}
 
-\( P' = S_{S_x, S_y, S_z}(P) \) με \( x' = s_x x \), \( y' = s_y y \) και \( z' = s_z z \)
+\( P' = S_{S_x, S_y, S_z} (P) \) με \( x' = S_x \cdot x \), \( y' = S_y\cdot y \) και \( z' = S_z \cdot z \)
 
 Ο πίνακας μετασχηματισμού είναι:
 
+% Page 72 start
+
 \[
 S_{S_x, S_y, S_z} = 
-\begin{bmatrix}
-s_x & 0 & 0 & 0 \\
-0 & s_y & 0 & 0 \\
-0 & 0 & s_z & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\]
-
-
-%%%%%%%%%%2
-
-
-\[
-S_{S_x,S_y,S_z} = 
 \begin{bmatrix}
 S_x & 0 & 0 & 0 \\
 0 & S_y & 0 & 0 \\
@@ -66,14 +56,15 @@ S_x & 0 & 0 & 0 \\
 \end{bmatrix}
 \]
 
+
 \section{Στροφή}
 
 Στον χώρο τριών διαστάσεων για τη στροφή ενός αντικειμένου απαιτούνται δύο παράμετροι:
 
-\begin{itemize}
-    \item α) η γωνία στροφής $\theta$ και
-    \item β) ο άξονας περιστροφής του αντικειμένου.
-\end{itemize}
+\begin{enumerate}
+    \item[α)] \underline{η γωνία στροφής $\theta$} και
+    \item[β)] \underline{ο άξονας περιστροφής του αντικειμένου.}
+\end{enumerate}
 
 Οι "κανονικές" στροφές ορίζονται στον χώρο σαν στροφές γύρω από τους θετικούς άξονες $x$, $y$ και $z$.
 
@@ -92,40 +83,42 @@ $P (x, y, 0)$ \\
 
 \begin{figure}[h]
 \centering
-\caption{Σχήμα 5.2}
+\caption{Στροφή σημείου στο επίπεδο $xOy$}
 \end{figure}
 
 Με βάση το κεφάλαιο 3 έχουμε:
 
-\begin{itemize}
-    \item α) Στροφή γύρω από τον άξονα $z$.
+\begin{enumerate}
+    \item[α)] Στροφή γύρω από τον άξονα $z$.
 
     \[
     P' = R_{\theta,z}(P)
     \]
     με
-    \[
-    x' = x \cos \theta - y \sin \theta, \quad y' = x \sin \theta + y \cos \theta, \quad z' = z
-    \]
+    \begin{align*}
+	    x' &= x \cos \theta - y \sin \theta \\
+	    y' &= x \sin \theta + y \cos \theta \\ 
+	    z' &= z
+    \end{align*}
     ο αντίστοιχος μετασχηματισμός είναι:
     \[
     R_{\theta,z} = 
     \begin{bmatrix}
-    \cos \theta & -\sin \theta & 0 & 0 \\
-    \sin \theta & \cos \theta & 0 & 0 \\
+    \cos{\theta} & -\sin{\theta} & 0 & 0 \\
+    \sin{\theta} & \cos{\theta} & 0 & 0 \\
     0 & 0 & 1 & 0 \\
     0 & 0 & 0 & 1
     \end{bmatrix}
     \]
 
-    \item β) Στροφή γύρω από τον άξονα $y$.
+    \item[β)]Στροφή γύρω από τον άξονα $y$.
 
     \[
     P' = R_{\theta,y}(P)
     \]
     με
     \[
-    x' = x \cos \theta + z \sin \theta, \quad y' = y, \quad z' = -x \sin \theta + z \cos \theta
+    x' = x \cos{\theta} + z \sin{\theta}, \quad y' = y, \quad z' = -x \sin{\theta} + z \cos{\theta}
     \]
     και αντίστοιχο μετασχηματισμό:
     \[
@@ -137,17 +130,43 @@ $P (x, y, 0)$ \\
     0 & 0 & 0 & 1
     \end{bmatrix}
     \]
-\end{itemize}
+\end{enumerate}
 
+% Page Pyramids start
+Το παρακάτω σχήμα μας δείχνει τη στροφή μιας πυραμίδας ως προς τους άξονες $x,y$ και $z$.
+
+\begin{figure}[hbt]
+  \begin{center}
+	\includegraphics[scale=1]{Chapter3/pyramid-x-turn.pdf}
+  \end{center}
+  \caption{Στροφή ως προς άξονα $x$}
+\end{figure}
+
+
+\begin{figure}[hbt]
+  \begin{center}
+	\includegraphics[scale=1]{Chapter3/pyramid-y-turn.pdf}
+  \end{center}
+  \caption{Στροφή ως προς άξονα $y$}
+\end{figure}
+
+\begin{figure}[hbt]
+  \begin{center}
+	\includegraphics[scale=1]{Chapter3/pyramid-z-turn.pdf}
+  \end{center}
+  \caption{Στροφή ως προς άξονα $z$}
+\end{figure}
+
+% Page 73 start
 
 %%%%%%%%%%3 
 
 \[
 R_{\theta, y} = 
 \begin{bmatrix}
-\cos \theta & 0 & \sin \theta & 0 \\
+\cos{\theta} & 0 & \sin{\theta} & 0 \\
 0 & 1 & 0 & 0 \\
--\sin \theta & 0 & \cos \theta & 0 \\
+-\sin{\theta} & 0 & \cos{\theta} & 0 \\
 0 & 0 & 0 & 1
 \end{bmatrix}
 \]
@@ -159,7 +178,7 @@ P' = R_{\theta, x}(P)
 \]
 με
 \[
-x' = x, \quad y' = y \cos \theta - z \sin \theta, \quad z' = y \sin \theta + z \cos \theta
+x' = x, \quad y' = y \cos{\theta} - z \sin{\theta}, \quad z' = y \sin{\theta} + z \cos{\theta}
 \]
 και:
 \[
@@ -207,171 +226,86 @@ M_{y, z} =
 \]
 
 
-%%%%%%%%%%4
+% Page 74 start
 
-\subsection*{Αντίστροφοι μετασχηματισμοί}
+\subsection{Αντίστροφοι μετασχηματισμοί}
 
 Για τους αντίστροφους μετασχηματισμούς ισχύει:
 
-\[
-T^{-1}_{V} = T_{-V}, \quad R^{-1}_{\theta} = R_{-\theta}, \quad S^{-1}_{S_X,S_Y,S_Z} = S_{\frac{1}{S_X}, \frac{1}{S_Y}, \frac{1}{S_Z}}
-\]
+\begin{align*}
+	T^{-1}_{v} &= T_{-v}\\
+	R^{-1}_{\theta} &= R_{-\theta}\\
+	S^{-1}_{S_x,S_y,S_z} &= S_{\frac{1}{S_x}, \frac{1}{S_y}, \frac{1}{S_z}}
+\end{align*}
 
 \subsection{Μετασχηματισμοί αξόνων συντεταγμένων}
 
-\begin{figure}[h]
-\centering
-\caption{Σχήμα 5.3}
+\begin{figure}[hbt]
+  \begin{center}
+	\includegraphics[scale=1]{Chapter3/axis-transformation1.pdf}
+  \end{center}
+  \caption{Παράλληλη μεταφοράς των αξόνων συντεταγμένων κατά διάνυσμα \( v = (t_x, t_y, t_z) \)}
 \end{figure}
 
-Στην περίπτωση της παράλληλης μεταφοράς των αξόνων συντεταγμένων κατά διάνυσμα \( v = (t_x, t_y, t_z) \) έχουμε για τις νέες συντεταγμένες \( (x', y', z') \) του σημείου \( P(x, y, z) \):
+\begin{figure}[hbt]
+  \begin{center}
+	\includegraphics[scale=1]{Chapter3/axis-transformation2.pdf}
+  \end{center}
+  \caption{Κάτοψη: Παράλληλη μεταφοράς των αξόνων συντεταγμένων κατά διάνυσμα \( v = (t_x, t_y, t_z) \)}
+\end{figure}
 
-\[
-x' = x - t_x, \quad y' = y - t_y, \quad z' = z - t_z
-\]
+Στην περίπτωση της παράλληλης μεταφοράς των αξόνων συντεταγμένων κατά διάνυσμα \( v = (t_x, t_y, t_z) \) έχουμε για τις νέες συντεταγμένες \( (x', y', z') \) του σημείου \( P(x, y, z) \) θα ισχύει:
 
-Άρα ο μετασχηματισμός \( T_V \) θα είναι ο αντίστοιχος του \( T_{-V} \) γεωμετρικού μετασχηματισμού.
+\begin{align*}
+	x' &= x - t_x \\ 
+	y' &= y - t_y \\
+	z' &= z - t_z
+\end{align*}
+
+Άρα ο μετασχηματισμός \( \overline{T_v} \) θα είναι ο αντίστοιχος του \( T_{-v} \) γεωμετρικού μετασχηματισμού.
 
 Αντί των πινάκων συντεταγμένων θα δώσουμε εδώ συνοπτικά τις αντιστοιχίες μεταξύ μετασχηματισμών αξόνων συντεταγμένων και γεωμετρικών.
 
 \begin{itemize}
     \item Μεταφορά:  
-    \( T_V \leftarrow T_{-V} \)
+    \( \overline{T_v} \longleftrightarrow T_{-v} \)
 
     \item Μετασχηματισμός κλίμακας:  
-    \( S_{S_X,S_Y,S_Z} \leftarrow S_{\frac{1}{S_X}, \frac{1}{S_Y}, \frac{1}{S_Z}} \)
+    \( \overline{S_{S_x,S_y,S_z}} \longleftrightarrow S_{\frac{1}{S_x}, \frac{1}{S_y}, \frac{1}{S_z}} \)
 
     \item Στροφή:  
-    \( R_{\theta} \leftarrow R_{-\theta} \quad R_{\theta,X} \leftarrow R_{-\theta,X} \)
+    \( \overline{R_{\theta}} \longleftrightarrow R_{-\theta} \quad \)
+    \( \overline{R_{\theta,x}} \longleftrightarrow R_{-\theta,x} \)
 
-    \( R_{\theta,Y} \leftarrow R_{-\theta,Y} \)
+    \( \overline{R_{\theta,y}} \longleftrightarrow R_{-\theta,y} \)
 
-    \( R_{\theta,Z} \leftarrow R_{-\theta,Z} \)
+    \( \overline{R_{\theta,z}} \longleftrightarrow R_{-\theta,z} \)
 \end{itemize}
 
 Για τους αντίστροφους τέλος μετασχηματισμούς αξόνων συντεταγμένων ισχύει:
 
-\[
-T^{-1}_{V} = T_{-V}, \quad R^{-1}_{\theta} = R_{-\theta}, \quad S^{-1}_{S_X,S_Y,S_Z} = S_{\frac{1}{S_X}, \frac{1}{S_Y}, \frac{1}{S_Z}}
-\]
+\begin{align*}
+	\overline{T^{-1}_{v}} &= T_{-V} \\
+	\overline{R^{-1}_{\theta}} &= R_{-\theta} \\ 
+	\overline{S^{-1}_{S_x,S_y,S_z}} &= S_{\frac{1}{S_x}, \frac{1}{S_y}, \frac{1}{S_z}}
+\end{align*}
 
  
-%%%%%%%% 5
-Επίσης εδώ πρέπει να αναφερθεί ότι όπως και στην περίπτωση των δύο συντεταγμένων έτσι και εδώ, πεπλεγμένοι μετασχηματισμοί αντιμετωπίζονται με τη διαδικασία της σύνθεσης συναρτήσεων η οποία εδώ ταυτίζεται με τον πολλαπλασιασμό πινάκων. Αναφέρουμε το παρακάτω παράδειγμα:
+% Page 75 start
 
-Να υπολογιστεί ο πίνακας μετασχηματισμού \( T \) για την περίπτωση στροφής γύρω από τον άξονα \( x \) κατά γωνία \( \theta_x \) και στη συνέχεια στροφή ως προς \( y \) κατά γωνία \( \theta_y \).
-
-\[
-T = R_{\theta_y, y} \cdot R_{\theta_x, x}
-\]
-
-\[
-\begin{bmatrix}
-C_{(r+1)^2} \\
-0 \\
-\end{bmatrix}
-=
-\begin{bmatrix}
-\cos \theta_y & 0 & \sin \theta_y & 0 \\
-0 & 1 & 0 & 0 \\
--\sin \theta_y & 0 & \cos \theta_y & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-1 & 0 & 0 & 0 \\
-0 & \cos \theta_x & -\sin \theta_x & 0 \\
-0 & \sin \theta_x & \cos \theta_x & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
-=
-\begin{bmatrix}
-\cos \theta_y & \sin \theta_y \sin \theta_x & \sin \theta_y \cos \theta_x & 0 \\
-0 & \cos \theta_x & -\sin \theta_x & 0 \\
--\sin \theta_y & \cos \theta_y \sin \theta_x & \cos \theta_y \cos \theta_x & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\]
-
-\section{ Παραδείγματα μετασχηματισμών στο χώρο}
-
-\begin{example}
-	Ορίζουμε ως "καμπή" την περιστροφή γύρω από τον άξονα \( x \) και στη συνέχεια γύρω από τον άξονα \( y \). 
-	
-	\begin{itemize}
-	    \item Βρείτε τον πίνακα καμπής \( T_k \).
-	    \item Εξετάστε εάν παίζει ρόλο η σειρά με την οποία εκτελείται η περιστροφή.
-	\end{itemize}
-\end{example}
-
-\begin{solution}
-	
-
-Τα ακόλουθα βήματα καθορίζουν τον ζητούμενο πίνακα.
-
-\begin{itemize}
-    \item \textbf{Βήμα 1:} Στροφή κατά γωνία \( \theta_x \) ως προς τον άξονα \( x \).
-
-    Βασικός πίνακας μετασχηματισμού: \( R_{\theta_x, x} \).
-
-    \item \textbf{Βήμα 2:} Στροφή κατά γωνία \( \theta_y \) ως προς τον άξονα \( y \).
-
-    Βασικός πίνακας μετασχηματισμού: \( R_{\theta_y, y} \).
-
-    Ο ζητούμενος πίνακας θα προκύψει σαν σύνθεση των παραπάνω βασικών μετασχηματισμών.
-\end{itemize}
-
-\end{solution}
+\begin{remark}
+	Όπως και στην περίπτωση των δύο συντεταγμένων, έτσι και εδώ, πεπλεγμένοι μετασχηματισμοί αντιμετωπίζονται με τη διαδικασία της σύνθεσης συναρτήσεων η οποία εδώ ταυτίζεται με τον πολλαπλασιασμό πινάκων. 
+\end{remark}
 
 
-%%%%%%%%%% 6
+% Page 76 start
 
-\[
-T_k = R_{\theta_y, y} \cdot R_{\theta_x, x} =
-\]
 
-\[
-\begin{bmatrix}
-\cos \theta_y & 0 & \sin \theta_y & 0 \\
-0 & 1 & 0 & 0 \\
--\sin \theta_y & 0 & \cos \theta_y & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-1 & 0 & 0 & 0 \\
-0 & \cos \theta_x & -\sin \theta_x & 0 \\
-0 & \sin \theta_x & \cos \theta_x & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\]
+\input{Chapters/Chapter_3/chapter3-examples.tex}
 
-\[
-= 
-\begin{bmatrix}
-\cos \theta_y & \sin \theta_y \sin \theta_x & \sin \theta_y \cos \theta_x & 0 \\
-0 & \cos \theta_x & -\sin \theta_x & 0 \\
--\sin \theta_y & \cos \theta_y \sin \theta_x & \cos \theta_y \cos \theta_x & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\]
 
-(β) Εάν εκτελεστούν οι παραπάνω μετασχηματισμοί με αντίθετη σειρά θα προκύψει ο ακόλουθος πίνακας:
 
-\[
-T_k = R_{\theta_x, x} \cdot R_{\theta_y, y} =
-\]
 
-\[
-\begin{bmatrix}
-\cos \theta_y & 0 & \sin \theta_y & 0 \\
-\sin \theta_x \sin \theta_y & \cos \theta_x & -\sin \theta_x \cos \theta_y & 0 \\
--\cos \theta_x \sin \theta_y & \sin \theta_x & \cos \theta_x \cos \theta_y & 0 \\
-0 & 0 & 0 & 1
-\end{bmatrix}
-\]
 
-Παρατηρούμε ότι ο νέος πίνακας διαφέρει από αυτόν του ερωτήματος (α) επομένως παίζει σημαντικό ρόλο η σειρά με την οποία εκτελείται η περιστροφή.
 
-\begin{example}
-Προσδιορίστε το μετασχηματισμό \( A_n \) που ευθυγραμμίζει δοσμένο διάνυσμα \( V \) με το μοναδιαίο διάνυσμα \( k \) κατά μήκος του θετικού μέρους του άξονα των \( z \).
-
-\end{example}
+\input{Chapters/Chapter_3/chapter3-exercises.tex}

@@ -1,0 +1,48 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../tikz-preamble.tex}
+
+
+\usepackage{siunitx}
+
+\begin{document}
+
+	\begin{tikzpicture}[scale = 2][
+		my angle/.style = {draw, fill=green!30!blue,
+					opacity=0.4,
+                   angle radius=5mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize} 
+                   ]
+        \drawGridNoNums{3}{3}{0}{0}   
+            \node at (2,0) [below] {$x_{i}$};
+		\node at (1,0) [below] {$x_{i}-1$};		
+		
+		\node at (0,2) [left] {$y_{i}+1$};
+		\node at (0,1) [left] {$y_{i}$};
+
+            \filldraw (1,2) circle (0.5pt) coordinate[label=above left: {$C$}] (C);
+		\filldraw (2,2) circle (0.5pt) coordinate[label=below left: {$D$}] (D);
+            \filldraw (1.5,2) circle (0.5pt) coordinate[label=below left : {$M$}] (M);
+
+            \coordinate (P) at (2.5,0.5);
+            \coordinate (P') at (1.75,2.5);
+
+            \path[name path=line] (0,2) -- (3,2);
+            \path[name path=ellipse] (P) to[out=90, in=-30] (P');
+            \path[name intersections={of=ellipse and line, by=1}];
+
+            \draw[gray] (P) to[out=90, in=-30] (P');
+            \filldraw[fill=black, draw=black] (1) circle (0.5pt) coordinate [label = above right: {$T$} ] (T);
+        
+            \drawRectangleColB{1}{2}{green!50!blue}{0.15};
+            \drawRectangleColB{2}{2}{green!50!blue}{0.15};
+            \drawRectangleColB{2}{1}{blue}{0.15};
+            
+            \draw [decorate, thin,
+            decoration = {brace,mirror, amplitude=8pt}, above = 2pt] (T) --  (M)
+            node[anchor= south,midway, yshift=6pt]{$e_i$};
+
+
+\end{tikzpicture}
+\end{document}

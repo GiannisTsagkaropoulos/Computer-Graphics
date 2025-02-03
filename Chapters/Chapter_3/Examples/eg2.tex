@@ -1,0 +1,71 @@
+\begin{example}
+	Ορίζουμε ως "καμπή" την περιστροφή γύρω από τον άξονα \( x \) και στη συνέχεια γύρω από τον άξονα \( y \). 
+	
+	\begin{enumerate}
+	    \item[i)] Βρείτε τον πίνακα καμπής \( T_k \).
+  	    \item[ii)] Εξετάστε εάν παίζει ρόλο η σειρά με την οποία εκτελείται η περιστροφή.
+	\end{enumerate}
+\end{example}
+
+\begin{solution}
+	
+\begin{enumerate}
+	    \item[i)]   Τα ακόλουθα βήματα καθορίζουν τον ζητούμενο πίνακα.
+
+
+\textbf{Βήμα 1:} Στροφή κατά γωνία \( \theta_x \) ως προς τον άξονα \( x \).
+
+    Βασικός πίνακας μετασχηματισμού: \( R_{\theta_x, x} \).
+
+\textbf{Βήμα 2:} Στροφή κατά γωνία \( \theta_y \) ως προς τον άξονα \( y \).
+
+    Βασικός πίνακας μετασχηματισμού: \( R_{\theta_y, y} \).
+
+    Ο ζητούμενος πίνακας θα προκύψει σαν σύνθεση των παραπάνω βασικών μετασχηματισμών.
+
+
+
+
+%%%%%%%%%% 6
+
+\begin{align*}
+T_k &= R_{\theta_y, y}  \circ R_{\theta_x, x} = 
+		\begin{bmatrix}
+		\cos \theta_y & 0 & \sin \theta_y & 0 \\
+		0 & 1 & 0 & 0 \\
+		-\sin \theta_y & 0 & \cos \theta_y & 0 \\
+		0 & 0 & 0 & 1
+		\end{bmatrix}
+	\cdot 
+		\begin{bmatrix}
+		1 & 0 & 0 & 0 \\
+		0 & \cos \theta_x & -\sin \theta_x & 0 \\
+		0 & \sin \theta_x & \cos \theta_x & 0 \\
+		0 & 0 & 0 & 1
+		\end{bmatrix} = \\
+	&= 
+		\begin{bmatrix}
+		\cos \theta_y & \sin \theta_y \sin \theta_x & \sin \theta_y \cos \theta_x & 0 \\
+		0 & \cos \theta_x & -\sin \theta_x & 0 \\
+		-\sin \theta_y & \cos \theta_y \sin \theta_x & \cos \theta_y \cos \theta_x & 0 \\
+		0 & 0 & 0 & 1
+		\end{bmatrix}
+\end{align*}
+
+	    \item[ii)]  Εάν εκτελεστούν οι παραπάνω μετασχηματισμοί με αντίθετη σειρά θα προκύψει ο ακόλουθος πίνακας:
+
+\[
+T_k = R_{\theta_x, x} \cdot R_{\theta_y, y} = 
+	\begin{bmatrix}
+	\cos \theta_y & 0 & \sin \theta_y & 0 \\
+	\sin \theta_x \sin \theta_y & \cos \theta_x & -\sin \theta_x \cos \theta_y & 0 \\
+	-\cos \theta_x \sin \theta_y & \sin \theta_x & \cos \theta_x \cos \theta_y & 0 \\
+	0 & 0 & 0 & 1
+	\end{bmatrix}
+\]	
+
+Παρατηρούμε ότι ο νέος πίνακας διαφέρει από αυτόν του ερωτήματος (i) επομένως παίζει σημαντικό ρόλο η σειρά με την οποία εκτελείται η περιστροφή.
+
+\end{enumerate}
+
+\end{solution}

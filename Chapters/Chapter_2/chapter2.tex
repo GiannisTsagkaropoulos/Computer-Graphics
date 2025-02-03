@@ -38,10 +38,9 @@
 
 
 
-
-\begin{lstlisting}
-# Parrallel metafora	
-\end{lstlisting}
+%\begin{lstlisting}
+%# Parrallel metafora	
+%\end{lstlisting}
 
 
 
@@ -82,9 +81,9 @@
 \end{figure}
 
 
-\begin{lstlisting}
-# Allagi klimakas ajwnwn
-\end{lstlisting}
+%\begin{lstlisting}
+%# Allagi klimakas ajwnwn
+%\end{lstlisting}
 
 
 
@@ -106,9 +105,9 @@
 \end{figure}
 
 
-\begin{lstlisting}
-# strofi systimatos ajwnwn
-\end{lstlisting}
+%\begin{lstlisting}
+%# strofi systimatos ajwnwn
+%\end{lstlisting}
 
  % Adjust this number to increase line spacing
 \begin{tabular}{m{0.45\textwidth}m{0.45\textwidth}}
@@ -346,13 +345,13 @@ x - t_x \\y - t_y
 \begin{bmatrix} x \\ -y \end{bmatrix}
 \]
 
-Πριν προχωρήσουμε στους γεωμετρικούς μετασχηματισμούς πρέπει να αναφέρουμε ότι εκτός από τη μεταφορά όλες οι απεικονίσεις είναι ομοιόμορφες (τετραγωνικοί πίνακες 2x2). Είναι γνωστό ότι \underline{απεικονίσεις σημείων οι οποίες πραγματοποιούνται} με πίνακες έχουν πάντοτε \underline{ένα σταθερό σημείο (Fixpoint)} την αρχή των αξόνων δηλαδή:
+Πριν προχωρήσουμε στους γεωμετρικούς μετασχηματισμούς πρέπει να αναφέρουμε ότι εκτός από τη μεταφορά όλες οι απεικονίσεις είναι ομοιόμορφες (τετραγωνικοί πίνακες 2x2). Είναι γνωστό ότι \underline{απεικονίσεις σημείων οι οποίες πραγματοποιούνται} με πίνακες έχουν πάντοτε ένα σταθερό σημείο \underline{(Fixpoint)} την αρχή των αξόνων δηλαδή:
 
 \[
 \begin{bmatrix} a & b \\ c & d \end{bmatrix} \cdot \begin{bmatrix} 0 \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix}
 \]
 
- για τυχαία \( a,b,c,d. \) Εάν τώρα θέλουμε να παραστήσουμε με πίνακες και \underline{μετασχηματισμούς} \underline{όπου όλα τα σημεία μπορούν να μετασχηματισθούν τότε πρέπει να προβλέψουμε ώστε το}\\ \underline{σταθερό σημείο να βρίσκεται εκτός του επιπέδου απεικόνισης}. Για το σκοπό αυτό χρησιμοποιούμε εδώ τις "\underline{ομογενείς συντεταγμένες}". Εισάγουμε δηλαδή μια τρίτη διάσταση και σχεδιάζουμε στο επίπεδο \( z=1 \) (το θεωρούμε σαν βασικό επίπεδο). Οι μετασχηματισμοί πραγματοποιούνται τώρα στο χώρο με πίνακες \( 3 \times 3 \) το δε σταθερό σημείο \( (0,0,0) \) βρίσκεται εκτός του επιπέδου σχεδίασης \( z=1 \). Πίνακες των οποίων η τελευταία γραμμή είναι \( (0,0,1) \) απεικονίζουν σημεία του επιπέδου  $z=1$ και στο επίπεδο $z=1$ διότι:
+ για τυχαία \( a,b,c,d. \) Εάν τώρα θέλουμε να παραστήσουμε με πίνακες και μετασχηματισμούς όπου όλα τα σημεία μπορούν να μετασχηματισθούν τότε πρέπει να προβλέψουμε ώστε το σταθερό σημείο να βρίσκεται εκτός του επιπέδου απεικόνισης. Για το σκοπό αυτό χρησιμοποιούμε εδώ τις "\underline{ομογενείς συντεταγμένες}". Εισάγουμε δηλαδή μια τρίτη διάσταση και σχεδιάζουμε στο επίπεδο \( z=1 \) (το θεωρούμε σαν βασικό επίπεδο). Οι μετασχηματισμοί πραγματοποιούνται τώρα στο χώρο με πίνακες \( 3 \times 3 \) το δε σταθερό σημείο \( (0,0,0) \) βρίσκεται εκτός του επιπέδου σχεδίασης \( z=1 \). Πίνακες των οποίων η τελευταία γραμμή είναι \( (0,0,1) \) απεικονίζουν σημεία του επιπέδου  $z=1$ και στο επίπεδο $z=1$ διότι:
 
 \[
 \begin{bmatrix} a & b & c \\ d & e & f \\ 0 & 0 & 1 \end{bmatrix} \cdot \begin{bmatrix} x \\ y \\ 1 \end{bmatrix} = \begin{bmatrix} x' \\ y' \\ 1 \end{bmatrix}
@@ -407,189 +406,7 @@ M_x = \begin{bmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1 \end{bmatrix}, \quad 
 
  Ανάλογα κατασκευάζονται και οι πίνακες των αντίστροφων γεωμετρικών μετασχηματισμών.
 
-\begin{example}
-Να υπολογιστεί ο πίνακας μετασχηματισμού της συμμετρικής απεικόνισης εικόνας ως προς άξονα \( w \) ο οποίος σχηματίζει γωνία \( \theta \) με τον θετικό άξονα των \( x. \)
-\end{example}
 
-
-\begin{figure}[h!]
-	\begin{center}
-		\begin{minipage}[b]{0.48\textwidth} % Top-left image
-		    \includegraphics[width=\textwidth]{Chapter2/figure9a.pdf}
-		\end{minipage}%
-	\hfill
-		\begin{minipage}[b]{0.48\textwidth} % Top-right image
-		    \includegraphics[width=\textwidth]{Chapter2/figure9b.pdf}
-		\end{minipage}
-	\end{center}
-\caption{Παράδειγμα μεταφοράς σχήματος κατά διάνυσμα $v = (t_x, t_y)$}
-\end{figure}
-
-
-\begin{figure}[h!]
-	\begin{center}
-		\begin{minipage}[b]{0.48\textwidth} % Top-left image
-		    \includegraphics[width=\textwidth]{Chapter2/figure9c.pdf}
-		\end{minipage}%
-	\hfill
-		\begin{minipage}[b]{0.48\textwidth} % Top-right image
-		    \includegraphics[width=\textwidth]{Chapter2/figure9d.pdf}
-		\end{minipage}
-	\end{center}
-\caption{Παράδειγμα μεταφοράς σχήματος κατά διάνυσμα $v = (t_x, t_y)$}
-\end{figure}
-
-
-
-Όπως φαίνεται και στο σχήμα \ref{fig:9} ο μετασχηματισμός μπορεί να προκύψει ως εξής:
- 
-\begin{tabular}{m{0.45\textwidth}m{0.5\textwidth}}
-	1. Στροφή της εικόνας κατά γωνία \( -\theta \). & \( (R_{-\theta}) \) \\
-	2. Συμμετρία ως προς άξονα $x$.& \( (M_x) \)\\
-	3.  Στροφή της εικόνας κατά γωνία \( \theta \).& \( (R_{\theta}) \)
-\end{tabular}
-
-
-\[
-\text{Βήμα 1: } 
-\begin{bmatrix}
-x' \\ y' \\ 1
-\end{bmatrix}
-=
-\begin{bmatrix}
-\cos(-\theta) & -\sin(-\theta) & 0 \\
-\sin(-\theta) & \cos(-\theta) & 0 \\
-0 & 0 & 1
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-x \\ y \\ 1
-\end{bmatrix}
-= \Pi_1
-\begin{bmatrix}
-x \\ y \\ 1
-\end{bmatrix}
-\]
-
-\[
-\text{Βήμα 2: } 
-\begin{bmatrix}
-x'' \\ y'' \\ 1
-\end{bmatrix}
-=
-\begin{bmatrix}
-1 & 0 & 0 \\
-0 & -1 & 0 \\
-0 & 0 & 1
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-x' \\ y' \\ 1
-\end{bmatrix}
-= \Pi_2
-\begin{bmatrix}
-x' \\ y' \\ 1
-\end{bmatrix}
-\]
-
-\[
-\text{Βήμα 3: } 
-\begin{bmatrix}
-x''' \\ y''' \\ 1
-\end{bmatrix}
-=
-\begin{bmatrix}
-\cos \theta & -\sin \theta & 0 \\
-\sin \theta & \cos \theta & 0 \\
-0 & 0 & 1
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-x'' \\ y'' \\ 1
-\end{bmatrix}
-= \Pi_3
-\begin{bmatrix}
-x'' \\ y'' \\ 1
-\end{bmatrix}
-\]
-
-Άρα τελικά:
-\[
-\begin{bmatrix}
-x''' \\ y''' \\ 1
-\end{bmatrix}
-=
-\Pi_3 (\Pi_2 (\Pi_1
-\begin{bmatrix}
-x \\ y \\ 1
-\end{bmatrix}))
-\]
-
-Επειδή ο πολλαπλασιασμός πινάκων είναι πράξη προσεταιριστική, θα έχουμε:
-
-\[
-\begin{bmatrix}
-x''' \\ y''' \\ 1
-\end{bmatrix}
-=
-(\Pi_3 \cdot \Pi_2 \cdot \Pi_1)
-\begin{bmatrix}
-x \\ y \\ 1
-\end{bmatrix}
-\]
-
-και επομένως μπορούμε να υπολογίσουμε το γινόμενο $\Pi_3 \Pi_2 \Pi_1$ το οποίο θα αποτελεί και τον ζητούμενο πίνακα $\Pi$.
-
-\[
-\Pi =
-\begin{bmatrix}
-\cos \theta & -\sin \theta & 0 \\
-\sin \theta & \cos \theta & 0 \\
-0 & 0 & 1
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-1 & 0 & 0 \\
-0 & -1 & 0 \\
-0 & 0 & 1
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-\cos(-\theta) & -\sin(-\theta) & 0 \\
-\sin(-\theta) & \cos(-\theta) & 0 \\
-0 & 0 & 1
-\end{bmatrix}
-\]
-
-\[
-=
-\begin{bmatrix}
-\cos \theta & \sin \theta & 0 \\
--\sin \theta & \cos \theta & 0 \\
-0 & 0 & 1
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-\cos \theta & \sin \theta & 0 \\
--\sin \theta & \cos \theta & 0 \\
-0 & 0 & 1
-\end{bmatrix}
-=
-\]
-
-\[
-\begin{bmatrix}
-\cos^2\theta - \sin^2\theta & 2\sin\theta\cos\theta & 0 \\
-2\sin\theta\cos\theta & \sin^2\theta - \cos^2\theta & 0 \\
-0 & 0 & 1
-\end{bmatrix}
-\cdot
-\begin{bmatrix}
-\cos 2\theta & \sin 2\theta & 0 \\
-\sin 2\theta & -\cos 2\theta & 0 \\
-0 & 0 & 1
-\end{bmatrix}
-\]
 
 \section{Σύνθεση μετασχηματισμών}
 
@@ -628,7 +445,12 @@ x \\ y \\ 1
 
 Ο συνολικός μετασχηματισμός λοιπόν παρουσιάζεται με έναν πίνακα ο οποίος υπολογίζεται μία φορά και στη συνέχεια πολλαπλασιάζεται με τα εκάστοτε σημεία της εικόνας.
 
-\begin{figure}
+
+
+\input{Chapters/Chapter_2/chapter2-examples.tex}
+
+
+\begin{figure}[htb]
 	\begin{center}
 	\begin{tabular}{m{0.45\textwidth}m{0.45\textwidth}}
 	\toprule
@@ -644,17 +466,6 @@ x \\ y \\ 1
 	\end{center}
 	\caption{Λίστα Γεωμετρικών Μετασχηματισμών}
 \end{figure}
-
-\section{Παραδείγματα μετασχηματισμών στο επίπεδο}
-
-\input{Chapters/Chapter_2/Examples/eg1.tex}
-\input{Chapters/Chapter_2/Examples/eg2.tex}
-\input{Chapters/Chapter_2/Examples/eg3.tex}
-\input{Chapters/Chapter_2/Examples/eg4.tex}
-\input{Chapters/Chapter_2/Examples/eg5.tex}
-\input{Chapters/Chapter_2/Examples/eg6.tex}
-
-
 
 
 \input{Chapters/Chapter_2/chapter2-exercises.tex}

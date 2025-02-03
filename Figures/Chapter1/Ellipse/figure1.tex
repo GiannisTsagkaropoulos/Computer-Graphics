@@ -1,0 +1,76 @@
+\documentclass[border=10pt]{standalone}
+
+\input{../../tikz-preamble.tex}
+
+\usetkzobj{all}
+
+\usepackage{siunitx}
+
+\begin{document}
+
+	\begin{tikzpicture}[
+		my angle/.style = {draw, fill=green!30!blue,
+					opacity=0.4,
+                   angle radius=5mm, 
+                   angle eccentricity=1.7, 
+                   font=\footnotesize} 
+                   ]
+%Define axis length and radius
+    \pgfmathsetmacro{\axislengtha}{5}
+    \pgfmathsetmacro{\axislengthb}{3}
+    \pgfmathsetmacro{\radiusa}{4}
+    \pgfmathsetmacro{\radiusb}{2}
+%Draw axes
+    \drawAxisNoNums{\axislengtha}{\axislengthb}{-\axislengtha}{-\axislengthb};
+    \filldraw (0,0) circle (1.2pt) coordinate[label=below left: {$O$}] (O);
+    
+%Draw ellipse
+   \draw (O) ellipse (\radiusa cm and \radiusb cm);
+   
+%Define paths 
+    \path[name path=ellipse] (O) ellipse (\radiusa cm and \radiusb cm);
+    \path[name path=axis-x] (O) -- (\axislengtha, 0);
+    \path[name path=axis-y] (O) -- (0, \axislengthb);    
+    ;
+
+% Define small segment length (adjust this to make the tangent longer or shorter)
+    \pgfmathsetmacro{\d}{0.8}
+    
+% point on the ellipse that the tangent line on the ellipse has slope equal to -1
+    \pgfmathsetmacro{\xa}{8/sqrt(5)}
+    \pgfmathsetmacro{\ya}{2/sqrt(5)}
+    \filldraw (\xa,\ya) circle (1.2pt)  node[outer sep=3pt ,anchor=180] {\scriptsize{$(x,y) = \left(  \cfrac{a^2}{\sqrt{a^2+b^2}}, \cfrac{b^2}{\sqrt{a^2+b^2}}\right)$}} coordinate (P);
+
+%Angle
+    \pic[my angle] {angle = x--O--P}; 
+    \draw[thin] (O) -- (P);
+    
+% Compute left and right points for the tangent segment
+    \pgfmathsetmacro{\xleft}{\xa - \d}
+    \pgfmathsetmacro{\yleft}{\ya + (\xa - \xleft)}
+
+    \pgfmathsetmacro{\xright}{\xa + \d}
+    \pgfmathsetmacro{\yright}{\ya + (\xa - \xright)}
+
+    \pgfmathsetmacro{\xm}{(\xleft + \xright)/2 + 1}
+    \pgfmathsetmacro{\ym}{(\yleft + \yright)/2 + 1}
+    
+% Draw the tangent segment at P
+    \draw[] (\xleft, \yleft) -- (\xright, \yright) node[below right] {};   
+    
+%draw the vector perpendicullar to the tangent line
+    \coordinate (a) at (\xleft,\yleft);
+    \coordinate (b) at (\xright,\yright);
+    \coordinate (c) at (\xm,\ym);
+
+    %\draw[] (P) -- (4.7,2);
+% Draw quadrants
+    \draw[] (3,0.4)  node  {\large{1}};
+    \draw[] (1.25,1.25)  node  {\large{2}};
+    \draw [,-latex] ($(a)!(c)!(b)$) -- (c) node[anchor = 230] {$\vec{v}$} ;
+
+    \tkzMarkRightAngle[draw=black,size=.2](a,P,c);
+
+\end{tikzpicture}
+
+\end{document}
